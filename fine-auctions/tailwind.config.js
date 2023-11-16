@@ -2,7 +2,24 @@
 export default {
   content: ["./src/**/*.{html,js,mjs}", "./*.html"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundSize: {
+        "50%": "50%",
+        "100%": "100%",
+        "200%": "200%",
+        "300%": "300%",
+        "400%": "400%",
+        "500%": "500%",
+      },
+      colors: {
+        "primary-button": "#D12600",
+      }
+    },
+  },
+  variants: {
+    extend: {
+      display: ["group-focus"],
+    },
   },
   plugins: [],
 };
