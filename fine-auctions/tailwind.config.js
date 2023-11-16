@@ -13,6 +13,7 @@ export default {
       },
       colors: {
         "primary-button": "#D12600",
+        "primary-background": "#2B2B2B",
       }
     },
   },
