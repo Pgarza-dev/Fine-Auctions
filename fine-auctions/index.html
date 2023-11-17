@@ -1,17 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/styles/main.css" rel="stylesheet" />
+    <title>Fine Auctions</title>
+    <script
+      src="https://kit.fontawesome.com/a6b44b4960.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-red-700">
+  <body>
     <header>
-      <div>
-        <p>
-          English 
-        </p>
-      </div>
+      <section class="bg-primary-background p-2">
+        <div class="m-auto flex max-w-7xl items-center justify-between p-2">
+          <div class="text-white">
+            <a class="pe-2 underline-offset-4 hover:underline" href=""
+              >English</a
+            >
+            <a class="ps-2 underline-offset-4 hover:underline" href="">Norsk</a>
+          </div>
+          <div>
+            <a
+              class="bg-primary-button px-5 py-2.5 text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
+              href=""
+              >LOG IN</a
+            >
+          </div>
+        </div>
+      </section>
+      <section>
+        <div
+          class="m-auto flex max-w-2xl flex-col items-center pt-10 text-center"
+        >
+          <div>
+            <h1 class="text-2xl font-bold">Fine Auctions</h1>
+          </div>
+          <div>
+            <p class="text-lg">
+              Elevate your bids, amplify your treasures. Join our auction
+              platform where every item tells a story, and every bid is an
+              opportunity.
+            </p>
+          </div>
+        </div>
+        <div class="m-auto flex max-w-2xl justify-evenly pt-10">
+          <ul class="flex justify-around underline underline-offset-4">
+            <li class="p-3">Auctions</li>
+            <li class="p-3">Buy</li>
+            <li class="p-3">Profile</li>
+            <li class="p-3">Sell</li>
+            <li class="p-3">About us</li>
+          </ul>
+
+          <form>
+            <div class="flex">
+              <div class="relative">
+                <input
+                  type="search"
+                  id="search-dropdown"
+                  class="focus z-20 block w-full border border-s-2 border-gray-300 border-s-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 focus:outline-none"
+                  placeholder="Search "
+                  required
+                />
+                <button
+                  type="submit"
+                  class="absolute end-0 top-0 h-full border border-gray-300 bg-gray-300 p-2.5 text-sm font-medium text-white hover:bg-primary-button focus:outline-none"
+                >
+                  <svg
+                    class="h-4 w-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
     </header>
     <main></main>
     <footer></footer>

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family:
+      "Noto Serif Japanese",
+      SF Pro,
+      ui-sans-serif,
+      system-ui,
+      Arial,
+      sans-serif;
+  }
+}
