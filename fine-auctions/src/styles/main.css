@@ -18,3 +18,10 @@
   width: 20rem;
   height: 26rem;
 }
+
+.background-img {
+  background-image: url("../../public/images/Rectangle 18.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+}
