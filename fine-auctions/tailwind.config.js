@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,mjs}", "./*.html"],
+  content: [
+    "./src/**/*.{html,js,mjs}",
+    "./*.html",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     extend: {
       backgroundSize: {
@@ -14,7 +18,7 @@ export default {
       colors: {
         "primary-button": "#D12600",
         "primary-background": "#2B2B2B",
-      }
+      },
     },
   },
   variants: {
@@ -22,5 +26,5 @@ export default {
       display: ["group-focus"],
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };

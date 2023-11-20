@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../src/styles/main.css" />
+    <script type="module" src="user-profile.js"></script>
+
+    <title>User Profile Page</title>
+    <script
+      src="https://kit.fontawesome.com/a6b44b4960.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <section class="fixed z-50 w-full bg-primary-background p-2">
+        <div class="m-auto flex max-w-7xl items-center justify-between p-2">
+          <div class="text-white">
+            <a
+              class="pe-2 underline-offset-4 transition-all hover:underline"
+              href=""
+              >English</a
+            >
+            <a
+              lang="no"
+              class="ps-2 underline-offset-4 transition-all hover:underline"
+              href=""
+              >Norsk</a
+            >
+          </div>
+          <div class="border-spacing-4 border pb-1 pe-4 ps-4 pt-1 text-white">
+            <span id="profile" class="pe-4">Pablo Garza</span>
+            <span class="italic"
+              >Credits: <span id="totalCredits">1000</span>
+            </span>
+          </div>
+          <div>
+            <a
+              class="pe-4 text-white underline-offset-4 transition-all hover:underline"
+              href="../user-page/user-profile.html"
+              >My page</a
+            >
+            <a
+              class="bg-primary-button px-5 py-2.5 text-sm text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
+              href="src/login/login.html"
+              >Sign out</a
+            >
+          </div>
+        </div>
+      </section>
+      <section>
+        <div
+          class="m-auto flex max-w-2xl flex-col items-center pt-10 text-center"
+        >
+          <div>
+            <h1 class="text-2xl font-bold">Fine Auctions</h1>
+          </div>
+          <div>
+            <p class="text-lg">
+              Elevate your bids, amplify your treasures. Join our auction
+              platform where every item tells a story, and every bid is an
+              opportunity.
+            </p>
+          </div>
+        </div>
+        <div class="m-auto flex max-w-2xl justify-evenly pt-10">
+          <div class="underline underline-offset-4">
+            <a
+              class="pe-4 transition-all hover:text-black"
+              href="../profile/profile.html"
+              >Auctions</a
+            >
+
+            <a
+              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              href=""
+              >Profile</a
+            >
+            <a
+              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              href=""
+              >Sell</a
+            >
+            <a
+              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              href="../about-us/about-us.html"
+              >About us</a
+            >
+          </div>
+
+          <form>
+            <div class="flex">
+              <div class="relative">
+                <input
+                  type="search"
+                  id="search-dropdown"
+                  class="focus block w-full border border-s-2 border-gray-300 border-s-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 focus:outline-none"
+                  placeholder="Search "
+                  required
+                />
+                <button
+                  type="submit"
+                  class="absolute end-0 top-0 h-full border border-gray-300 bg-gray-300 p-2.5 text-sm font-medium text-white hover:bg-primary-button focus:outline-none"
+                >
+                  <svg
+                    class="h-4 w-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section>
+        <div class="border-b-2 border-t-2 border-gray-200">
+          <div class="m-auto max-w-4xl p-8">
+            <img id="userProfileImage" src="/images/profile-icon.png" alt="" />
+            <h1 id="userName" class="font-semibold">User name</h1>
+          </div>
+        </div>
+
+        <div
+          class="m-auto mb-4 flex max-w-4xl items-center justify-between border-b border-gray-200 dark:border-gray-700"
+        >
+          <ul
+            class="-mb-px flex flex-wrap text-center text-sm font-medium text-gray-500 dark:text-gray-400"
+            id="tabs-example"
+            role="tablist"
+          >
+            <li class="me-2" role="presentation">
+              <button
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                id="profile-tab-example"
+                type="button"
+                role="tab"
+                aria-controls="profile-example"
+                aria-selected="false"
+              >
+                Bids
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                id="dashboard-tab-example"
+                type="button"
+                role="tab"
+                aria-controls="dashboard-example"
+                aria-selected="false"
+              >
+                Sell
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                id="settings-tab-example"
+                type="button"
+                role="tab"
+                aria-controls="settings-example"
+                aria-selected="false"
+              >
+                Settings
+              </button>
+            </li>
+          </ul>
+          <span>Credits: <span id="totalCredits">1000</span></span>
+        </div>
+        <div id="tabContentExample" class="m-auto max-w-4xl">
+          <div
+            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            id="profile-example"
+            role="tabpanel"
+            aria-labelledby="profile-tab-example"
+          >
+            <p class="text-sm text-gray-500 dark:text-gray-400">History</p>
+            <div
+              id="recentBidHistory"
+              class="inline-flex w-full flex-row justify-between border-b-2 border-dotted"
+            >
+              <p id="recentBidItem">Maserati MC20</p>
+              <p id="recentBidPrice">230,989</p>
+            </div>
+          </div>
+          <div
+            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            id="dashboard-example"
+            role="tabpanel"
+            aria-labelledby="dashboard-tab-example"
+          >
+            <section class="flex justify-center gap-6 sm:gap-8 sm:p-8 lg:ps-40">
+              <div>
+                <img
+                  id="auctionItemImagePreview"
+                  src="/images/Auction item prerview.png"
+                  alt="preview image of auction item"
+                  class="h-96 w-full object-contain"
+                />
+              </div>
+              <form
+                action="/"
+                method="POST"
+                id="sell-form"
+                class="flex flex-col gap-12 border-b-4 border-t-4 border-black pb-10 pt-10"
+              >
+                <div class="relative w-full">
+                  <input
+                    type="text"
+                    id="titleOfItemSold"
+                    name="titleOfItemSold"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="Title of auction item"
+                    required
+                  />
+                  <label
+                    for="Title of auction item"
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Title of auction item</label
+                  >
+                  <div id="titleError"></div>
+                </div>
+
+                <div class="relative w-full">
+                  <input
+                    type="text"
+                    id="descriptionOfItemSold"
+                    name="descriptionOfItemSold"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="Description of auction item"
+                  />
+                  <label
+                    for="descriptionOfItemSold"
+                    required
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Description of auction item</label
+                  >
+                  <div id="description-error"></div>
+                </div>
+                <div class="relative w-full">
+                  <input
+                    id="avatar-url"
+                    width="576"
+                    height="576"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="https://example.com/image.png"
+                    type="url"
+                    name="avatar"
+                  />
+                  <label
+                    for="descriptionOfItemSold"
+                    required
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Image url</label
+                  >
+                  <div id="description-error"></div>
+                </div>
+
+                <div class="relative w-full">
+                  <input
+                    type="date"
+                    id="dateOfItemSold"
+                    name="date"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="Date of auction item"
+                  />
+                  <label
+                    for="dateOfItemSold"
+                    class="peer absolute -top-5 left-0 text-sm text-white transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-white peer-focus:opacity-100"
+                    >Date of auction item</label
+                  >
+                  <div id="date-error"></div>
+                </div>
+
+                <div>
+                  <button
+                    class="hover:text-primary-900 flex h-10 max-w-lg items-center justify-center border bg-black px-24 py-8 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
+                    type="submit"
+                    id="register-btn"
+                  >
+                    SELL ITEM
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+          <div
+            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            id="settings-example"
+            role="tabpanel"
+            aria-labelledby="settings-tab-example"
+          >
+            <form
+              action="/"
+              method="POST"
+              id="accoutSettingsForm"
+              class="flex flex-col gap-12 border-b-4 border-t-4 border-black pb-10 pt-10"
+            >
+              <div class="relative w-full">
+                <input
+                  type="email"
+                  id="accountSettingsEmail"
+                  name="accountSettingsEmail"
+                  class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                  placeholder="Email address"
+                  required
+                />
+                <label
+                  for="email"
+                  class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                  >Email address</label
+                >
+                <div id="titleError"></div>
+              </div>
+
+              <div class="relative w-full">
+                <input
+                  id="update-avatar-url"
+                  width="576"
+                  height="576"
+                  class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                  placeholder="https://newavatar.com/image.png"
+                  type="url"
+                  name="avatar"
+                />
+                <label
+                  for="descriptionOfItemSold"
+                  required
+                  class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                  >Image url</label
+                >
+                <div id="description-error"></div>
+              </div>
+
+              <div>
+                <button
+                  class="hover:text-primary-900 flex h-10 max-w-lg items-center justify-center border bg-primary-button px-24 py-8 text-white transition-all duration-500 ease-in-out hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
+                  type="submit"
+                  id="updateAccountSettingsBtn"
+                >
+                  ADD AVATAR
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <img
+        id="profileAvatarImage"
+        class="w-full"
+        src="/images/Rectangle 18.png"
+        alt="profile avatar image"
+      />
+    </main>
+    <footer
+      class="border border-t-2 border-gray-200 bg-primary-background text-white"
+    >
+      <div class="flex justify-around p-12">
+        <div>
+          <div>
+            <h4 class="pb-4 font-semibold">Contact information</h4>
+          </div>
+          <ul>
+            <li>Auction House</li>
+            <li>Karl Johans Gate,</li>
+            <li>Oslo Norway</li>
+            <li>Phone +47 12 34 56 78</li>
+            <li>Email: auctionhouse@post.no</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="pb-4 font-semibold">Opening hours</h4>
+          <ul>
+            <li>Monday - Friday: 10:00 - 18:00</li>
+            <li>Saturday: 10:00 - 16:00</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+        <div class="flex flex-col">
+          <h4 class="pb-4 font-semibold">Sign up for our newsletter</h4>
+          <span>Get the latest news, updates and invitations on email. </span>
+          <div class="pt-10">
+            <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
+            <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
+            <a class="pe-4" href=""><i class="fa-solid fa-paper-plane"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../../node_modules/flowbite/dist/flowbite.min.css"></script>
+  </body>
+</html>
