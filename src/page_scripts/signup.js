@@ -18,11 +18,11 @@ async function handleSignUp(formDataObject) {
   if (response.errors) {
     handleFormApiError(response.errors);
   } else {
-    window.location.href = "/login/";
+    window.location.href = "/login.html";
   }
 }
 
-const signupForm = document.querySelector("#signup-form");
+const signupForm = document.querySelector("#register-form");
 
 signupForm.addEventListener("submit", (event) => {
   event.preventDefault();
