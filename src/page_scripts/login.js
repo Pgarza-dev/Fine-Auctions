@@ -19,11 +19,12 @@ async function handleLogin(formDataObject) {
   if (response.error) {
     handleFormApiError([response.error]);
   } else {
-    window.location.href = "/";
+    window.location.href = "/user_page/";
   }
 }
 
 const loginForm = document.querySelector("#login-form");
+console.log(loginForm);
 
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();

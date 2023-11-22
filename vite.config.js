@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
-import path from "path"; // Import the path module
+import * as path from "path";
 
 export default defineConfig({
+  root: path.resolve(__dirname, "src"),
   plugins: [],
   server: {
     hot: true,
