@@ -2,7 +2,7 @@ import {
   USERNAME_MIN_LENGTH,
   PASSWORD_MIN_LENGTH,
   EMAIL_DOMAIN_WHITELIST,
-} from "../constants.js";
+} from "../utils/constants.js";
 
 function checkValidString(string) {
   return /^[a-zA-Z0-9_]+$/.test(string);

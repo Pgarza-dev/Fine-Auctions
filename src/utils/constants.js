@@ -7,5 +7,5 @@ export const AUTH_FREE_PATHS = ["/login/", "/login", "/signup/", "/signup"];
 
 export const REGISTER_ENDPOINT = "auction/auth/register";
 export const LOGIN_ENDPOINT = "auction/auth/login";
-export const PROFILES_ENDPOINT = "/social/profiles";
-export const AUCTION_LISTING_ENDPOINT = "/auctions/listings";
+export const PROFILES_ENDPOINT = "/auction/profiles";
+export const AUCTION_LISTING_ENDPOINT = "/auction/listings";

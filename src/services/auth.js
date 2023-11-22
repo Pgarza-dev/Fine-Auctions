@@ -1,9 +1,9 @@
-import { makeApiCall } from "src/services/makeApiCall.js";
+import { makeApiCall } from "./makeApiCall";
 import {
   setAccessToken,
   setActiveUser,
   setActiveUserAvatar,
-} from "src/utils/handleLocalStorageUser.js";
+} from "../utils/handleLocalStorageUser.js";
 import { REGISTER_ENDPOINT, LOGIN_ENDPOINT } from "../utils/constants";
 
 export async function registerUser(userData) {

@@ -1,9 +1,9 @@
-import { checkSignupForm } from "src/forms/validation.js";
-import { clearErrors, displayErrors } from "src/forms/handleErrors.js";
-import { registerUser } from "src/services/auth.js";
-import { createFormDataObject } from "src/forms/utils.js";
-import { handleFormApiError } from "src/forms/handleErrors.js";
-import { removeActiveUser } from "src/utils/handleLocalStorageUser.js";
+import { checkSignupForm } from "../forms/validation.js";
+import { clearErrors, displayErrors } from "../forms/handleErrors.js";
+import { registerUser } from "../services/auth.js";
+import { createFormDataObject } from "../forms/utils.js";
+import { handleFormApiError } from "../forms/handleErrors.js";
+import { removeActiveUser } from "../utils/handleLocalStorageUser.js";
 
 removeActiveUser();
 
@@ -18,7 +18,7 @@ async function handleSignUp(formDataObject) {
   if (response.errors) {
     handleFormApiError(response.errors);
   } else {
-    window.location.href = "/login.html";
+    window.location.href = "/login";
   }
 }
 

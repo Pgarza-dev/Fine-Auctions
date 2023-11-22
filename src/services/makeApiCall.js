@@ -1,19 +1,6 @@
 import { API_BASE_URL } from "../utils/constants";
+import { fetcher } from "./fetcher";
 
-/**
- * Makes a call to the API, using a generic fetcher function.
- *
- * @param {Object} options - The options for the API call.
- * @param {string} options.endpoint - The API endpoint to call.
- * @param {string} [options.method='GET'] - The HTTP method to use.
- * @param {Object} [options.body=null] - The body of the request, for POST, PUT, etc.
- * @param {Object} [options.query={}] - Query parameters to include in the API call.
- * @param {string} [options.errorMessage] - Custom error message for this API call.
- * @param {string} [options.successMessage] - Custom success message for this API call.
- * @param {*} [options.defaultReturn=[]] - The default value to return if the API call fails.
- *
- * @return {Promise<*>} - A promise that resolves to the API response data or to the defaultReturn value in case of an error.
- */
 export async function makeApiCall({
   endpoint,
   method = "GET",
