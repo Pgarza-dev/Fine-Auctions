@@ -3,7 +3,7 @@ import {
   setAccessToken,
   setActiveUser,
   setActiveUserAvatar,
-} from "../utils/handleLocalStorageUser.js";
+} from "../utils/handleLocalStorageUser";
 import { REGISTER_ENDPOINT, LOGIN_ENDPOINT } from "../utils/constants";
 
 export async function registerUser(userData) {

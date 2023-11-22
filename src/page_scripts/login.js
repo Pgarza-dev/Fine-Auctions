@@ -1,3 +1,5 @@
+console.log("login.js");
+
 import { removeActiveUser } from "../utils/handleLocalStorageUser.js";
 import { handleFormApiError } from "../forms/handleErrors.js";
 import { createFormDataObject } from "../forms/utils.js";

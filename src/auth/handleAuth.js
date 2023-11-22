@@ -17,6 +17,6 @@ export function handleAuth() {
 
   if (!activeUser || !accessToken) {
     console.warn("No active user or access token found, redirecting.");
-    goToUnauthorized();
+    // goToUnauthorized();
   }
 }

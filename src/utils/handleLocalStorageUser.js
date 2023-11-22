@@ -11,7 +11,7 @@ export function getActiveUser() {
 
 export function setActiveUser(username) {
   if (typeof username !== "string" || username.trim() === "") {
-    throw new Error("Invalide username.");
+    throw new Error("Invalid username.");
   }
   localStorage.setItem(LOCAL_STORAGE_KEY, username);
 }
@@ -27,6 +27,13 @@ export function getActiveUserAvatar() {
     return null;
   }
   return avatar;
+}
+
+export function setActiveUserAvatar(avatar) {
+  if (typeof avatar !== "string") {
+    throw new Error("Invalid avatar.");
+  }
+  localStorage.setItem("avatar", avatar);
 }
 
 export function clearActiveUserAvatar() {
