@@ -1,6 +1,18 @@
 import { API_BASE_URL } from "../utils/constants";
 import { fetcher } from "./fetcher";
 
+function handleErrors(
+  error,
+  message = "Something went wrong! Please try again.",
+) {
+  console.error(error);
+}
+
+function handleSuccess(message) {
+  if (message) {
+  }
+}
+
 export async function makeApiCall({
   endpoint,
   method = "GET",
