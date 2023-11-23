@@ -17,7 +17,6 @@ export function handleAuth() {
 
   if (!activeUser || !accessToken) {
     console.warn("No active user or access token found, redirecting.");
-    window.location.href = "/login/";
-    
+    window.location.href = "src/index.html";
   }
 }
