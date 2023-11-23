@@ -8,25 +8,25 @@ function initializeTabs() {
   // create an array of objects with the id, trigger element (e.g., button), and the content element
   const tabElements = [
     {
-      id: "profile",
-      triggerEl: document.querySelector("#profile-tab-example"),
-      targetEl: document.querySelector("#profile-example"),
+      id: "bid",
+      triggerEl: document.querySelector("#bid-tab"),
+      targetEl: document.querySelector("#bid-example"),
     },
     {
-      id: "dashboard",
-      triggerEl: document.querySelector("#dashboard-tab-example"),
-      targetEl: document.querySelector("#dashboard-example"),
+      id: "sell",
+      triggerEl: document.querySelector("#sell-tab"),
+      targetEl: document.querySelector("#sell-example"),
     },
     {
       id: "settings",
-      triggerEl: document.querySelector("#settings-tab-example"),
+      triggerEl: document.querySelector("#settings-tab"),
       targetEl: document.querySelector("#settings-example"),
     },
   ];
 
   // options with default values
   const options = {
-    defaultTabId: "settings",
+    defaultTabId: "bid",
     activeClasses:
       "text-black hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 border-b-2 border-blue-600 dark:border-blue-500",
     inactiveClasses:

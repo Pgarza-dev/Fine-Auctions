@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../main.js"></script>
     <script type="module" src="user-profile.js"></script>
+    <script type="module" src="../page_scripts/user_page.js"></script>
 
     <title>User Profile Page</title>
     <script
@@ -38,7 +39,7 @@
             >
           </div>
           <div class="border-spacing-4 border pb-1 pe-4 ps-4 pt-1 text-white">
-            <span id="profile" class="pe-4">Pablo Garza</span>
+            <span id="profileName" class="pe-4">Pablo Garza</span>
             <span class="italic"
               >Credits: <span id="totalCredits">1000</span>
             </span>
@@ -158,10 +159,10 @@
             <li class="me-2" role="presentation">
               <button
                 class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
-                id="profile-tab-example"
+                id="bid-tab"
                 type="button"
                 role="tab"
-                aria-controls="profile-example"
+                aria-controls="bid-example"
                 aria-selected="false"
               >
                 Bids
@@ -170,7 +171,7 @@
             <li class="me-2" role="presentation">
               <button
                 class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
-                id="dashboard-tab-example"
+                id="sell-tab"
                 type="button"
                 role="tab"
                 aria-controls="dashboard-example"
@@ -182,7 +183,7 @@
             <li class="me-2" role="presentation">
               <button
                 class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
-                id="settings-tab-example"
+                id="settings-tab"
                 type="button"
                 role="tab"
                 aria-controls="settings-example"
@@ -197,9 +198,9 @@
         <div id="tabContentExample" class="m-auto max-w-4xl">
           <div
             class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
-            id="profile-example"
+            id="bid-example"
             role="tabpanel"
-            aria-labelledby="profile-tab-example"
+            aria-labelledby="bid-tab-example"
           >
             <p class="text-sm text-gray-500 dark:text-gray-400">History</p>
             <div
@@ -212,9 +213,9 @@
           </div>
           <div
             class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
-            id="dashboard-example"
+            id="sell-example"
             role="tabpanel"
-            aria-labelledby="dashboard-tab-example"
+            aria-labelledby="sell-tab"
           >
             <section class="flex justify-center gap-6 sm:gap-8 sm:p-8 lg:ps-40">
               <div>
@@ -315,7 +316,7 @@
             class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
             id="settings-example"
             role="tabpanel"
-            aria-labelledby="settings-tab-example"
+            aria-labelledby="settings-tab"
           >
             <form
               action="/"
