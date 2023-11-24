@@ -1,14 +1,10 @@
-function auctionListing() {
-  console.log("auction Listing");
-}
-auctionListing();
-
 import { API_BASE_URL } from "../utils/constants.js";
 import { fetcher } from "./fetcher";
 import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
+import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 import { makeApiCall } from "./makeApiCall";
 
-async function getListings() {
+export async function getListings() {
   const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}`;
 
   try {
@@ -30,7 +26,7 @@ async function getListings() {
 
 getListings();
 
-async function displayListings(listings) {
+export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
 
   // Check if the element with ID 'auctions_listings' exists in the DOM
@@ -73,6 +69,17 @@ async function displayListings(listings) {
       price.textContent = formatPrice(listing._count.bids);
       textContainer.appendChild(price);
 
+      const endsAt = new Date(listing.endsAt).getTime();
+      const currentTime = new Date().getTime();
+      const timeRemaining = endsAt - currentTime;
+
+      const timeRemainingElement = document.createElement("p");
+      timeRemainingElement.classList.add("text-sm");
+      timeRemainingElement.textContent = `Time Left: ${formatTimeRemaining(
+        timeRemaining,
+      )}`;
+      textContainer.appendChild(timeRemainingElement);
+
       const description = document.createElement("p");
       description.textContent = listing.description;
       textContainer.appendChild(description);
@@ -89,14 +96,14 @@ async function displayListings(listings) {
 }
 
 // Helper function to format the price (you can customize this based on your actual price structure)
-function formatPrice(bidsCount) {
+export function formatPrice(bidsCount) {
   // Add your logic to format the price based on the number of bids or any other criteria
-  return `NOK ${bidsCount}`;
+  return `$ ${bidsCount}`;
 }
 
 // Example usage:
 // Assume 'getListings' returns an array of listings
-async function fetchDataAndDisplayListings() {
+export async function fetchDataAndDisplayListings() {
   const listings = await getListings();
   displayListings(listings);
 }
