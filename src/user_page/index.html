@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../main.js"></script>
-    <script type="module" src="user-profile.js"></script>
+    <script type="module" src="user_profile.js"></script>
     <script type="module" src="../page_scripts/user_page.js"></script>
 
     <title>User Profile Page</title>
@@ -39,9 +39,9 @@
             >
           </div>
           <div class="border-spacing-4 border pb-1 pe-4 ps-4 pt-1 text-white">
-            <span id="profileName" class="pe-4">Pablo Garza</span>
+            <span id="profile_username" class="pe-4">Pablo Garza</span>
             <span class="italic"
-              >Credits: <span id="totalCredits">1000</span>
+              >Credits: <span id="total_credits">1000</span>
             </span>
           </div>
           <div>
@@ -143,7 +143,11 @@
       <section>
         <div class="border-b-2 border-t-2 border-gray-200">
           <div class="m-auto max-w-4xl p-8">
-            <img id="userProfileImage" src="/images/profile-icon.png" alt="" />
+            <img
+              id="user_profile_avatar"
+              src="/images/profile-icon.png"
+              alt="user profile avatar"
+            />
             <h1 id="userName" class="font-semibold">User name</h1>
           </div>
         </div>
