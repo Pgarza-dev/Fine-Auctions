@@ -15,7 +15,7 @@ async function getListings() {
     const data = await fetcher({
       url,
       method: "GET",
-      needsAuth: true,
+      needsAuth: false,
       // You can add more headers or parameters as needed
     });
 
@@ -42,24 +42,40 @@ async function displayListings(listings) {
   // Clear existing content in the container
   auctionListings.innerHTML = "";
 
+  // Check if there are listings to display
   if (listings && listings.length > 0) {
     // Iterate through the listings and create HTML elements to display them
     listings.forEach((listing) => {
       const listingContainer = document.createElement("div");
-      listingContainer.innerHTML = `
-        <a href="auction_item/index.html">
-          <img
-            class="auction-card object-cover"
-            src="${listing.media[0]}"
-            alt="${listing.title}"
-          />
-          <div class="pt-4 text-center">
-            <h2 class="text-lg font-semibold text-zinc-700">${listing.title}</h2>
-            <p class="text-xs">${listing._count.bids}</p>
-            <p>${listing.description}</p>
-          </div>
-        </a>
-      `;
+      listingContainer.classList.add("your-listing-container-class"); // Add your own styling class
+
+      const link = document.createElement("a");
+      link.href = "auction_item/index.html"; // Replace with your actual link
+      listingContainer.appendChild(link);
+
+      const img = document.createElement("img");
+      img.classList.add("auction-card", "object-cover");
+      img.src = listing.media[0];
+      img.alt = listing.title;
+      link.appendChild(img);
+
+      const textContainer = document.createElement("div");
+      textContainer.classList.add("pt-4", "text-center");
+      link.appendChild(textContainer);
+
+      const title = document.createElement("h2");
+      title.classList.add("text-lg", "font-semibold", "text-zinc-700");
+      title.textContent = listing.title;
+      textContainer.appendChild(title);
+
+      const price = document.createElement("p");
+      price.classList.add("text-xs");
+      price.textContent = formatPrice(listing._count.bids);
+      textContainer.appendChild(price);
+
+      const description = document.createElement("p");
+      description.textContent = listing.description;
+      textContainer.appendChild(description);
 
       // Append the listing container to the container
       auctionListings.appendChild(listingContainer);
@@ -70,6 +86,12 @@ async function displayListings(listings) {
     noListingsMessage.textContent = "No listings available.";
     auctionListings.appendChild(noListingsMessage);
   }
+}
+
+// Helper function to format the price (you can customize this based on your actual price structure)
+function formatPrice(bidsCount) {
+  // Add your logic to format the price based on the number of bids or any other criteria
+  return `NOK ${bidsCount}`;
 }
 
 // Example usage:
