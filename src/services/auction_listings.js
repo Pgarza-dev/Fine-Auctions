@@ -43,11 +43,12 @@ export async function displayListings(listings) {
     // Iterate through the listings and create HTML elements to display them
     listings.forEach((listing) => {
       const listingContainer = document.createElement("div");
-      listingContainer.classList.add("your-listing-container-class"); // Add your own styling class
+      listingContainer.classList.add("class");
 
       const link = document.createElement("a");
-      link.href = "auction_item/index.html"; // Replace with your actual link
+      link.href = "auction_item/index.html?id=" + listing.id;
       listingContainer.appendChild(link);
+      console.log(listing.id);
 
       const img = document.createElement("img");
       img.classList.add("auction-card", "object-cover");
