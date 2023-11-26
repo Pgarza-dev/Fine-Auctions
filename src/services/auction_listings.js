@@ -15,7 +15,7 @@ export async function getListings() {
       // You can add more headers or parameters as needed
     });
 
-    console.log("Listings:", data);
+    // console.log("Listings:", data);
     return data;
   } catch (error) {
     console.error("Error fetching listings:", error.message);

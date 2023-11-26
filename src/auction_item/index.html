@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../main.js"></script>
     <script type="module" src="./single_auction_item.js"></script>
+    <script type="module" src="../utils/toolTips.js"></script>
     <title>Auction item</title>
     <script
       src="https://kit.fontawesome.com/a6b44b4960.js"
@@ -203,12 +204,22 @@
             </div>
             <div class="border-b-4 border-black pb-4 pt-4">
               <button
+                data-tooltip-target="tooltip-default"
                 class="hover:text-primary-900 flex h-10 w-full max-w-lg items-center justify-center border bg-black px-20 py-8 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
                 type="submit"
                 id="sendBidBtn"
               >
                 SEND BID
               </button>
+
+              <div
+                id="tooltip-default"
+                role="tooltip"
+                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-primary-button px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+              >
+                You must be logged in order to place a bid
+                <div class="tooltip-arrow" data-popper-arrow></div>
+              </div>
             </div>
           </div>
         </div>
