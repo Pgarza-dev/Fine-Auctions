@@ -58,15 +58,6 @@ async function displayUserProfile() {
 
   if (profile) {
     const infoContainer = document.createElement("div");
-    infoContainer.classList.add(
-      "border-spacing-4",
-      "border",
-      "pb-1",
-      "pe-4",
-      "ps-4",
-      "pt-1",
-      "text-white",
-    );
 
     const profileName = document.createElement("span");
     profileName.textContent = `${profile.name} :`;
