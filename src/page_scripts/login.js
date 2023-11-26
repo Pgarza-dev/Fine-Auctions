@@ -11,6 +11,7 @@ removeActiveUser();
 
 async function handleLogin(formDataObject) {
   const userData = {
+    name: formDataObject.name,
     email: formDataObject.email,
     password: formDataObject.password,
   };
@@ -19,7 +20,7 @@ async function handleLogin(formDataObject) {
   if (response.error) {
     handleFormApiError([response.error]);
   } else {
-    window.location.href = "/user_page/";
+    window.location.href = "/user_page/index.html?username=" + response.name;
   }
 }
 
