@@ -18,6 +18,8 @@ export default {
       colors: {
         "primary-button": "#D12600",
         "primary-background": "#2B2B2B",
+        "primary-text": "#D12600",
+        "border-orange-500": "#D12600",
       },
     },
   },

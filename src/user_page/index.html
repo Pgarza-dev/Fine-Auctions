@@ -63,7 +63,7 @@
           </div>
         </div>
       </section>
-      <section>
+      <section class="flex flex-wrap">
         <div
           class="m-auto flex max-w-2xl flex-col items-center pt-20 text-center"
         >
@@ -154,7 +154,7 @@
         </div>
 
         <div
-          class="m-auto mb-4 flex max-w-4xl items-center justify-between border-b border-gray-200 dark:border-gray-700"
+          class="relative m-auto mb-4 flex max-w-4xl items-center justify-between border-b border-gray-200 dark:border-gray-700"
         >
           <ul
             class="-mb-px flex flex-wrap text-center text-sm font-medium text-gray-500 dark:text-gray-400"
@@ -333,23 +333,6 @@
             >
               <div class="relative w-full">
                 <input
-                  type="email"
-                  id="accountSettingsEmail"
-                  name="accountSettingsEmail"
-                  class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
-                  placeholder="Email address"
-                  required
-                />
-                <label
-                  for="email"
-                  class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
-                  >Email address</label
-                >
-                <div id="titleError"></div>
-              </div>
-
-              <div class="relative w-full">
-                <input
                   id="update-avatar-url"
                   width="576"
                   height="576"
@@ -380,13 +363,6 @@
           </div>
         </div>
       </section>
-
-      <img
-        id="profileAvatarImage"
-        class="w-full"
-        src="/images/Rectangle 18.png"
-        alt="profile avatar image"
-      />
     </main>
     <footer
       class="border border-t-2 border-gray-200 bg-primary-background text-white"

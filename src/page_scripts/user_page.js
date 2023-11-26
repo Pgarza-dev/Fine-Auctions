@@ -90,6 +90,7 @@ async function userPageCredits() {
   if (credits) {
     const totalCredits = document.createElement("span");
     totalCredits.textContent = `Credits: ${credits.credits}`;
+    totalCredits.classList.add("text-orange-500", "font-bold", "text-md");
     creditsContainer.appendChild(totalCredits);
   } else {
     const errorMessageElement = document.createElement("p");
@@ -112,13 +113,32 @@ async function getUserAvatar() {
 
   if (profile && profile.avatar) {
     const container = document.createElement("div");
-    container.classList.add("m-auto", "max-w-4xl", "p-8");
+    container.classList.add(
+      "m-auto",
+      "max-w-4xl",
+      "p-8",
+      "flex",
+      "flex-col",
+      "items-center",
+    );
 
     const avatar = document.createElement("img");
     avatar.src = profile.avatar;
     avatar.alt = "user profile avatar";
-    avatar.classList.add("h-40", "w-40", "rounded-full", "object-fit");
+    avatar.classList.add(
+      "h-40",
+      "w-40",
+      "rounded-full",
+      "object-fit",
+      "contain",
+      "border-4",
+    );
     container.appendChild(avatar);
+
+    const avatarName = document.createElement("p");
+    avatarName.textContent = profile.name;
+    avatarName.classList.add("text-2xl", "font-bold");
+    container.appendChild(avatarName);
 
     userAvatarContainer.appendChild(container);
   } else {
