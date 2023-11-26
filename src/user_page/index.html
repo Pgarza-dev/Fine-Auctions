@@ -54,8 +54,10 @@
               >My page</a
             >
             <a
+              id="signOutBtn"
+              data-slot="signOutBtn"
               class="bg-primary-button px-5 py-2.5 text-sm text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
-              href="/login/login.html"
+              href="../login/index.html"
               >Sign out</a
             >
           </div>
@@ -145,7 +147,7 @@
     <main>
       <section>
         <div class="border-b-2 border-t-2 border-gray-200">
-          <div class="m-auto max-w-4xl p-8">
+          <div id="avatar_container" class="m-auto max-w-4xl p-8">
             <img
               id="user_profile_avatar"
               src="/images/profile-icon.png"
@@ -200,7 +202,9 @@
               </button>
             </li>
           </ul>
-          <span>Credits: <span id="totalCredits">1000</span></span>
+          <span id="creditsContainer"
+            >Credits: <span id="totalCredits">0</span></span
+          >
         </div>
         <div id="tabContentExample" class="m-auto max-w-4xl">
           <div
@@ -380,6 +384,7 @@
           </div>
         </div>
       </section>
+
       <img
         id="profileAvatarImage"
         class="w-full"
