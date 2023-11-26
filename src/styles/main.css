@@ -14,10 +14,9 @@
   }
 }
 
-.auction-card,
-.logo {
-  width: 10rem;
-  height: 12rem;
+.auction-card {
+  width: 20rem;
+  height: 24rem;
 }
 
 .background-img {
