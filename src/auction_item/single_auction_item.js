@@ -60,7 +60,7 @@ function displaySingleAuctionItem(auctionItem) {
     // Handle the case when the auction item is not available
     const errorMessageElement = document.createElement("p");
     errorMessageElement.textContent = "Auction item not found.";
-    auctionItemContainer.appendChild(errorMessageElement);
+    auction_item_container.appendChild(errorMessageElement);
   }
 }
 
