@@ -1,6 +1,7 @@
 function userPage() {
   console.log("user_page.js");
 }
+
 userPage();
 
 import { API_BASE_URL, USER_PROFILE_ENDPOINT } from "../utils/constants.js";
@@ -10,14 +11,7 @@ import {
   clearActiveUser,
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
-import { getUsernameQueryParam } from "../utils/getUsernameQueryParam.js";
 import { getSingleProfile } from "../services/profiles.js";
-
-// function getUsernameQueryParam() {
-//   const urlParams = new URLSearchParams(window.location.search);
-//   const username = urlParams.get("username");
-//   return username;
-// }
 
 document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.querySelector("#signOutBtn");
@@ -48,19 +42,19 @@ async function getUserProfile() {
   }
 }
 
-getUserProfile();
-
-async function displayUserProfile(profile) {
+async function displayUserProfile() {
   const profileInformationContainer = document.querySelector(
     "#profile_information_container",
   );
 
   if (!profileInformationContainer) {
-    console.error("Profile not found.");
+    console.error("Profile Information container not found.");
     return;
   }
 
   profileInformationContainer.innerHTML = "";
+
+  const profile = await getUserProfile();
 
   if (profile) {
     const infoContainer = document.createElement("div");
@@ -73,20 +67,22 @@ async function displayUserProfile(profile) {
       "pt-1",
       "text-white",
     );
+
     const profileName = document.createElement("span");
-    profileName.textContent = profile.name + " :";
+    profileName.textContent = `${profile.name} :`;
     profileName.classList.add("pe-4");
-    profileInformationContainer.appendChild(profileName);
+    infoContainer.appendChild(profileName);
+
     const creditText = document.createElement("span");
     creditText.textContent = "Credits: ";
     creditText.classList.add("italic");
-    profileInformationContainer.appendChild(creditText);
-    // const profileAvatar = document.createElement("img");
-    // profileAvatar.src = profile.avatar;
-    // profileInformationContainer.appendChild(profileAvatar);
+    infoContainer.appendChild(creditText);
+
     const totalCredits = document.createElement("span");
     totalCredits.textContent = profile.credits;
-    profileInformationContainer.appendChild(totalCredits);
+    infoContainer.appendChild(totalCredits);
+
+    profileInformationContainer.appendChild(infoContainer);
   } else {
     const errorMessageElement = document.createElement("p");
     errorMessageElement.textContent = "Profile not found.";
@@ -94,37 +90,24 @@ async function displayUserProfile(profile) {
   }
 }
 
-displayUserProfile();
-
 async function userPageCredits() {
+  const creditsContainer = document.querySelector("#creditsContainer");
+  creditsContainer.innerHTML = "";
+
   const credits = await getUserProfile();
-  const profileCredits = document.querySelector("#creditsContainer");
-  profileCredits.innerHTML = "";
+
   if (credits) {
     const totalCredits = document.createElement("span");
-    totalCredits.textContent = "Credits: " + credits.credits;
-    profileCredits.appendChild(totalCredits);
+    totalCredits.textContent = `Credits: ${credits.credits}`;
+    creditsContainer.appendChild(totalCredits);
   } else {
     const errorMessageElement = document.createElement("p");
     errorMessageElement.textContent = "Credits not found.";
-    profileCredits.appendChild(errorMessageElement);
+    creditsContainer.appendChild(errorMessageElement);
   }
 }
 
-userPageCredits();
-
-// async function getUserAvatar(profileAvatar) {
-//   const userAvatarContainer = document.querySelector("#avatar_container");
-//   userAvatarContainer.innerHTML = "";
-//   if (profileAvatar) {
-//     const profileAvatar = document.createElement("img");
-//     profileAvatar.src = profileAvatar.avatar;
-//     userAvatarContainer.appendChild(profileAvatar);
-//   }
-// }
-// getUserAvatar();
-
-async function getUserAvatar(profileAvatar) {
+async function getUserAvatar() {
   const userAvatarContainer = document.querySelector("#avatar_container");
 
   if (!userAvatarContainer) {
@@ -134,33 +117,30 @@ async function getUserAvatar(profileAvatar) {
 
   userAvatarContainer.innerHTML = "";
 
-  if (profileAvatar && profileAvatar.avatar) {
+  const profile = await getUserProfile();
+
+  if (profile && profile.avatar) {
     const container = document.createElement("div");
     container.classList.add("m-auto", "max-w-4xl", "p-8");
 
     const avatar = document.createElement("img");
-    avatar.src = profileAvatar.avatar;
+    avatar.src = profile.avatar;
     avatar.alt = "user profile avatar";
-    avatar.classList.add("user_profile_avatar");
+    avatar.classList.add("h-40", "w-40");
     container.appendChild(avatar);
 
-    // Append the container to the avatar container in the HTML
     userAvatarContainer.appendChild(container);
   } else {
-    // Handle the case where the profile avatar is not provided
     const errorMessageElement = document.createElement("p");
     errorMessageElement.textContent = "Avatar not found.";
     userAvatarContainer.appendChild(errorMessageElement);
   }
 }
 
-getUserAvatar();
-
 async function fetchDataAndDisplayUserProfile() {
-  const profile = await getUserProfile();
-  const credits = await getUserProfile();
-  displayUserProfile(profile);
-  userPageCredits(credits);
+  await displayUserProfile();
+  await userPageCredits();
+  await getUserAvatar();
 }
 
 fetchDataAndDisplayUserProfile();
