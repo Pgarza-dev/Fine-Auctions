@@ -126,7 +126,7 @@ async function getUserAvatar() {
     const avatar = document.createElement("img");
     avatar.src = profile.avatar;
     avatar.alt = "user profile avatar";
-    avatar.classList.add("h-40", "w-40");
+    avatar.classList.add("h-40", "w-40", "rounded-full", "object-fit");
     container.appendChild(avatar);
 
     userAvatarContainer.appendChild(container);
