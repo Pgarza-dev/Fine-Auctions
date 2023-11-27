@@ -12,7 +12,7 @@ import {
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
-import { format } from "prettier";
+import { doc } from "prettier";
 
 document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.querySelector("#signOutBtn");
@@ -190,11 +190,10 @@ async function displayBidHistory() {
       >
         <p>${bid.bidderName}</p>
         <p >$${bid.amount}</p>
-        <p>${formatTimeRemaining(timeRemaining)}</p>
+        <p class="text-orange-500">${formatTimeRemaining(timeRemaining)}</p>
       </div>`;
       })
       .join("");
-
 
     // const bidList = document.createElement("div");
 
@@ -222,7 +221,22 @@ async function displayBidHistory() {
   }
 }
 
-displayBidHistory();
+const userAuctionsPageLink = document.querySelector("#auction_link");
+
+if (userAuctionsPageLink) {
+  userAuctionsPageLink.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const username = getActiveUser();
+
+    if (username) {
+      window.location.href = `/profile/index.html?username=${username}`;
+    } else {
+      console.log("User not logged in");
+      alert("Please log in to view your auctions.");
+    }
+  });
+}
 
 // async function getBidHistory() {
 //   const bidsContainer = document.querySelector("#bid_history_container");
@@ -263,6 +277,7 @@ async function fetchDataAndDisplayUserProfile() {
   await userPageCredits();
   await getUserAvatar();
   await getBidHistory();
+  await displayBidHistory();
 }
 
 fetchDataAndDisplayUserProfile();
