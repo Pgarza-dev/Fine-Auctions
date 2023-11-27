@@ -11,7 +11,8 @@ import {
   clearActiveUser,
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
-import { getSingleProfile } from "../services/profiles.js";
+import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
+import { format } from "prettier";
 
 document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.querySelector("#signOutBtn");
@@ -148,10 +149,120 @@ async function getUserAvatar() {
   }
 }
 
+async function getBidHistory() {
+  const username = getActiveUser();
+  const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}/bids`;
+  try {
+    const data = await fetcher({
+      url,
+      method: "GET",
+      needsAuth: true,
+    });
+    console.log("Bid History:", data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching bid history:", error.message);
+    return null;
+  }
+}
+
+async function displayBidHistory() {
+  const bidHistoryContainer = document.querySelector("#bid_history_container");
+  bidHistoryContainer.classList.add("flex", "flex-col", "space-y-2");
+
+  if (!bidHistoryContainer) {
+    console.error("Bid History container not found.");
+    return;
+  }
+
+  bidHistoryContainer.innerHTML = "";
+
+  const bidHistory = await getBidHistory();
+
+  if (bidHistory) {
+    bidHistoryContainer.innerHTML = bidHistory
+      .map((bid) => {
+        const endsAt = new Date(bid.created).getTime();
+        const currentTime = new Date().getTime();
+        const timeRemaining = endsAt - currentTime;
+        return `<div
+        class="inline-flex w-full flex-row justify-between border-b-2 border-dotted"
+      >
+        <p>${bid.bidderName}</p>
+        <p >$${bid.amount}</p>
+        <p>${formatTimeRemaining(timeRemaining)}</p>
+      </div>`;
+      })
+      .join("");
+
+
+    // const bidList = document.createElement("div");
+
+    // bidHistory.forEach((bid) => {
+    //   const endsAt = new Date(bid.created).getTime();
+    //   const currentTime = new Date().getTime();
+    //   const timeRemaining = endsAt - currentTime;
+
+    //   const bidItem = document.createElement("p");
+    //   bidItem.textContent =
+    //     bid.bidderName +
+    //     " $" +
+    //     bid.amount +
+    //     ".........." +
+    //     formatTimeRemaining(timeRemaining);
+    //   bidItem.classList.add("text-sm", "tracking-wide", "w-full");
+    //   bidList.appendChild(bidItem);
+    // });
+
+    // bidHistoryContainer.appendChild(bidList);
+  } else {
+    const errorMessageElement = document.createElement("p");
+    errorMessageElement.textContent = "Bid History not found.";
+    bidHistoryContainer.appendChild(errorMessageElement);
+  }
+}
+
+displayBidHistory();
+
+// async function getBidHistory() {
+//   const bidsContainer = document.querySelector("#bid_history_container");
+
+//   if (!bidsContainer) {
+//     console.error("Bid History container not found.");
+//     return;
+//   }
+
+//   bidsContainer.innerHTML = "";
+
+//   const profile = await getUserProfile();
+
+//   if (profile && profile._count && profile._count.listings) {
+//     const bidHistory = profile._count.listings;
+
+//     const bidsList = document.createElement("ul");
+//     bidsList.classList.add("list-disc", "list-inside");
+
+//     bidHistory.forEach((bid) => {
+//       const bidItem = document.createElement("li");
+//       bidItem.textContent = `${bid.name} - ${bid.amount}`;
+//       bidsList.appendChild(bidItem);
+//     });
+
+//     bidsContainer.appendChild(bidsList);
+//   } else {
+//     const errorMessageElement = document.createElement("p");
+//     errorMessageElement.textContent = "Bid History not found.";
+//     bidsContainer.appendChild(errorMessageElement);
+//   }
+// }
+
+// getBidHistory();
+
 async function fetchDataAndDisplayUserProfile() {
   await displayUserProfile();
   await userPageCredits();
   await getUserAvatar();
+  await getBidHistory();
 }
 
 fetchDataAndDisplayUserProfile();
