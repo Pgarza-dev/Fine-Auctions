@@ -1,4 +1,6 @@
-function userAuctionPage() {
-  console.log("userAuctionPage");
+function profileAuctionPage() {
+  console.log("profileAuctionPage");
 }
-userAuctionPage();
+profileAuctionPage();
+
+// MIGHT NOT NEED THIS FILE ALONG WITH THE PROFILE.INDEX.HTML FILE

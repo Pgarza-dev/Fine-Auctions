@@ -21,5 +21,5 @@ export function formatTimeRemaining(timeRemaining) {
     return `${days}d `;
   }
 
-  return `${days}d ${hours}h ${minutes}m `;
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }

@@ -12,7 +12,6 @@ import {
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
-import { doc } from "prettier";
 
 document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.querySelector("#signOutBtn");
@@ -151,7 +150,7 @@ async function getUserAvatar() {
 
 async function getBidHistory() {
   const username = getActiveUser();
-  const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}/bids`;
+  const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}/bids?_listings=true`;
   try {
     const data = await fetcher({
       url,
@@ -182,13 +181,23 @@ async function displayBidHistory() {
   if (bidHistory) {
     bidHistoryContainer.innerHTML = bidHistory
       .map((bid) => {
-        const endsAt = new Date(bid.created).getTime();
+        const endsAt = new Date(bid.listing.endsAt).getTime();
         const currentTime = new Date().getTime();
         const timeRemaining = endsAt - currentTime;
-        return `<div
-        class="inline-flex w-full flex-row justify-between border-b-2 border-dotted"
+
+        const timeRemainingElement = document.createElement("p");
+        timeRemainingElement.classList.add("text-orange-500");
+
+        // Use formatTimeRemaining with live updates
+        formatTimeRemaining(timeRemaining, (formattedTime) => {
+          timeRemainingElement.textContent = formattedTime;
+        });
+        return `<div class="w-full"
       >
-        <p>${bid.bidderName}</p>
+        <img src="${
+          bid.listing.media[0]
+        }" alt="listing image" class="w-full"  />
+        <p >${bid.listing.title}</p>
         <p >$${bid.amount}</p>
         <p class="text-orange-500">${formatTimeRemaining(timeRemaining)}</p>
       </div>`;
@@ -230,7 +239,7 @@ if (userAuctionsPageLink) {
     const username = getActiveUser();
 
     if (username) {
-      window.location.href = `/profile/index.html?username=${username}`;
+      window.location.href = `/index.html?username=${username}`;
     } else {
       console.log("User not logged in");
       alert("Please log in to view your auctions.");
