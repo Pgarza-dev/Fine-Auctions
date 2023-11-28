@@ -210,22 +210,6 @@ async function displayBidHistory() {
             </div>
         </div>
         `;
-        //   return `<div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-
-        // >
-        //   <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"" src="${
-        //     bid.listing.media[0]
-        //   }" alt="listing image"/>
-        //   <div class="flex flex-col justify-between p-4 leading-normal ">
-        //   <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" >${
-        //     bid.listing.title
-        //   }</h5>
-        //   <p >$${bid.amount}</p>
-        //   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${formatTimeRemaining(
-        //     timeRemaining,
-        //   )}</p>
-        //   </div>
-        // </div>`;
       })
       .join("");
 
@@ -255,22 +239,35 @@ async function displayBidHistory() {
   }
 }
 
-const userAuctionsPageLink = document.querySelector("#auction_link");
+// function auctionLink() {
+//   const username = getActiveUser();
+//   const userAuctionsPageLink = document.querySelector("#auction_link");
 
-if (userAuctionsPageLink) {
-  userAuctionsPageLink.addEventListener("click", (event) => {
-    event.preventDefault();
+//   if (userAuctionsPageLink && username) {
+//     userAuctionsPageLink.addEventListener("click", (event) => {
+//       event.preventDefault();
+//       window.location.href = `/index.html?username=${username}`;
+//     });
+//   }
+// }
 
-    const username = getActiveUser();
+// auctionLink();
+// const userAuctionsPageLink = document.querySelector("#auction_link");
 
-    if (username) {
-      window.location.href = `/index.html?username=${username}`;
-    } else {
-      console.log("User not logged in");
-      alert("Please log in to view your auctions.");
-    }
-  });
-}
+// if (userAuctionsPageLink) {
+//   userAuctionsPageLink.addEventListener("click", (event) => {
+//     event.preventDefault();
+
+//     const username = getActiveUser();
+
+//     if (username) {
+//       window.location.href = `/index.html?username=${username}`;
+//     } else {
+//       console.log("User not logged in");
+//       alert("Please log in to view your auctions.");
+//     }
+//   });
+// }
 
 // async function getBidHistory() {
 //   const bidsContainer = document.querySelector("#bid_history_container");
