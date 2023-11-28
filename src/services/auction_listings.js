@@ -150,9 +150,11 @@ export async function displayListings(listings) {
         "border",
         "border-gray-200",
         "rounded-lg",
-        "shadow",
+        "drop-shadow-lg",
+        "hover:drop-shadow-md",
         "dark:bg-gray-800",
         "dark:border-gray-700",
+        "dark:drop-shadow-none",
       );
 
       const link = document.createElement("a");
@@ -199,10 +201,10 @@ export async function displayListings(listings) {
       price.classList.add(
         "mb-2",
         "text-lg",
-        "font-bold",
+        "font-normal",
         "tracking-tight",
-        "text-gray-900",
-        "dark:text-white",
+        "text-gray-700",
+        "dark:gray-400",
       );
       price.textContent = formatPrice(listing._count.bids);
       textContainer.appendChild(price);
@@ -218,9 +220,7 @@ export async function displayListings(listings) {
         "text-orange-500",
         "dark:text-gray-400",
       );
-      timeRemainingElement.textContent = formatTimeRemaining(
-        timeRemaining,
-      );
+      timeRemainingElement.textContent = formatTimeRemaining(timeRemaining);
       textContainer.appendChild(timeRemainingElement);
 
       const readMoreLink = document.createElement("a");
@@ -234,15 +234,14 @@ export async function displayListings(listings) {
         "font-medium",
         "text-center",
         "text-white",
-        "bg-orange-500",
+        "bg-primary-button",
         "rounded-lg",
-        "hover:bg-blue-800",
-        "focus:ring-4",
+        "hover:bg-red-800",
+        "focus:ring-2",
         "focus:outline-none",
-        "focus:ring-blue-300",
-        "dark:bg-blue-600",
-        "dark:hover:bg-ora",
-        "dark:focus:ring-blue-800",
+        "dark:bg-primary-button",
+        "dark:hover:red-700",
+        "dark:focus:ring-red-900",
       );
       textContainer.appendChild(readMoreLink);
 
