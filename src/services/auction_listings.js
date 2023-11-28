@@ -136,13 +136,23 @@ export async function displayListings(listings) {
     return;
   }
 
-  // Clear existing content in the container
   auctionListings.innerHTML = "";
 
-  // Check if there are listings to display
-  if (listings && listings.length > 0) {
-    // Iterate through the listings and create HTML elements to display them
-    listings.forEach((listing) => {
+  // Filter out listings with no images
+  const listingsWithImages = listings.filter(
+    (listing) => listing.media && listing.media.length > 0,
+  );
+
+  const activeListings = listingsWithImages.filter((listing) => {
+    const endsAt = new Date(listing.endsAt).getTime();
+    const currentTime = new Date().getTime();
+    return endsAt > currentTime;
+  });
+
+  // Check if there are listings with images to display
+  if (activeListings.length > 0) {
+    // Iterate through the listings with images and create HTML elements to display them
+    activeListings.forEach((listing) => {
       const listingContainer = document.createElement("div");
       listingContainer.classList.add(
         "max-w-sm",
@@ -274,9 +284,9 @@ export async function displayListings(listings) {
       auctionListings.appendChild(listingContainer);
     });
   } else {
-    // Handle the case when there are no listings to display
+    // Handle the case when there are no active listings with images to display
     const noListingsMessage = document.createElement("div");
-    noListingsMessage.textContent = "No listings available.";
+    noListingsMessage.textContent = "No active listings with images available.";
     auctionListings.appendChild(noListingsMessage);
   }
 }
