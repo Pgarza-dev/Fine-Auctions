@@ -2,7 +2,9 @@ export function formatTimeRemaining(timeRemaining, elementToUpdate) {
   // Function to update the displayed time
   function updateDisplay() {
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const minutes = Math.floor(
+      (timeRemaining % (1000 * 60 * 60)) / (1000 * 60),
+    );
     const hours = Math.floor(
       (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
     );

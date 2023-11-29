@@ -183,125 +183,54 @@ async function displayBidHistory() {
       .map((bid) => {
         const endsAt = new Date(bid.listing.endsAt).getTime();
         const currentTime = new Date().getTime();
-        const timeRemaining = endsAt - currentTime;
+        let timeRemaining = endsAt - currentTime;
 
-        const timeRemainingElement = document.createElement("p");
-        timeRemainingElement.classList.add("text-orange-500");
+        // Create a span element to dynamically update the time
+        const timeRemainingDisplay = document.createElement("span");
 
-        // Use formatTimeRemaining with live updates
-        formatTimeRemaining(timeRemaining, (formattedTime) => {
-          timeRemainingElement.textContent = formattedTime;
-        });
+        // Set up the interval for dynamic updating
+        const intervalId = setInterval(() => {
+          timeRemaining -= 1000;
+          formatTimeRemaining(timeRemaining, (formattedTime) => {
+            timeRemainingDisplay.textContent = formattedTime;
+          });
+
+          // Stop the interval when the auction ends
+          if (timeRemaining < 0) {
+            clearInterval(intervalId);
+          }
+        }, 1000);
+
+        const timeLeftContainer = document.createElement("p");
+        timeLeftContainer.classList.add(
+          "mb-3",
+          "font-normal",
+          "text-primary-text",
+          "dark:text-gray-400",
+        );
+        // timeLeftContainer = timeRemainingDisplay;
+        timeLeftContainer.textContent = "Time Remaining: ";
+        timeLeftContainer.appendChild(timeRemainingDisplay);
+
         return `
         <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-s-lg" src="${
-              bid.listing.media[0]
-            }" alt="">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-s-lg" src="${bid.listing.media[0]}" alt="">
             <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
-                  bid.listing.title
-                }</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">$${
-                  bid.amount
-                }</p>
-                <p class="mb-3 font-normal text-primary-text dark:text-gray-400">${formatTimeRemaining(
-                  timeRemaining,
-                )}</p>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${bid.listing.title}</h5>
+                <p class="mb-2 text-sm font-normal text-gray-700 dark:text-gray-400">${bid.listing.description}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">$${bid.amount}</p>
             </div>
         </div>
         `;
       })
+
       .join("");
-
-    // const bidList = document.createElement("div");
-
-    // bidHistory.forEach((bid) => {
-    //   const endsAt = new Date(bid.created).getTime();
-    //   const currentTime = new Date().getTime();
-    //   const timeRemaining = endsAt - currentTime;
-
-    //   const bidItem = document.createElement("p");
-    //   bidItem.textContent =
-    //     bid.bidderName +
-    //     " $" +
-    //     bid.amount +
-    //     ".........." +
-    //     formatTimeRemaining(timeRemaining);
-    //   bidItem.classList.add("text-sm", "tracking-wide", "w-full");
-    //   bidList.appendChild(bidItem);
-    // });
-
-    // bidHistoryContainer.appendChild(bidList);
   } else {
     const errorMessageElement = document.createElement("p");
     errorMessageElement.textContent = "Bid History not found.";
     bidHistoryContainer.appendChild(errorMessageElement);
   }
 }
-
-// function auctionLink() {
-//   const username = getActiveUser();
-//   const userAuctionsPageLink = document.querySelector("#auction_link");
-
-//   if (userAuctionsPageLink && username) {
-//     userAuctionsPageLink.addEventListener("click", (event) => {
-//       event.preventDefault();
-//       window.location.href = `/index.html?username=${username}`;
-//     });
-//   }
-// }
-
-// auctionLink();
-// const userAuctionsPageLink = document.querySelector("#auction_link");
-
-// if (userAuctionsPageLink) {
-//   userAuctionsPageLink.addEventListener("click", (event) => {
-//     event.preventDefault();
-
-//     const username = getActiveUser();
-
-//     if (username) {
-//       window.location.href = `/index.html?username=${username}`;
-//     } else {
-//       console.log("User not logged in");
-//       alert("Please log in to view your auctions.");
-//     }
-//   });
-// }
-
-// async function getBidHistory() {
-//   const bidsContainer = document.querySelector("#bid_history_container");
-
-//   if (!bidsContainer) {
-//     console.error("Bid History container not found.");
-//     return;
-//   }
-
-//   bidsContainer.innerHTML = "";
-
-//   const profile = await getUserProfile();
-
-//   if (profile && profile._count && profile._count.listings) {
-//     const bidHistory = profile._count.listings;
-
-//     const bidsList = document.createElement("ul");
-//     bidsList.classList.add("list-disc", "list-inside");
-
-//     bidHistory.forEach((bid) => {
-//       const bidItem = document.createElement("li");
-//       bidItem.textContent = `${bid.name} - ${bid.amount}`;
-//       bidsList.appendChild(bidItem);
-//     });
-
-//     bidsContainer.appendChild(bidsList);
-//   } else {
-//     const errorMessageElement = document.createElement("p");
-//     errorMessageElement.textContent = "Bid History not found.";
-//     bidsContainer.appendChild(errorMessageElement);
-//   }
-// }
-
-// getBidHistory();
 
 async function fetchDataAndDisplayUserProfile() {
   await displayUserProfile();
