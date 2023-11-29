@@ -6,11 +6,6 @@ import { getActiveUser } from "../utils/handleLocalStorageUser.js";
 import { makeApiCall } from "./makeApiCall";
 import { doc } from "prettier";
 
-const checkIfUserIsLoggedIn = document.querySelector("#loginBtn");
-
-if (checkIfUserIsLoggedIn) {
-}
-
 export async function getListings() {
   const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}`;
 
@@ -32,6 +27,21 @@ export async function getListings() {
 }
 
 getListings();
+
+function profileButton() {
+  const username = getActiveUser();
+  const profileBtn = document.querySelector("#profileBtn");
+  profileBtn.href = `/user_page/index.html?username=${username}`;
+  if (username) {
+    profileBtn.addEventListener("click", () => {
+      window.location.href = `/user_page/index.html?username=${username}`;
+    });
+  } else {
+    console.log("profileBtn not found");
+  }
+}
+
+profileButton();
 
 // export async function displayListings(listings) {
 //   const auctionListings = document.querySelector("#auctions_listings");
