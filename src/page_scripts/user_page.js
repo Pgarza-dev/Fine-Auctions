@@ -14,7 +14,7 @@ import {
 import { formatHistoryTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const logoutButton = document.querySelector("#signOutBtn");
+  const logoutButton = document.querySelector("#loginBtn");
 
   if (logoutButton) {
     logoutButton.addEventListener("click", () => {

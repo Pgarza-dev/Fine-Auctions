@@ -109,7 +109,7 @@ function displaySingleAuctionItem(auctionItem) {
 checkIfUserIsLoggedIn();
 
 function changeLogInBtn() {
-  const loginBtn = document.getElementById("login_link");
+  const loginBtn = document.getElementById("loginBtn");
   const accessToken = localStorage.getItem("accessToken");
   if (accessToken) {
     loginBtn.textContent = "Log Out";
