@@ -11,7 +11,7 @@ import {
   clearActiveUser,
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
-import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
+import { formatHistoryTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.querySelector("#signOutBtn");
@@ -191,7 +191,7 @@ async function displayBidHistory() {
         // Set up the interval for dynamic updating
         const intervalId = setInterval(() => {
           timeRemaining -= 1000;
-          formatTimeRemaining(timeRemaining, (formattedTime) => {
+          formatHistoryTimeRemaining(timeRemaining, (formattedTime) => {
             timeRemainingDisplay.textContent = formattedTime;
           });
 
@@ -219,7 +219,9 @@ async function displayBidHistory() {
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${bid.listing.title}</h5>
                 <p class="mb-2 text-sm font-normal text-gray-700 dark:text-gray-400">${bid.listing.description}</p>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">$${bid.amount}</p>
-            </div>
+                <p class="mb-3 font-normal text-primary-text dark:text-gray-400">
+                ${formatHistoryTimeRemaining(timeRemaining)}
+              </p>            </div>
         </div>
         `;
       })

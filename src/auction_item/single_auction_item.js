@@ -9,6 +9,8 @@ import { API_BASE_URL } from "../utils/constants.js";
 import { fetcher } from "../services/fetcher.js";
 import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
+// import { getActiveUser } from "../utils/handleLocalStorageUser.js";
+// import { getAccessToken } from "../utils/handleLocalStorageUser.js";
 
 // Function to get the auction item ID from URL parameters
 function getItemQueryParams() {
@@ -91,6 +93,37 @@ function displaySingleAuctionItem(auctionItem) {
     auction_item_container.appendChild(errorMessageElement);
   }
 }
+
+ export function checkIfUserIsLoggedIn() {
+  const accessToken = localStorage.getItem("accessToken");
+  const toolTip = document.getElementById("tooltip-default");
+  if (accessToken) {
+    toolTip.classList.add("hidden");
+    console.log("User is logged in");
+    
+  } else {
+    toolTip.classList.remove("hidden");
+  }
+}
+
+checkIfUserIsLoggedIn();
+
+function changeLogInBtn() {
+  const loginBtn = document.getElementById("login_link");
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    loginBtn.textContent = "Log Out";
+    loginBtn.addEventListener("click", () => {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("activeUser");
+      loginBtn.textContent = "Log In";
+    });
+  } else {
+    loginBtn.textContent = "Log In";
+  }
+}
+
+changeLogInBtn();
 
 // Helper function to format the price (you can customize this based on your actual price structure)
 function formatPrice(bidsCount) {
