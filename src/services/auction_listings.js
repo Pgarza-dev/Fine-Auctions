@@ -28,7 +28,16 @@ export async function getListings() {
 
 getListings();
 
-function profileButton() {
+/**
+ * Sets up the profile button by assigning the correct href attribute and click event.
+ * If the active user is available, it redirects to the user's profile page.
+ * If the active user is not available, it redirects to the login page.
+ *
+ * @function
+ * @name profileButton
+ * @returns {void}
+ */
+export function profileButton() {
   const username = getActiveUser();
   const profileBtn = document.querySelector("#profileBtn");
   profileBtn.href = `/user_page/index.html?username=${username}`;
@@ -38,6 +47,9 @@ function profileButton() {
     });
   } else {
     console.log("profileBtn not found");
+    profileBtn.addEventListener("click", () => {
+      window.location.href = "/login/index.html";
+    });
   }
 }
 

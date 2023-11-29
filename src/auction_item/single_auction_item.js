@@ -9,7 +9,8 @@ import { API_BASE_URL } from "../utils/constants.js";
 import { fetcher } from "../services/fetcher.js";
 import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
-// import { getActiveUser } from "../utils/handleLocalStorageUser.js";
+import { getActiveUser } from "../utils/handleLocalStorageUser.js";
+import { profileButton } from "../services/auction_listings.js";
 // import { getAccessToken } from "../utils/handleLocalStorageUser.js";
 
 // Function to get the auction item ID from URL parameters
@@ -41,6 +42,9 @@ async function getSingleAuctionItem(auctionItemId) {
     return null;
   }
 }
+
+
+profileButton();
 
 function displaySingleAuctionItem(auctionItem) {
   // Update HTML elements with fetched auction item details
@@ -94,13 +98,12 @@ function displaySingleAuctionItem(auctionItem) {
   }
 }
 
- export function checkIfUserIsLoggedIn() {
+export function checkIfUserIsLoggedIn() {
   const accessToken = localStorage.getItem("accessToken");
   const toolTip = document.getElementById("tooltip-default");
   if (accessToken) {
     toolTip.classList.add("hidden");
     console.log("User is logged in");
-    
   } else {
     toolTip.classList.remove("hidden");
   }

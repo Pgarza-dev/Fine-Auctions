@@ -15,7 +15,6 @@ import { formatHistoryTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 
 function handleLogout() {
   const logoutButton = document.querySelector("#loginBtn");
-
   if (logoutButton) {
     logoutButton.addEventListener("click", () => {
       clearActiveUser();
