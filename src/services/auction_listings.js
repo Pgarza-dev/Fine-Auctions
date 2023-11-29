@@ -219,10 +219,6 @@ export async function displayListings(listings) {
       price.textContent = formatPrice(listing._count.bids);
       textContainer.appendChild(price);
 
-      const endsAt = new Date(listing.endsAt).getTime();
-      const currentTime = new Date().getTime();
-      const timeRemaining = endsAt - currentTime;
-
       const timeRemainingElement = document.createElement("p");
       timeRemainingElement.classList.add(
         "mb-3",
@@ -230,8 +226,29 @@ export async function displayListings(listings) {
         "text-orange-500",
         "dark:text-gray-400",
       );
-      timeRemainingElement.textContent = formatTimeRemaining(timeRemaining);
       textContainer.appendChild(timeRemainingElement);
+
+      // Store the reference to the timeRemainingElement in a variable
+      const timeRemainingDisplay = document.createElement("span");
+      timeRemainingElement.appendChild(timeRemainingDisplay);
+
+      const endsAt = new Date(listing.endsAt).getTime();
+      const currentTime = new Date().getTime();
+      let timeRemaining = endsAt - currentTime;
+
+      // Update the time dynamically
+      formatTimeRemaining(timeRemaining, timeRemainingDisplay);
+
+      // Set up the interval for dynamic updating
+      const intervalId = setInterval(() => {
+        timeRemaining -= 1000;
+        formatTimeRemaining(timeRemaining, timeRemainingDisplay);
+
+        // Stop the interval when the auction ends
+        if (timeRemaining < 0) {
+          clearInterval(intervalId);
+        }
+      }, 1000);
 
       const readMoreLink = document.createElement("a");
       readMoreLink.href = "auction_item/index.html?id=" + listing.id;
