@@ -247,6 +247,7 @@ export async function displayListings(listings) {
         // Stop the interval when the auction ends
         if (timeRemaining < 0) {
           clearInterval(intervalId);
+          timeRemainingElement.textContent = "Auction ended";
         }
       }, 1000);
 

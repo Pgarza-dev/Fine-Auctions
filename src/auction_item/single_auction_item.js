@@ -40,7 +40,6 @@ async function getSingleAuctionItem(auctionItemId) {
   }
 }
 
-// Function to display a single auction item
 function displaySingleAuctionItem(auctionItem) {
   // Update HTML elements with fetched auction item details
   const auctionItemImage = document.getElementById("auctionItemImage");
@@ -49,12 +48,41 @@ function displaySingleAuctionItem(auctionItem) {
     "auctionItemDescription",
   );
   const currentBidAmount = document.getElementById("currentBidAmount");
+  const timeLeft = document.getElementById("timeLeft");
 
   if (auctionItem) {
     auctionItemImage.src = auctionItem.media[0];
     auctionItemTitle.textContent = auctionItem.title;
     auctionItemDescription.textContent = auctionItem.description;
     currentBidAmount.textContent = formatPrice(auctionItem._count.bids);
+
+    // Calculate time remaining
+    const endsAt = new Date(auctionItem.endsAt).getTime();
+    const currentTime = new Date().getTime();
+    let timeRemaining = endsAt - currentTime;
+
+    // Create a span element to dynamically update the time
+    const timeRemainingDisplay = document.createElement("span");
+    timeLeft.innerHTML = ""; // Clear existing content
+    timeRemainingDisplay.classList.add("text-orange-500");
+
+    timeLeft.appendChild(timeRemainingDisplay);
+
+    // Update the time dynamically
+    formatTimeRemaining(timeRemaining, timeRemainingDisplay);
+
+    // Set up the interval for dynamic updating
+    const intervalId = setInterval(() => {
+      timeRemaining -= 1000;
+      formatTimeRemaining(timeRemaining, timeRemainingDisplay);
+
+      // Stop the interval when the auction ends
+      if (timeRemaining < 0) {
+        clearInterval(intervalId);
+        timeLeft.textContent = "Auction ended";
+      }
+    }, 1000);
+
     // ... Update other elements based on your data structure
   } else {
     // Handle the case when the auction item is not available
