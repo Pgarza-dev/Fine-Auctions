@@ -47,9 +47,7 @@ export function profileButton() {
     });
   } else {
     console.log("profileBtn not found");
-    profileBtn.addEventListener("click", () => {
-      window.location.href = "/login/index.html";
-    });
+    profileBtn.href = "/login/index.html";
   }
 }
 
