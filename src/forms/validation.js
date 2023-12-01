@@ -45,7 +45,7 @@ function checkPasswordsMatch(password, repeatPassword) {
  * @returns {ValidationResult} The result of the validation.
  */
 export function checkSignupForm(form) {
-  const { username, email, password, repeatPassword } = form;
+  const { username, registerEmail, registerPassword, repeatPassword } = form;
 
   const validationResult = {
     isValid: true,
@@ -57,17 +57,17 @@ export function checkSignupForm(form) {
     validationResult.errors.username = "Invalid username.";
   }
 
-  if (!checkWhitelistedEmail(email, EMAIL_DOMAIN_WHITELIST)) {
+  if (!checkWhitelistedEmail(registerEmail, EMAIL_DOMAIN_WHITELIST)) {
     validationResult.isValid = false;
-    validationResult.errors.email = `Email can only end in ${EMAIL_DOMAIN_WHITELIST[0]} or ${EMAIL_DOMAIN_WHITELIST[1]}.`;
+    validationResult.errors.registerEmail = `Email can only end in ${EMAIL_DOMAIN_WHITELIST[0]} or ${EMAIL_DOMAIN_WHITELIST[1]}.`;
   }
 
-  if (!checkValidPassword(password, PASSWORD_MIN_LENGTH)) {
+  if (!checkValidPassword(registerPassword, PASSWORD_MIN_LENGTH)) {
     validationResult.isValid = false;
-    validationResult.errors.password = "Invalid password.";
+    validationResult.errors.registerPassword = "Invalid password.";
   }
 
-  if (!checkPasswordsMatch(password, repeatPassword)) {
+  if (!checkPasswordsMatch(registerPassword, repeatPassword)) {
     validationResult.isValid = false;
     validationResult.errors.repeatPassword = "Passwords do not match.";
   }
@@ -75,25 +75,29 @@ export function checkSignupForm(form) {
   return validationResult;
 }
 
-// SIGN UP FORM VALIDATION
+/**
+ * Validate the login form data.
+ *
+ * @param {Object} form - The form data to validate.
+ * @returns {Object} The result of the validation.
+ */
 export function checkLoginForm(form) {
   const { email, password } = form;
-
-  const passwordMinLength = 8;
-  const emailDomainWhiteList = ["@noroff.no", "@stud.noroff.no"];
 
   const loginValidationResults = {
     isValid: true,
     errors: {},
   };
 
-  if (!checkWhitelistedEmail(email, emailDomainWhiteList)) {
+  if (!checkWhitelistedEmail(email, EMAIL_DOMAIN_WHITELIST)) {
     loginValidationResults.isValid = false;
     loginValidationResults.errors.email = "Invalid email.";
   }
-  if (!checkValidPassword(password, passwordMinLength)) {
+
+  if (!checkValidPassword(password, PASSWORD_MIN_LENGTH)) {
     loginValidationResults.isValid = false;
     loginValidationResults.errors.password = "Invalid password.";
   }
+
   return loginValidationResults;
 }

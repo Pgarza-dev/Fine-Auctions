@@ -13,7 +13,7 @@ export async function registerUser(userData) {
     body: userData,
     needsAuth: false,
     errorMessage:
-      "Could not register user! Are you sure that's a valid Noroff Email?.",
+      "Failed to register user. Please ensure you provide valid registration data and try again.",
   });
 }
 

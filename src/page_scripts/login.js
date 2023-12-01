@@ -3,9 +3,10 @@ console.log("login.js");
 import { removeActiveUser } from "../utils/handleLocalStorageUser.js";
 import { handleFormApiError } from "../forms/handleErrors.js";
 import { createFormDataObject } from "../forms/utils.js";
-import { checkLoginForm } from "../forms/validation.js";
+import { checkLoginForm, checkSignupForm } from "../forms/validation.js";
 import { loginUser } from "../services/auth.js";
 import { clearErrors, displayErrors } from "../forms/handleErrors.js";
+import { API_BASE_URL, REGISTER_ENDPOINT } from "../utils/constants.js";
 
 removeActiveUser();
 
@@ -42,3 +43,23 @@ loginForm.addEventListener("submit", (event) => {
     displayErrors(loginValidationResult.errors);
   }
 });
+
+function checkIfRegistered() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const registered = urlParams.get("registered");
+
+  if (registered === "true") {
+    alert("Registration successful! Please log in to access your profile.");
+
+    const registrationSuccessMessage = document.getElementById(
+      "registration-success-message",
+    );
+
+    if (registrationSuccessMessage) {
+      registrationSuccessMessage.textContent =
+        "Registration successful! Please log in to access your profile.";
+    }
+  }
+}
+
+checkIfRegistered();

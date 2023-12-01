@@ -16,6 +16,9 @@ export function clearErrors() {
 
 export function handleFormApiError(errors) {
   const apiErrorElement = document.querySelector("#api-error");
+
+  apiErrorElement.innerHTML = "";
+
   errors.forEach((error) => {
     const errorElement = document.createElement("p");
     errorElement.textContent = error.message;

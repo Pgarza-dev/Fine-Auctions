@@ -14,6 +14,9 @@
     <script type="module" src="../main.js"></script>
     <script type="module" src="../utils/tabs.js"></script>
     <script type="module" src="../page_scripts/login.js"></script>
+    <script type="module" src="../page_scripts/signup.js"></script>
+    <!-- <script type="module" src="../forms/register.js"></script> -->
+
     <script
       src="https://kit.fontawesome.com/a6b44b4960.js"
       crossorigin="anonymous"
@@ -84,40 +87,6 @@
               >About us</a
             >
           </div>
-
-          <!-- <form>
-            <div class="flex">
-              <div class="relative">
-                <input
-                  type="search"
-                  id="search-dropdown"
-                  class="focus z-20 block w-full border border-s-2 border-gray-300 border-s-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 focus:outline-none"
-                  placeholder="Search "
-                  required
-                />
-                <button
-                  type="submit"
-                  class="absolute end-0 top-0 h-full border border-gray-300 bg-gray-300 p-2.5 text-sm font-medium text-white hover:bg-primary-button focus:outline-none"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </form> -->
         </div>
       </section>
     </header>
@@ -171,18 +140,37 @@
                 </div>
                 <div class="pt-10">
                   <p>
-                    Register today and start bidding on your next extraordinary
-                    find!
+                    Create an account today and start bidding on your next
+                    extraordinary find!
                   </p>
                 </div>
               </div>
 
               <form
-                action="/"
+                action="../user_page/index.html"
                 method="POST"
                 id="register-form"
                 class="flex w-full flex-col items-start gap-12"
               >
+                <div class="relative w-full">
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="username"
+                    required
+                  />
+                  <label
+                    for="username"
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Username</label
+                  >
+                  <div id="name-error"></div>
+                </div>
+
+                <div id="api-error" class="mt-2 text-red-500"></div>
+
                 <div class="relative w-full">
                   <input
                     type="email"
@@ -193,7 +181,7 @@
                     required
                   />
                   <label
-                    for="email"
+                    for="registerEmail"
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
                     >Email</label
                   >
@@ -203,13 +191,14 @@
                 <div class="relative w-full">
                   <input
                     type="password"
-                    id="RegisterPassword"
-                    name="RegisterPassword"
+                    id="registerPassword"
+                    name="registerPassword"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
                     placeholder="Enter your password"
+                    minlength="8"
                   />
                   <label
-                    for="password"
+                    for="registerPassword"
                     required
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
                     >Enter your password</label
@@ -235,13 +224,14 @@
 
                 <div class="w-full border-b-4 border-black pb-10">
                   <button
+                    id="register-btn"
                     class="hover:text-primary-900 flex h-10 max-w-lg items-center justify-center bg-primary-button px-24 py-8 text-center text-white transition-all duration-500 ease-in-out hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
                     type="submit"
-                    id="register-btn"
                   >
                     Register
                   </button>
                 </div>
+                <div id="registration-success-message"></div>
               </form>
             </section>
           </div>
@@ -258,9 +248,8 @@
                     <h2>Log in</h2>
                   </div>
                   <div class="pb-10 pt-10">
-                    <p>
-                      Register today and start bidding on your next
-                      extraordinary find!
+                    <p id="registration-success-message">
+                      Log in and start bidding on your next extraordinary find!
                     </p>
                   </div>
                 </div>
@@ -295,6 +284,7 @@
                       name="password"
                       class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
                       placeholder="Enter your password"
+                      minlength="8"
                     />
                     <label
                       for="password"
@@ -304,6 +294,8 @@
                     >
                     <div id="password-error"></div>
                   </div>
+
+                  <div id="api-error" class="mt-2 text-red-500"></div>
 
                   <div class="w-full border-b-4 border-black pb-10">
                     <button
