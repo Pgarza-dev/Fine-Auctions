@@ -30,6 +30,8 @@ console.log(loginForm);
 
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  const spinner = document.getElementById("spinner");
+  spinner.classList.remove("hidden");
 
   clearErrors();
 
