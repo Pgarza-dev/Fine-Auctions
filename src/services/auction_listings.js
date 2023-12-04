@@ -14,19 +14,31 @@ export async function getListings() {
       url,
       method: "GET",
       needsAuth: false,
-      // You can add more headers or parameters as needed
     });
 
     console.log("Listings:", data);
-    return data;
+    displayListings(data);
   } catch (error) {
     console.error("Error fetching listings:", error.message);
-    // You can handle the error here, for example, by returning a default value or showing a user-friendly message.
     return null;
   }
 }
 
-getListings();
+async function setupAllListingsButton() {
+  const allListingsButton = document.querySelector("#all_listings_btn");
+
+  allListingsButton.addEventListener("click", async () => {
+    await getListings();
+  });
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupAllListingsButton();
+
+  const allListingsButton = document.querySelector("#all_listings_btn");
+  allListingsButton.click();
+});
 
 /**
  * Sets up the profile button by assigning the correct href attribute and click event.
@@ -53,104 +65,65 @@ export function profileButton() {
 
 profileButton();
 
-// export async function displayListings(listings) {
-//   const auctionListings = document.querySelector("#auctions_listings");
+async function ascendingButton() {
+  const sortByAscendingButton = document.querySelector("#newest_btn");
+  sortByAscendingButton.addEventListener("click", async () => {
+    const sortField = "created";
+    const sortOrder = "asc";
+    const limit = 100;
+    const offset = 0;
 
-//   // Check if the element with ID 'auctions_listings' exists in the DOM
-//   if (!auctionListings) {
-//     console.error("Element with ID 'auctions_listings' not found in the DOM.");
-//     return;
-//   }
+    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`;
 
-//   // Clear existing content in the container
-//   auctionListings.innerHTML = "";
+    try {
+      const data = await fetcher({
+        url,
+        method: "GET",
+        needsAuth: false,
+      });
 
-//   // Check if there are listings to display
-//   if (listings && listings.length > 0) {
-//     // Iterate through the listings and create HTML elements to display them
-//     listings.forEach((listing) => {
-//       const listingContainer = document.createElement("div");
-//       listingContainer.classList.add(
-//         "max-w-sm",
-//         "bg-white",
-//         "border",
-//         "border-gray-200",
-//         "rounded-lg",
-//         "shadow,",
-//         "dark:bg-gray-800",
-//         "dark:border-gray-700",
-//       );
+      console.log("Sorted Listings (Ascending):", data);
 
-//       const link = document.createElement("a");
-//       link.href = "auction_item/index.html?id=" + listing.id;
-//       listingContainer.appendChild(link);
-//       console.log(listing.id);
+      displayListings(data);
+    } catch (error) {
+      console.error("Error fetching sorted listings:", error.message);
+    }
+  });
+}
 
-//       const img = document.createElement("img");
-//       img.classList.add("rounded-t-lg");
-//       img.src = listing.media[0];
-//       img.alt = listing.title;
-//       link.appendChild(img);
+ascendingButton();
 
-//       const textContainer = document.createElement("div");
-//       textContainer.classList.add("pt-5");
-//       link.appendChild(textContainer);
+async function oldestListingsButton() {
+  const sortByDescendingButton = document.querySelector("#oldest_btn");
+  sortByDescendingButton.addEventListener("click", async () => {
+    const sortField = "created";
+    const sortOrder = "desc";
+    const limit = 100;
+    const offset = 0;
 
-//       const title = document.createElement("h5");
-//       title.classList.add(
-//         "mb-3",
-//         "font-normal",
-//         "text-gray-700",
-//         "dark:text-gray-400",
-//       );
-//       title.textContent = listing.title;
-//       textContainer.appendChild(title);
+    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`;
 
-//       const price = document.createElement("p");
-//       price.classList.add(
-//         "mb-3",
-//         "font-normal",
-//         "text-gray-700",
-//         "dark:text-gray-400",
-//       );
-//       price.textContent = formatPrice(listing._count.bids);
-//       textContainer.appendChild(price);
+    try {
+      const data = await fetcher({
+        url,
+        method: "GET",
+        needsAuth: false,
+      });
 
-//       const endsAt = new Date(listing.endsAt).getTime();
-//       const currentTime = new Date().getTime();
-//       const timeRemaining = endsAt - currentTime;
+      console.log("Sorted Listings (Descending):", data);
 
-//       const timeRemainingElement = document.createElement("p");
-//       timeRemainingElement.classList.add(
-//         "mb-3",
-//         "font-normal",
-//         "text-gray-700",
-//         "dark:text-gray-400",
-//       );
-//       timeRemainingElement.textContent = `Time Left: ${formatTimeRemaining(
-//         timeRemaining,
-//       )}`;
-//       textContainer.appendChild(timeRemainingElement);
+      displayListings(data);
+    } catch (error) {
+      console.error("Error fetching sorted listings:", error.message);
+    }
+  });
+}
 
-//       const description = document.createElement("p");
-//       description.textContent = listing.description;
-//       textContainer.appendChild(description);
-
-//       // Append the listing container to the container
-//       auctionListings.appendChild(listingContainer);
-//     });
-//   } else {
-//     // Handle the case when there are no listings to display
-//     const noListingsMessage = document.createElement("div");
-//     noListingsMessage.textContent = "No listings available.";
-//     auctionListings.appendChild(noListingsMessage);
-//   }
-// }
+oldestListingsButton();
 
 export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
 
-  // Check if the element with ID 'auctions_listings' exists in the DOM
   if (!auctionListings) {
     console.error("Element with ID 'auctions_listings' not found in the DOM.");
     return;
@@ -158,20 +131,27 @@ export async function displayListings(listings) {
 
   auctionListings.innerHTML = "";
 
-  // Filter out listings with no images
-  const listingsWithImages = listings.filter(
-    (listing) => listing.media && listing.media.length > 0,
-  );
+  const currentTime = new Date().getTime();
 
-  const activeListings = listingsWithImages.filter((listing) => {
-    const endsAt = new Date(listing.endsAt).getTime();
-    const currentTime = new Date().getTime();
-    return endsAt > currentTime;
-  });
+  const activeListings = listings
+    .map((listing) => {
+      if (listing.media && listing.media.length > 0) {
+        return listing;
+      } else {
+        return {
+          ...listing,
+          media: [
+            "/images/abstract-eye-portrait-young-women-elegance-generated-by-ai.jpg",
+          ],
+        };
+      }
+    })
+    .filter((listing) => {
+      const endsAt = new Date(listing.endsAt).getTime();
+      return endsAt > currentTime;
+    });
 
-  // Check if there are listings with images to display
   if (activeListings.length > 0) {
-    // Iterate through the listings with images and create HTML elements to display them
     activeListings.forEach((listing) => {
       const listingContainer = document.createElement("div");
       listingContainer.classList.add(
@@ -248,7 +228,6 @@ export async function displayListings(listings) {
       );
       textContainer.appendChild(timeRemainingElement);
 
-      // Store the reference to the timeRemainingElement in a variable
       const timeRemainingDisplay = document.createElement("span");
       timeRemainingElement.appendChild(timeRemainingDisplay);
 
@@ -256,15 +235,12 @@ export async function displayListings(listings) {
       const currentTime = new Date().getTime();
       let timeRemaining = endsAt - currentTime;
 
-      // Update the time dynamically
       formatTimeRemaining(timeRemaining, timeRemainingDisplay);
 
-      // Set up the interval for dynamic updating
       const intervalId = setInterval(() => {
         timeRemaining -= 1000;
         formatTimeRemaining(timeRemaining, timeRemainingDisplay);
 
-        // Stop the interval when the auction ends
         if (timeRemaining < 0) {
           clearInterval(intervalId);
           timeRemainingElement.textContent = "Auction ended";
@@ -318,29 +294,22 @@ export async function displayListings(listings) {
       arrowPath.setAttribute("d", "M1 5h12m0 0L9 1m4 4L9 9");
       arrowSvg.appendChild(arrowPath);
 
-      // Append the listing container to the container
       auctionListings.appendChild(listingContainer);
     });
   } else {
-    // Handle the case when there are no active listings with images to display
     const noListingsMessage = document.createElement("div");
     noListingsMessage.textContent = "No active listings with images available.";
     auctionListings.appendChild(noListingsMessage);
   }
 }
 
-// Helper function to format the price (you can customize this based on your actual price structure)
 export function formatPrice(bidsCount) {
-  // Add your logic to format the price based on the number of bids or any other criteria
-  return `$ ${bidsCount}`;
+  return `Bids ${bidsCount}`;
 }
 
-// Example usage:
-// Assume 'getListings' returns an array of listings
 export async function fetchDataAndDisplayListings() {
   const listings = await getListings();
   displayListings(listings);
 }
 
-// Call the function to fetch and display listings
 fetchDataAndDisplayListings();

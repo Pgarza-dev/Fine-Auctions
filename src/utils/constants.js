@@ -10,3 +10,4 @@ export const LOGIN_ENDPOINT = "auction/auth/login";
 export const USER_PROFILE_ENDPOINT = "auction/profiles";
 export const AUCTION_LISTING_ENDPOINT = "auction/listings";
 export const AUCTION_BID_ENDPOINT = "auction/bids";
+export const LISTING_ASCENDING_ENDPOINT = "?sort=created&sortOrder=asc";
