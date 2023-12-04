@@ -7,6 +7,7 @@ import { checkLoginForm, checkSignupForm } from "../forms/validation.js";
 import { loginUser } from "../services/auth.js";
 import { clearErrors, displayErrors } from "../forms/handleErrors.js";
 import { API_BASE_URL, REGISTER_ENDPOINT } from "../utils/constants.js";
+import { makeApiCall } from "../services/makeApiCall.js";
 
 removeActiveUser();
 

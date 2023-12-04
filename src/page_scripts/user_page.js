@@ -12,6 +12,13 @@ import {
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
 import { formatHistoryTimeRemaining } from "../utils/formatBidTimeRemaining.js";
+import { createFormDataObject } from "../forms/utils.js";
+import { makeApiCall } from "../services/makeApiCall.js";
+import { clearErrors } from "../forms/handleErrors.js";
+
+const avatarUrlInput = document.querySelector("#avatar_url_input");
+const avatarForm = document.querySelector("#edit_avatar_form");
+const username = getActiveUser();
 
 function handleLogout() {
   const logoutButton = document.querySelector("#loginBtn");
@@ -40,6 +47,113 @@ async function getUserProfile() {
   } catch (error) {
     console.error("Error fetching user profile:", error.message);
     return null;
+  }
+}
+
+async function editUserAvatar(avatarUrl) {
+  const username = getActiveUser();
+  const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}/media`;
+
+  try {
+    const data = await fetcher({
+      url,
+      method: "PUT",
+      needsAuth: true,
+      body: {
+        avatar: avatarUrl,
+      },
+      errorMessage: "Could not update profile picture! Please try again.",
+    });
+
+    console.log("User Profile:", data);
+
+    // Assuming you want to trigger a re-render or perform additional actions after the avatar is updated
+    // Call the function to handle the edited avatar
+    await handleEditedAvatar();
+
+    return data;
+  } catch (error) {
+    console.error("Error updating user avatar:", error.message);
+    return null;
+  }
+}
+
+// Assuming you want to handle the avatar edit form submission
+avatarForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  // Assuming you have an input field with id "avatar_url_input"
+  const avatarUrl = avatarUrlInput.value.trim();
+
+  if (avatarUrl) {
+    const response = await editUserAvatar(avatarUrl);
+
+    // You can add additional logic based on the response if needed
+
+    if (response.error) {
+      // Handle error, if any
+      console.error("Error updating avatar:", response.error);
+    } else {
+      // Assuming you want to redirect or perform some action on successful avatar update
+      window.location.href = "/user_page/index.html?username=" + response.name;
+    }
+  } else {
+    console.error("Avatar URL is required.");
+    // Handle the case where the avatar URL is not provided
+  }
+});
+
+async function handleEditedAvatar() {
+  const userAvatarContainer = document.querySelector("#avatar_container");
+
+  if (!userAvatarContainer) {
+    console.error("Avatar container not found.");
+    return;
+  }
+
+  userAvatarContainer.innerHTML = "";
+
+  // Assuming you have a function to fetch the updated user profile after avatar update
+  const updatedProfile = await getUserProfile();
+
+  if (updatedProfile && updatedProfile.avatar) {
+    const container = document.createElement("div");
+    container.classList.add(
+      "m-auto",
+      "max-w-4xl",
+      "p-8",
+      "flex",
+      "flex-col",
+      "items-center",
+      "dark:bg-gray-800",
+    );
+
+    const avatar = document.createElement("img");
+    avatar.src = updatedProfile.avatar;
+    avatar.alt = "user profile avatar";
+    avatar.classList.add(
+      "h-56",
+      "w-56",
+      "rounded-full",
+      "object-fit",
+      "contain",
+      "p-1",
+      "drop-shadow-xl",
+      "shadow-xl",
+      "max-w-4xl",
+    );
+    container.appendChild(avatar);
+
+    const avatarName = document.createElement("p");
+    avatarName.textContent = updatedProfile.name;
+    avatarName.classList.add("text-2xl", "font-medium");
+    container.appendChild(avatarName);
+
+    userAvatarContainer.appendChild(container);
+  } else {
+    const errorMessageElement = document.createElement("p");
+    errorMessageElement.textContent = "Updated Avatar not found.";
+    userAvatarContainer.appendChild(errorMessageElement);
   }
 }
 
@@ -257,14 +371,3 @@ async function fetchDataAndDisplayUserProfile() {
 }
 
 fetchDataAndDisplayUserProfile();
-
-function editProfileButton() {
-  const editProfileBtn = document.querySelector("#editProfileBtn");
-  const settingsBtn = document.querySelector("#settings-tab");
-
-  editProfileBtn.addEventListener("click", () => {
-    settingsBtn;
-  });
-}
-
-editProfileButton();
