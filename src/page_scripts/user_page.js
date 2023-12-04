@@ -121,24 +121,29 @@ async function getUserAvatar() {
       "flex",
       "flex-col",
       "items-center",
+
+      "dark:bg-gray-800",
     );
 
     const avatar = document.createElement("img");
     avatar.src = profile.avatar;
     avatar.alt = "user profile avatar";
     avatar.classList.add(
-      "h-40",
-      "w-40",
+      "h-56",
+      "w-56",
       "rounded-full",
       "object-fit",
       "contain",
-      "border-4",
+      "p-1",
+      "drop-shadow-xl",
+      "shadow-xl",
+      "max-w-4xl",
     );
     container.appendChild(avatar);
 
     const avatarName = document.createElement("p");
     avatarName.textContent = profile.name;
-    avatarName.classList.add("text-2xl", "font-bold");
+    avatarName.classList.add("text-2xl", "font-medium");
     container.appendChild(avatarName);
 
     userAvatarContainer.appendChild(container);
@@ -252,3 +257,14 @@ async function fetchDataAndDisplayUserProfile() {
 }
 
 fetchDataAndDisplayUserProfile();
+
+function editProfileButton() {
+  const editProfileBtn = document.querySelector("#editProfileBtn");
+  const settingsBtn = document.querySelector("#settings-tab");
+
+  editProfileBtn.addEventListener("click", () => {
+    settingsBtn;
+  });
+}
+
+editProfileButton();

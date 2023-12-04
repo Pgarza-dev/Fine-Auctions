@@ -108,16 +108,31 @@
     </header>
 
     <main>
-      <section>
-        <div class="border-b-2 border-t-2 border-gray-200">
-          <div id="avatar_container" class="m-auto max-w-4xl p-8">
+      <section class="p-4">
+        <!-- <div class="border-b-2 border-t-2 border-gray-200">
+          <div class="m-auto max-w-4xl p-8">
             <img
               class="h-40 w-40 rounded-full"
-              id="user_profile_avatar"
               src="/images/profile-icon.png"
               alt="user profile avatar"
             />
             <h1 id="userName" class="font-semibold">User name</h1>
+          </div>
+        </div> -->
+
+        <div
+          class="flex w-full justify-center rounded-lg border border-gray-200 bg-white px-4 pt-4 shadow dark:border-gray-700 dark:bg-gray-800"
+        >
+          <div id="avatar_container" class="flex flex-col items-center pb-10">
+            <img
+              id="user_profile_avatar"
+              class="mb-3 h- w-24 rounded-full shadow-lg"
+              src="/docs/images/people/profile-picture-3.jpg"
+              alt="Bonnie image"
+            />
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Bonnie Green
+            </h5>
           </div>
         </div>
 
