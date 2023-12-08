@@ -12,12 +12,14 @@ import {
   clearAccessToken,
 } from "../utils/handleLocalStorageUser.js";
 import { formatHistoryTimeRemaining } from "../utils/formatBidTimeRemaining.js";
+import { createNewAuctionListing } from "../page_scripts/create_auction_listing.js";
 import { createFormDataObject } from "../forms/utils.js";
 import { makeApiCall } from "../services/makeApiCall.js";
 import { clearErrors } from "../forms/handleErrors.js";
 
 const avatarUrlInput = document.querySelector("#avatar_url_input");
 const avatarForm = document.querySelector("#edit_avatar_form");
+const sellForm = document.querySelector("#sell_form");
 const username = getActiveUser();
 
 function handleLogout() {

@@ -6,6 +6,10 @@
     <script type="module" src="../main.js"></script>
     <script type="module" src="../utils/userProfilePageTabs.js"></script>
     <script type="module" src="../page_scripts/user_page.js"></script>
+    <script
+      type="module"
+      src="../page_scripts/create_auction_listing.js"
+    ></script>
     <!-- <script type="module" src="../page_scripts/signup.js"></script> -->
 
     <title>User Profile Page</title>
@@ -130,7 +134,7 @@
               alt="user profile avatar"
             />
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-              Bonnie Green
+              Username
             </h5>
           </div>
         </div>
@@ -224,14 +228,14 @@
                 <div class="relative w-full">
                   <input
                     type="text"
-                    id="titleOfItemSold"
-                    name="titleOfItemSold"
+                    id="auctionItemTitle"
+                    name="auctionItemTitle"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
                     placeholder="Title of auction item"
                     required
                   />
                   <label
-                    for="Title of auction item"
+                    for="auctionItemTitle"
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
                     >Title of auction item</label
                   >
@@ -241,13 +245,13 @@
                 <div class="relative w-full">
                   <input
                     type="text"
-                    id="descriptionOfItemSold"
-                    name="descriptionOfItemSold"
+                    id="auctionItemDescription"
+                    name="auctionItemDescription"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
                     placeholder="Description of auction item"
                   />
                   <label
-                    for="descriptionOfItemSold"
+                    for="auctionItemDescription"
                     required
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
                     >Description of auction item</label
@@ -256,16 +260,31 @@
                 </div>
                 <div class="relative w-full">
                   <input
-                    id="avatar-url"
+                    type="text"
+                    id="auctionItemTags"
+                    name="auctionItemTags"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="Use comma to separate tags"
+                  />
+                  <label
+                    for="auctionItemTags"
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Tags</label
+                  >
+                  <div id="description-error"></div>
+                </div>
+                <div class="relative w-full">
+                  <input
+                    id="auctionItemImageUrl"
                     width="576"
                     height="576"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
                     placeholder="https://example.com/image.png"
                     type="url"
-                    name="avatar"
+                    name="auctionItemImageUrl"
                   />
                   <label
-                    for="descriptionOfItemSold"
+                    for="auctionItemImageUrl"
                     required
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
                     >Image url</label
@@ -275,16 +294,17 @@
 
                 <div class="relative w-full">
                   <input
-                    type="date"
-                    id="dateOfItemSold"
-                    name="date"
+                    type="datetime-local"
+                    id="end_date"
+                    name="end_date"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
-                    placeholder="Date of auction item"
+                    placeholder="End date"
                   />
                   <label
-                    for="dateOfItemSold"
+                    for="end_date"
+                    required
                     class="peer absolute -top-5 left-0 text-sm text-white transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-white peer-focus:opacity-100"
-                    >Date of auction item</label
+                    >End date</label
                   >
                   <div id="date-error"></div>
                 </div>
@@ -293,7 +313,7 @@
                   <button
                     class="hover:text-primary-900 flex h-10 max-w-lg items-center justify-center border bg-black px-24 py-8 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
                     type="submit"
-                    id="register-btn"
+                    id="sell_auction_item_btn"
                   >
                     SELL ITEM
                   </button>
@@ -324,7 +344,7 @@
                   name="avatar"
                 />
                 <label
-                  for="descriptionOfItemSold"
+                  for="avatar_url_input"
                   required
                   class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
                   >Image url</label
