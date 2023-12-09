@@ -3,11 +3,9 @@ import { fetcher } from "./fetcher";
 import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 import { getActiveUser } from "../utils/handleLocalStorageUser.js";
-import { makeApiCall } from "./makeApiCall";
-import { doc } from "prettier";
 
 export async function getListings() {
-  const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}`;
+  const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?_seller=true&_bids=true&_active=true`;
 
   try {
     const data = await fetcher({
@@ -31,7 +29,6 @@ async function setupAllListingsButton() {
     await getListings();
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   setupAllListingsButton();
@@ -73,7 +70,7 @@ async function ascendingButton() {
     const limit = 100;
     const offset = 0;
 
-    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`;
+    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}?_seller=true&_bids=true&_active=true`;
 
     try {
       const data = await fetcher({
@@ -101,7 +98,7 @@ async function oldestListingsButton() {
     const limit = 100;
     const offset = 0;
 
-    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`;
+    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}?_seller=true&_bids=true&_active=true`;
 
     try {
       const data = await fetcher({
@@ -121,6 +118,15 @@ async function oldestListingsButton() {
 
 oldestListingsButton();
 
+export function getHighestBidAmount(bids) {
+  if (bids.length > 0) {
+    const highestBid = bids.slice().sort((a, b) => b.amount - a.amount)[0];
+    return highestBid.amount;
+  } else {
+    return 0; // or any default value for when there are no bids
+  }
+}
+
 export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
 
@@ -133,30 +139,43 @@ export async function displayListings(listings) {
 
   const currentTime = new Date().getTime();
 
-  const activeListings = listings
-    .map((listing) => {
-      if (listing.media && listing.media.length > 0) {
-        return listing;
-      } else {
-        return {
-          ...listing,
-          media: [
-            "/images/abstract-eye-portrait-young-women-elegance-generated-by-ai.jpg",
-          ],
-        };
-      }
-    })
-    .filter((listing) => {
-      const endsAt = new Date(listing.endsAt).getTime();
-      return endsAt > currentTime;
-    });
+  // Check if the provided data is sorted
+  const isSorted = listings.some((listing, index) => {
+    if (index > 0) {
+      const previousEndsAt = new Date(listings[index - 1].endsAt).getTime();
+      const currentEndsAt = new Date(listing.endsAt).getTime();
+      return previousEndsAt > currentEndsAt;
+    }
+    return false;
+  });
 
-  if (activeListings.length > 0) {
-    activeListings.forEach((listing) => {
+  const processedListings = isSorted
+    ? listings // Use the sorted data as is
+    : listings
+        .map((listing) => {
+          if (listing.media && listing.media.length > 0) {
+            return listing;
+          } else {
+            return {
+              ...listing,
+              media: [
+                "/images/abstract-eye-portrait-young-women-elegance-generated-by-ai.jpg",
+              ],
+            };
+          }
+        })
+        .filter((listing) => {
+          const endsAt = new Date(listing.endsAt).getTime();
+          return endsAt > currentTime;
+        });
+
+  if (processedListings.length > 0) {
+    processedListings.forEach((listing) => {
       const listingContainer = document.createElement("div");
       listingContainer.classList.add(
         "max-w-sm",
         "bg-white",
+        "bg-opacity-50",
         "border",
         "border-gray-200",
         "rounded-lg",
@@ -216,7 +235,7 @@ export async function displayListings(listings) {
         "text-gray-700",
         "dark:gray-400",
       );
-      price.textContent = formatPrice(listing._count.bids);
+      price.textContent = formatPrice(getHighestBidAmount(listing.bids));
       textContainer.appendChild(price);
 
       const timeRemainingElement = document.createElement("p");
@@ -226,6 +245,7 @@ export async function displayListings(listings) {
         "text-orange-500",
         "dark:text-gray-400",
       );
+      timeRemainingElement.textContent = "Ends in: ";
       textContainer.appendChild(timeRemainingElement);
 
       const timeRemainingDisplay = document.createElement("span");
@@ -304,7 +324,7 @@ export async function displayListings(listings) {
 }
 
 export function formatPrice(bidsCount) {
-  return `Bids ${bidsCount}`;
+  return `Price ${bidsCount}`;
 }
 
 export async function fetchDataAndDisplayListings() {

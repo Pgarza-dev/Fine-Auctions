@@ -4,50 +4,120 @@ function log() {
 }
 log();
 
-// Importing necessary constants and functions
 import { API_BASE_URL } from "../utils/constants.js";
 import { fetcher } from "../services/fetcher.js";
 import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
-import { getActiveUser } from "../utils/handleLocalStorageUser.js";
 import { profileButton } from "../services/auction_listings.js";
-// import { getAccessToken } from "../utils/handleLocalStorageUser.js";
 
-// Function to get the auction item ID from URL parameters
+export function getHighestBidAmount(bids) {
+  if (bids.length > 0) {
+    const highestBid = bids.slice().sort((a, b) => b.amount - a.amount)[0];
+    return highestBid.amount;
+  } else {
+    return 0;
+  }
+}
+
 function getItemQueryParams() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
 }
 
-// Get the auction item ID
 const auctionItemId = getItemQueryParams();
 
-// Function to fetch a single auction item
 async function getSingleAuctionItem(auctionItemId) {
-  const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}/${auctionItemId}`;
+  const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}/${auctionItemId}?_seller=true&_bids=true&_active=true`;
 
   try {
     const data = await fetcher({
       url,
       method: "GET",
       needsAuth: false,
-      // You can add more headers or parameters as needed
     });
 
     console.log("Auction Item:", data);
     return data;
   } catch (error) {
     console.error("Error fetching auction item:", error.message);
-    // You can handle the error here, for example, by returning a default value or showing a user-friendly message.
     return null;
   }
 }
 
+async function postBidEntry(auctionItemId, bidAmount) {
+  const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}/${auctionItemId}/bids`;
+
+  try {
+    const response = await fetcher({
+      url,
+      method: "POST",
+      needsAuth: true,
+      body: {
+        amount: Number(bidAmount),
+      },
+      error: (error) => {
+        console.error("Error fetching auction item:", error.message);
+        return null;
+      },
+    });
+
+    console.log("Bid Entry:", response);
+    return response;
+  } catch (error) {
+    console.error("Error bid was not made on item:", error.message);
+    return null;
+  }
+}
+
+const bidForm = document.getElementById("bid_form");
+
+bidForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const bidNumberInput = document.getElementById("bidNumber");
+  const currentBidAmount = document.getElementById("currentBidAmount");
+  const bidButton = document.getElementById("sendBidBtn");
+
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      throw new Error("You must be logged in to bid");
+    }
+
+    const bidAmount = parseInt(bidNumberInput.value, 10);
+    if (isNaN(bidAmount) || bidAmount <= 0) {
+      throw new Error(
+        "Invalid bid amount. Please enter a valid number greater than 0.",
+      );
+    }
+
+    const auctionItem = await getSingleAuctionItem(auctionItemId);
+    const highestBidAmount = getHighestBidAmount(auctionItem.bids);
+
+    if (bidAmount <= highestBidAmount) {
+      throw new Error(
+        "Bid amount must be greater than the current highest bid amount.",
+      );
+    }
+
+    const bid = await postBidEntry(auctionItemId, bidAmount);
+
+    currentBidAmount.textContent = formatPrice(bidAmount);
+    bidButton.textContent = "Bid Placed!";
+    bidButton.classList.add("bg-primary-button");
+
+    // Provide user feedback
+    console.log("Bid placed successfully:", bid);
+
+    bidNumberInput.value = "";
+  } catch (error) {
+    console.error("Error placing bid:", error.message);
+    alert(`Error placing bid: ${error.message}`);
+  }
+});
 
 profileButton();
 
 function displaySingleAuctionItem(auctionItem) {
-  // Update HTML elements with fetched auction item details
   const auctionItemImage = document.getElementById("auctionItemImage");
   const auctionItemTitle = document.getElementById("auctionItemTitle");
   const auctionItemDescription = document.getElementById(
@@ -60,38 +130,33 @@ function displaySingleAuctionItem(auctionItem) {
     auctionItemImage.src = auctionItem.media[0];
     auctionItemTitle.textContent = auctionItem.title;
     auctionItemDescription.textContent = auctionItem.description;
-    currentBidAmount.textContent = formatPrice(auctionItem._count.bids);
+    currentBidAmount.textContent = formatPrice(
+      getHighestBidAmount(auctionItem.bids),
+    );
 
     // Calculate time remaining
     const endsAt = new Date(auctionItem.endsAt).getTime();
     const currentTime = new Date().getTime();
     let timeRemaining = endsAt - currentTime;
 
-    // Create a span element to dynamically update the time
     const timeRemainingDisplay = document.createElement("span");
     timeLeft.innerHTML = ""; // Clear existing content
     timeRemainingDisplay.classList.add("text-orange-500");
 
     timeLeft.appendChild(timeRemainingDisplay);
 
-    // Update the time dynamically
     formatTimeRemaining(timeRemaining, timeRemainingDisplay);
 
-    // Set up the interval for dynamic updating
     const intervalId = setInterval(() => {
       timeRemaining -= 1000;
       formatTimeRemaining(timeRemaining, timeRemainingDisplay);
 
-      // Stop the interval when the auction ends
       if (timeRemaining < 0) {
         clearInterval(intervalId);
         timeLeft.textContent = "Auction ended";
       }
     }, 1000);
-
-    // ... Update other elements based on your data structure
   } else {
-    // Handle the case when the auction item is not available
     const errorMessageElement = document.createElement("p");
     errorMessageElement.textContent = "Auction item not found.";
     auction_item_container.appendChild(errorMessageElement);
@@ -128,23 +193,18 @@ function changeLogInBtn() {
 
 changeLogInBtn();
 
-// Helper function to format the price (you can customize this based on your actual price structure)
 function formatPrice(bidsCount) {
   // Add your logic to format the price based on the number of bids or any other criteria
   return `$ ${bidsCount}`;
 }
 
-// Fetch and display the single auction item
 async function fetchDataAndDisplaySingleAuctionItem() {
   const auctionItem = await getSingleAuctionItem(auctionItemId);
   displaySingleAuctionItem(auctionItem);
 }
 
-// Call the function to fetch and display the single auction item
 fetchDataAndDisplaySingleAuctionItem();
 
-// Wrap your code in a window load event listener
 window.addEventListener("load", () => {
-  // Fetch and display the single auction item
   fetchDataAndDisplaySingleAuctionItem();
 });

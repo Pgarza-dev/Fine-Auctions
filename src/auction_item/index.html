@@ -138,10 +138,7 @@
               >
             </div>
             <div>
-              <span
-                >Time left:
-                <span id="timeLeft">1 day 2 hours 3 minutes</span></span
-              >
+              <span>Time left: <span id="timeLeft">Displayed time</span></span>
             </div>
             <div class="border-t-4 border-black pb-10" id="registrationInfo">
               <p class="pt-6">
@@ -155,40 +152,41 @@
                 >.
               </p>
             </div>
-            <div class="relative">
-              <input
-                type="number"
-                id="bidNumber"
-                name="bidNumber"
-                class="bg-primary-900 peer h-10 w-full max-w-lg border px-6 py-8 text-black focus:outline-none"
-                placeholder="Your bid nok"
-              />
-              <label
-                for="bidNumber"
-                required
-                class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
-                >Enter your bid</label
-              >
-            </div>
-            <div class="border-b-4 border-black pb-4 pt-4">
-              <button
-                data-tooltip-target="tooltip-default"
-                class="hover:text-primary-900 flex h-10 w-full max-w-lg items-center justify-center border bg-black px-20 py-8 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
-                type="submit"
-                id="sendBidBtn"
-              >
-                SEND BID
-              </button>
-
-              <div
-                id="tooltip-default"
-                role="tooltip"
-                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-primary-button px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-              >
-                You must be logged in order to place a bid
-                <div class="tooltip-arrow" data-popper-arrow></div>
+            <form action="/" method="POST" id="bid_form">
+              <div class="relative">
+                <input
+                  type="number"
+                  id="bidNumber"
+                  name="bidNumber"
+                  class="bg-primary-900 peer h-10 w-full max-w-lg border px-6 py-8 text-black focus:outline-none"
+                  placeholder="Your bid nok"
+                />
+                <label
+                  for="bidNumber"
+                  required
+                  class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                  >Enter your bid</label
+                >
               </div>
-            </div>
+              <div class="border-b-4 border-black pb-4 pt-4">
+                <button
+                  data-tooltip-target="tooltip-default"
+                  class="hover:text-primary-900 flex h-10 w-full max-w-lg items-center justify-center border bg-black px-20 py-8 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
+                  type="submit"
+                  id="sendBidBtn"
+                >
+                  SEND BID
+                </button>
+                <div
+                  id="tooltip-default"
+                  role="tooltip"
+                  class="tooltip invisible absolute z-10 inline-block rounded-lg bg-primary-button px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                >
+                  You must be logged in order to place a bid
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </section>

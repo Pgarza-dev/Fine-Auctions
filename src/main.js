@@ -1,5 +1,3 @@
-console.log("main.js");
-
 import { handleAuth } from "./auth/handleAuth";
 import "./styles/main.css";
 
@@ -23,3 +21,30 @@ export function checkIfUserIsLoggedIn() {
 }
 
 checkIfUserIsLoggedIn();
+
+document.addEventListener("DOMContentLoaded", function () {
+  animateText("animatedText");
+});
+
+function animateText(elementId) {
+  const textElement = document.getElementById(elementId);
+  const words = textElement.innerText.split(" ");
+  textElement.innerHTML = ""; // Clear the original text
+
+  words.forEach((word, index) => {
+    const wordElement = document.createElement("span");
+    wordElement.textContent = word;
+    wordElement.className = "word";
+    wordElement.style.animationDelay = `${index * 0.2}s`;
+    textElement.appendChild(wordElement);
+
+    // Add space after each word except the last one
+    if (index < words.length - 1) {
+      const spaceElement = document.createElement("span");
+      spaceElement.className = "space";
+      textElement.appendChild(spaceElement);
+    }
+  });
+}
+
+
