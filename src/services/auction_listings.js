@@ -187,6 +187,7 @@ export async function displayListings(listings) {
         "w-full",
         "h-full",
         "hover:scale-105",
+        
       );
 
       const link = document.createElement("a");
