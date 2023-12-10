@@ -129,6 +129,7 @@ export function getHighestBidAmount(bids) {
 
 export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
+  // auctionListings.classList.add("animate-pulse");
 
   if (!auctionListings) {
     console.error("Element with ID 'auctions_listings' not found in the DOM.");
@@ -210,7 +211,7 @@ export async function displayListings(listings) {
       const title = document.createElement("h5");
       title.classList.add(
         "mb-2",
-        "text-2xl",
+        "text-4xl",
         "font-bold",
         "tracking-tight",
         "text-gray-900",
@@ -228,6 +229,7 @@ export async function displayListings(listings) {
         "font-normal",
         "text-gray-700",
         "dark:text-gray-400",
+        "text-lg",
       );
       description.textContent = listing.description;
       textContainer.appendChild(description);
@@ -240,6 +242,7 @@ export async function displayListings(listings) {
         "tracking-tight",
         "text-gray-700",
         "dark:gray-400",
+        "text-lg"
       );
       price.textContent = formatPrice(getHighestBidAmount(listing.bids));
       textContainer.appendChild(price);

@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log in</title>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../utils/tabs.js"></script>
+    <script type="module" src="../page_scripts/login.js"></script>
+    <script type="module" src="../page_scripts/signup.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -11,10 +15,6 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="../main.js"></script>
-    <script type="module" src="../utils/tabs.js"></script>
-    <script type="module" src="../page_scripts/login.js"></script>
-    <script type="module" src="../page_scripts/signup.js"></script>
     <!-- <script type="module" src="../forms/register.js"></script> -->
 
     <script
@@ -42,7 +42,7 @@
           <div>
             <a
               id="loginBtn"
-              class="bg-primary-button px-5 py-2.5 text-sm text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
+              class="me-2 rounded-lg border-2 border-primary-button px-8 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
               href=""
               >Log in</a
             >
@@ -61,30 +61,31 @@
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="text-lg">
-              Elevate your bids, amplify your treasures. Join our auction
-              platform where every item tells a story, and every bid is an
-              opportunity.
+            <p class="slogan-text" id="animatedText">
+              Let's do it! You're just a few clicks away from your next
+              extraordinary find. Register or log in to start bidding!
             </p>
           </div>
         </div>
         <div class="m-auto flex max-w-2xl justify-evenly text-2xl">
-          <div id="animatedText">
+          <div>
             <a
-              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              id="auctionLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href="../index.html"
               >Auctions</a
             >
 
             <a
-              id="profileBtn"
-              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              id="profileLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href=""
               >Profile</a
             >
 
             <a
-              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              id="aboutLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href="../about/index.html"
               >About us</a
             >
@@ -104,7 +105,7 @@
           >
             <li class="me-2" role="presentation">
               <button
-                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 text-lg font-semibold hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
                 id="dashboard-tab-example"
                 type="button"
                 role="tab"
@@ -116,7 +117,7 @@
             </li>
             <li class="me-2" role="presentation">
               <button
-                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 text-lg font-semibold hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
                 id="settings-tab-example"
                 type="button"
                 role="tab"

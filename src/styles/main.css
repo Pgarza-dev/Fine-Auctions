@@ -24,6 +24,9 @@
   }
 }
 
+.slogan-text {
+  font-size: 1.5rem;
+}
 
 .text-2xl {
   white-space: nowrap;
@@ -86,4 +89,21 @@
 .offset {
   margin-top: -8rem;
   position: relative;
+}
+
+@keyframes scrollAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Adjust the distance the arrow moves */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+a.rolling-arrow {
+  transition: opacity 0.3s;
+  animation: scrollAnimation 2s infinite;
 }
