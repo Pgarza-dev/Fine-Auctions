@@ -64,14 +64,14 @@
           class="m-auto flex max-w-2xl flex-col items-center pt-4 text-center"
         >
           <div class="mix-blend flex w-full items-center">
-            <a href="index.html">
+            <a href="../index.html">
               <img
                 class="w-40"
                 src="/images/logo.png"
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="text-lg" id="animatedText">
+            <p class="text-lg">
               Elevate your bids, amplify your treasures. Join our auction
               platform where every item tells a story, and every bid is an
               opportunity.
@@ -79,25 +79,29 @@
           </div>
         </div>
         <div class="m-auto flex max-w-2xl justify-evenly text-2xl">
-          <div>
+          <div >
             <a
+              id="auctionLink"
               class="pe-4 text-zinc-700 transition-all hover:text-black"
               href="../index.html"
-              >Auctions</a
             >
+              <span class="word">Auctions</span>
+            </a>
 
             <a
-              id="profileBtn"
+              id="profileLink"
               class="pe-4 text-zinc-700 transition-all hover:text-black"
               href="../user_page/index.html"
-              >Profile</a
+              > <span class="word">Profile</span></a
             >
 
             <a
+              id="aboutLink"
               class="pe-4 text-zinc-700 transition-all hover:text-black"
-              href="./about/index.html"
-              >About us</a
+              href="../about/index.html"
             >
+              <span class="word">About us</span>
+            </a>
           </div>
         </div>
       </section>
@@ -132,7 +136,9 @@
               >
             </div>
             <div>
-              <span class="pt-4 pb-4">Time left: <span id="timeLeft">Displayed time</span></span>
+              <span class="pb-4 pt-4"
+                >Time left: <span id="timeLeft">Displayed time</span></span
+              >
             </div>
             <div class="border-t-4 border-black pb-10" id="registrationInfo">
               <p class="pt-6">

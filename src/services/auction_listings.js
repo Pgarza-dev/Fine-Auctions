@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 export function profileButton() {
   const username = getActiveUser();
-  const profileBtn = document.querySelector("#profileBtn");
+  const profileBtn = document.querySelector("#profileLink");
   profileBtn.href = `/user_page/index.html?username=${username}`;
   if (username) {
     profileBtn.addEventListener("click", () => {

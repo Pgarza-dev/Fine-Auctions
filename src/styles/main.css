@@ -39,6 +39,7 @@
   display: inline-block;
   opacity: 0;
   animation: appear 1s forwards;
+  cursor: pointer;
 }
 
 @keyframes appear {
@@ -58,6 +59,7 @@
   background-size: cover;
   width: 100vw;
 }
+
 
 .scaled-image {
   animation: scaleAnimation 50s infinite;

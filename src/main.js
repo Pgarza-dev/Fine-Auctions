@@ -47,4 +47,32 @@ function animateText(elementId) {
   });
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  animateLinks(["auctionLink", "profileLink", "aboutLink"]);
+});
+
+function animateLinks(linkIds) {
+  linkIds.forEach((linkId, linkIndex) => {
+    const link = document.getElementById(linkId);
+    const words = link.innerText.split(" ");
+    link.innerHTML = ""; 
+
+    words.forEach((word, index) => {
+      const wordElement = document.createElement("span");
+      wordElement.textContent = word;
+      wordElement.className = "word"; // Add a class to each word based on the link index
+      wordElement.style.animationDelay = `${
+        index * 0.2 + linkIndex * 0.5
+      }s`; // Adjust the delay based on link and word index
+      link.appendChild(wordElement);
+
+      // Add space after each word except the last one
+      if (index < words.length - 1) {
+        const spaceElement = document.createElement("span");
+        spaceElement.className = "space";
+        link.appendChild(spaceElement);
+      }
+    });
+  });
+}
 
