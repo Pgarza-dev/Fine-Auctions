@@ -187,7 +187,6 @@ export async function displayListings(listings) {
         "w-full",
         "h-full",
         "hover:scale-105",
-        
       );
 
       const link = document.createElement("a");
@@ -216,6 +215,9 @@ export async function displayListings(listings) {
         "tracking-tight",
         "text-gray-900",
         "dark:text-white",
+        "max-w-sm",
+        "truncate",
+        "max-w-full",
       );
       title.textContent = listing.title;
       titleLink.appendChild(title);
