@@ -68,39 +68,40 @@
           </div>
         </div>
       </section>
-      <section class="flex flex-wrap">
+      <section class="flex flex-wrap pt-12">
         <div
-          class="m-auto flex max-w-2xl flex-col items-center pt-20 text-center"
+          class="m-auto flex max-w-2xl flex-col items-center pt-4 text-center"
         >
-          <div class="flex w-full items-center">
-            <a href="../index.html">
+          <div class="mix-blend flex w-full items-center">
+            <a href="index.html">
               <img
                 class="w-40"
                 src="/images/logo.png"
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="text-lg">
+            <p class="text-lg" id="animatedText">
               Elevate your bids, amplify your treasures. Join our auction
               platform where every item tells a story, and every bid is an
               opportunity.
             </p>
           </div>
         </div>
-        <div class="m-auto flex max-w-2xl justify-evenly pt-10">
-          <div class="underline underline-offset-4">
+        <div class="m-auto flex max-w-2xl justify-evenly text-2xl">
+          <div>
             <a
-              id="auction_link"
-              class="pe-4 transition-all hover:text-black"
-              href="/index.html"
+              class="pe-4 text-zinc-700 transition-all hover:text-black"
+              href="../index.html"
               >Auctions</a
             >
 
             <a
+              id="profileBtn"
               class="pe-4 text-zinc-700 transition-all hover:text-black"
-              href="../login/index.html"
+              href=""
               >Profile</a
             >
+
             <a
               class="pe-4 text-zinc-700 transition-all hover:text-black"
               href="../about/index.html"
@@ -113,19 +114,8 @@
 
     <main>
       <section class="p-4">
-        <!-- <div class="border-b-2 border-t-2 border-gray-200">
-          <div class="m-auto max-w-4xl p-8">
-            <img
-              class="h-40 w-40 rounded-full"
-              src="/images/profile-icon.png"
-              alt="user profile avatar"
-            />
-            <h1 id="userName" class="font-semibold">User name</h1>
-          </div>
-        </div> -->
-
         <div
-          class="flex w-full justify-center rounded-lg border border-gray-200 bg-white px-4 pt-4 shadow dark:border-gray-700 dark:bg-gray-800"
+          class="flex w-full justify-center rounded-lg border border-gray-200 bg-white bg-opacity-50 px-4 pt-4 shadow dark:border-gray-700 dark:bg-gray-800"
         >
           <div id="avatar_container" class="flex flex-col items-center pb-10">
             <img
@@ -140,7 +130,7 @@
         </div>
 
         <div
-          class="relative m-auto mb-4 flex max-w-4xl items-center justify-between border-b border-gray-200 dark:border-gray-700"
+          class="relative m-auto mb-4 mt-8 flex max-w-4xl items-center justify-between border-b-2 border-t-2 border-primary-background dark:border-gray-700"
         >
           <ul
             class="-mb-px flex flex-wrap text-center text-sm font-medium text-gray-500 dark:text-gray-400"
@@ -190,7 +180,7 @@
         </div>
         <div id="tabContentExample" class="m-auto max-w-4xl">
           <div
-            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            class="hidden rounded-lg"
             id="bid-example"
             role="tabpanel"
             aria-labelledby="bid-tab-example"
