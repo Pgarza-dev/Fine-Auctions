@@ -184,6 +184,9 @@ export async function displayListings(listings) {
         "dark:bg-gray-800",
         "dark:border-gray-700",
         "dark:drop-shadow-none",
+        "w-full",
+        "h-full",
+        "hover:scale-105",
       );
 
       const link = document.createElement("a");
@@ -191,7 +194,7 @@ export async function displayListings(listings) {
       listingContainer.appendChild(link);
 
       const img = document.createElement("img");
-      img.classList.add("rounded-t-lg");
+      img.classList.add("rounded-t-lg", "w-full", "h-56", "object-cover");
       img.src = listing.media[0];
       img.alt = listing.title;
       link.appendChild(img);
