@@ -59,27 +59,27 @@
           </div>
         </div>
       </section>
-      <section>
+      <section class="flex flex-wrap pt-12">
         <div
-          class="m-auto flex max-w-2xl flex-col items-center pt-20 text-center"
+          class="m-auto flex max-w-2xl flex-col items-center pt-4 text-center"
         >
-          <div class="flex w-full items-center">
-            <a href="../index.html">
+          <div class="mix-blend flex w-full items-center">
+            <a href="index.html">
               <img
                 class="w-40"
                 src="/images/logo.png"
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="text-lg">
+            <p class="text-lg" id="animatedText">
               Elevate your bids, amplify your treasures. Join our auction
               platform where every item tells a story, and every bid is an
               opportunity.
             </p>
           </div>
         </div>
-        <div class="m-auto flex max-w-2xl justify-evenly pt-10">
-          <div class="underline underline-offset-4">
+        <div class="m-auto flex max-w-2xl justify-evenly text-2xl">
+          <div>
             <a
               class="pe-4 text-zinc-700 transition-all hover:text-black"
               href="../index.html"
@@ -89,17 +89,13 @@
             <a
               id="profileBtn"
               class="pe-4 text-zinc-700 transition-all hover:text-black"
-              href=""
+              href="../user_page/index.html"
               >Profile</a
             >
+
             <a
               class="pe-4 text-zinc-700 transition-all hover:text-black"
-              href="../user_page/index.html"
-              >Sell</a
-            >
-            <a
-              class="pe-4 text-zinc-700 transition-all hover:text-black"
-              href="/about/index.html"
+              href="./about/index.html"
               >About us</a
             >
           </div>
@@ -109,8 +105,6 @@
 
     <main>
       <section class="pt-20">
-        <!-- Inside the body of your HTML document -->
-
         <div id="auction_item_container" class="flex justify-center gap-40">
           <div>
             <a href="" id="auctionItemLink">
@@ -138,7 +132,7 @@
               >
             </div>
             <div>
-              <span>Time left: <span id="timeLeft">Displayed time</span></span>
+              <span class="pt-4 pb-4">Time left: <span id="timeLeft">Displayed time</span></span>
             </div>
             <div class="border-t-4 border-black pb-10" id="registrationInfo">
               <p class="pt-6">

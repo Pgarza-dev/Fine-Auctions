@@ -128,11 +128,15 @@ function displaySingleAuctionItem(auctionItem) {
 
   if (auctionItem) {
     auctionItemImage.src = auctionItem.media[0];
+    auctionItemImage.alt = auctionItem.title;
     auctionItemTitle.textContent = auctionItem.title;
+    auctionItemTitle.classList.add("text-4xl", "font-bold");
     auctionItemDescription.textContent = auctionItem.description;
+    auctionItemDescription.classList.add("text-lg", "font-medium");
     currentBidAmount.textContent = formatPrice(
       getHighestBidAmount(auctionItem.bids),
     );
+    currentBidAmount.classList.add("text-lg", "font-bold","pt-8", "pb-8");
 
     // Calculate time remaining
     const endsAt = new Date(auctionItem.endsAt).getTime();
@@ -141,7 +145,7 @@ function displaySingleAuctionItem(auctionItem) {
 
     const timeRemainingDisplay = document.createElement("span");
     timeLeft.innerHTML = ""; // Clear existing content
-    timeRemainingDisplay.classList.add("text-orange-500");
+    timeRemainingDisplay.classList.add("text-orange-500", "font-bold", "text-xl");
 
     timeLeft.appendChild(timeRemainingDisplay);
 
