@@ -61,7 +61,7 @@
       </section>
       <section class="flex flex-wrap pt-12">
         <div
-          class="m-auto flex max-w-4xl flex-col items-center pt-4 text-start"
+          class="m-auto hidden max-w-4xl flex-col items-center pt-4 text-start md:block"
         >
           <div class="mix-blend flex w-full items-center">
             <a href="../index.html">
@@ -81,7 +81,7 @@
           </div>
         </div>
         <div class="m-auto flex max-w-2xl justify-evenly">
-          <div>
+          <div class="">
             <a
               id="auctionLink"
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
@@ -112,8 +112,11 @@
 
     <main>
       <section class="pt-20">
-        <div id="auction_item_container" class="flex justify-center gap-40">
-          <div>
+        <div
+          id="auction_item_container"
+          class="m-auto flex max-w-6xl flex-col items-center justify-center gap-4 lg:flex-row lg:gap-40"
+        >
+          <div class="mb-4 lg:mb-0">
             <a href="" id="auctionItemLink">
               <img
                 class="auction-card object-cover"
@@ -143,7 +146,10 @@
                 >Time left: <span id="timeLeft">Displayed time</span></span
               >
             </div>
-            <div class="border-t-4 border-black pb-10" id="registrationInfo">
+            <div
+              class="border-t-4 border-black pb-4 lg:pb-10"
+              id="registrationInfo"
+            >
               <p class="pt-6 text-lg">
                 Registration to place bids, buyers and sellers will have to
                 register before bidding. If you have not yet registered with us
@@ -174,7 +180,7 @@
               <div class="border-b-4 border-black pb-4 pt-4">
                 <button
                   data-tooltip-target="tooltip-default"
-                  class="hover:text-primary-900 flex h-10 w-full max-w-lg items-center justify-center border bg-black px-20 py-8 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
+                  class="hover:text-primary-900 flex h-10 w-full max-w-lg items-center justify-center border bg-black px-8 py-2 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
                   type="submit"
                   id="sendBidBtn"
                 >
@@ -193,51 +199,54 @@
           </div>
         </div>
       </section>
+
       <section class="flex justify-center pt-12">
-        <h2 class="pe-20 text-2xl bid_history_text">Bid History</h2>
-        <ol
-          id="bidHistoryList"
-          class="relative border-s-2 border-black dark:border-gray-700 flex flex-col-reverse "
-        >
-          <li class="mb-10 ms-6">
-            <span
-              class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900"
-            >
-              <svg
-                class="h-2.5 w-2.5 text-blue-800 dark:text-blue-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                />
-              </svg>
-            </span>
-            <h3
-              id="latestBiddersName"
-              class="mb-1 flex items-center ps-3 text-lg font-semibold text-gray-900 dark:text-white"
-            >
-              Username
+        <div>
+          <h2 class="bid_history_text pe-20 text-2xl">Bid History</h2>
+          <ol
+            id="bidHistoryList"
+            class="relative flex flex-col-reverse border-s-2 border-black bg-gray-50 bg-opacity-50 p-12 dark:border-gray-700"
+          >
+            <li class="mb-10 ms-6">
               <span
-                class="me-2 ms-3 rounded bg-blue-100 px-2.5 py-0.5 ps-3 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
-                >Latest</span
+                class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900"
               >
-            </h3>
-            <time
-              id="latestBiddingDate"
-              class="mb-2 block ps-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-              >Released on January 13th, 2022</time
-            >
-            <p
-              id="latestBiddingAmount"
-              class="mb-4 ps-3 text-base font-normal text-gray-500 dark:text-gray-400"
-            >
-              Bidder information / bid amount.
-            </p>
-          </li>
-        </ol>
+                <svg
+                  class="h-2.5 w-2.5 text-blue-800 dark:text-blue-300"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                  />
+                </svg>
+              </span>
+              <h3
+                id="latestBiddersName"
+                class="mb-1 flex items-center ps-3 text-lg font-semibold text-gray-900 dark:text-white"
+              >
+                Username
+                <span
+                  class="me-2 ms-3 rounded bg-blue-100 px-2.5 py-0.5 ps-3 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+                  >Latest</span
+                >
+              </h3>
+              <time
+                id="latestBiddingDate"
+                class="mb-2 block ps-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
+                >Released on January 13th, 2022</time
+              >
+              <p
+                id="latestBiddingAmount"
+                class="mb-4 ps-3 text-base font-normal text-gray-500 dark:text-gray-400"
+              >
+                Bidder information / bid amount.
+              </p>
+            </li>
+          </ol>
+        </div>
       </section>
       <section>
         <div class="relative flex h-96 items-center justify-center">

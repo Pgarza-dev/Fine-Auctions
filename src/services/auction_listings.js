@@ -31,7 +31,6 @@ async function setupAllListingsButton() {
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   setupAllListingsButton();
 
@@ -52,9 +51,10 @@ export function profileButton() {
   const username = getActiveUser();
   const profileBtn = document.querySelector("#profileLink");
 
-  if (profileBtn) { // Check if the element exists before interacting with it
+  if (profileBtn) {
+    // Check if the element exists before interacting with it
     profileBtn.href = `/user_page/index.html?username=${username}`;
-    
+
     if (username) {
       profileBtn.addEventListener("click", () => {
         window.location.href = `/user_page/index.html?username=${username}`;
@@ -67,7 +67,6 @@ export function profileButton() {
 }
 
 profileButton();
-
 
 async function ascendingButton() {
   const sortByAscendingButton = document.querySelector("#newest_btn");
@@ -195,6 +194,7 @@ export async function displayListings(listings) {
         "w-full",
         "h-full",
         "hover:scale-105",
+        "hover:border-primary-button",
       );
 
       const link = document.createElement("a");

@@ -207,7 +207,7 @@ async function userPageCredits() {
   if (credits) {
     const totalCredits = document.createElement("span");
     totalCredits.textContent = `Credits: ${credits.credits}`;
-    totalCredits.classList.add("text-orange-500", "font-bold", "text-md");
+    totalCredits.classList.add("text-primary-text", "font-bold", "text-2xl");
     creditsContainer.appendChild(totalCredits);
   } else {
     const errorMessageElement = document.createElement("p");
