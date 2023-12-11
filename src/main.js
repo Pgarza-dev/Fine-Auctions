@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function animateText(elementId) {
   const textElement = document.getElementById(elementId);
+
+  if (!textElement) {
+    console.error(`Element with ID '${elementId}' not found.`);
+    return;
+  }
+
   const words = textElement.innerText.split(" ");
   textElement.innerHTML = "";
 
@@ -54,6 +60,7 @@ function animateLinks(linkIds) {
   linkIds.forEach((linkId, linkIndex) => {
     const link = document.getElementById(linkId);
     const words = link.innerText.split(" ");
+    
     link.innerHTML = "";
 
     words.forEach((word, index) => {

@@ -16,6 +16,7 @@ export async function getListings() {
 
     console.log("Listings:", data);
     displayListings(data);
+    return data;
   } catch (error) {
     console.error("Error fetching listings:", error.message);
     return null;
@@ -29,6 +30,7 @@ async function setupAllListingsButton() {
     await getListings();
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   setupAllListingsButton();
@@ -49,18 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
 export function profileButton() {
   const username = getActiveUser();
   const profileBtn = document.querySelector("#profileLink");
-  profileBtn.href = `/user_page/index.html?username=${username}`;
-  if (username) {
-    profileBtn.addEventListener("click", () => {
-      window.location.href = `/user_page/index.html?username=${username}`;
-    });
-  } else {
-    console.log("profileBtn not found");
-    profileBtn.href = "/login/index.html";
+
+  if (profileBtn) { // Check if the element exists before interacting with it
+    profileBtn.href = `/user_page/index.html?username=${username}`;
+    
+    if (username) {
+      profileBtn.addEventListener("click", () => {
+        window.location.href = `/user_page/index.html?username=${username}`;
+      });
+    } else {
+      console.log("profileBtn not found");
+      profileBtn.href = "/login/index.html";
+    }
   }
 }
 
 profileButton();
+
 
 async function ascendingButton() {
   const sortByAscendingButton = document.querySelector("#newest_btn");
@@ -242,7 +249,7 @@ export async function displayListings(listings) {
         "tracking-tight",
         "text-gray-700",
         "dark:gray-400",
-        "text-lg"
+        "text-lg",
       );
       price.textContent = formatPrice(getHighestBidAmount(listing.bids));
       textContainer.appendChild(price);

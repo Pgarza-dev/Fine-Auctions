@@ -193,8 +193,12 @@
           </div>
         </div>
       </section>
-      <section class="flex justify-center p-32">
-        <ol class="relative border-s-2 border-black dark:border-gray-700">
+      <section class="flex justify-center pt-12">
+        <h2 class="pe-20 text-2xl bid_history_text">Bid History</h2>
+        <ol
+          id="bidHistoryList"
+          class="relative border-s-2 border-black dark:border-gray-700 flex flex-col-reverse "
+        >
           <li class="mb-10 ms-6">
             <span
               class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900"
@@ -212,6 +216,7 @@
               </svg>
             </span>
             <h3
+              id="latestBiddersName"
               class="mb-1 flex items-center ps-3 text-lg font-semibold text-gray-900 dark:text-white"
             >
               Username
@@ -221,75 +226,15 @@
               >
             </h3>
             <time
+              id="latestBiddingDate"
               class="mb-2 block ps-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
               >Released on January 13th, 2022</time
             >
             <p
+              id="latestBiddingAmount"
               class="mb-4 ps-3 text-base font-normal text-gray-500 dark:text-gray-400"
             >
               Bidder information / bid amount.
-            </p>
-          </li>
-          <li class="mb-10 ms-6">
-            <span
-              class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900"
-            >
-              <svg
-                class="h-2.5 w-2.5 text-blue-800 dark:text-blue-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                />
-              </svg>
-            </span>
-            <h3
-              class="mb-1 ps-3 text-lg font-semibold text-gray-900 dark:text-white"
-            >
-              Username
-            </h3>
-            <time
-              class="mb-2 block ps-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-              >Released on December 7th, 2021</time
-            >
-            <p
-              class="ps-3 text-base font-normal text-gray-500 dark:text-gray-400"
-            >
-              Bidder information / bid amount.
-            </p>
-          </li>
-          <li class="ms-6">
-            <span
-              class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900"
-            >
-              <svg
-                class="h-2.5 w-2.5 text-blue-800 dark:text-blue-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                />
-              </svg>
-            </span>
-            <h3
-              class="mb-1 ps-3 text-lg font-semibold text-gray-900 dark:text-white"
-            >
-              Username
-            </h3>
-            <time
-              class="mb-2 block ps-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-              >Released on December 2nd, 2021</time
-            >
-            <p
-              class="ps-3 text-base font-normal text-gray-500 dark:text-gray-400"
-            >
-              Bidder information / bid amount.S.
             </p>
           </li>
         </ol>

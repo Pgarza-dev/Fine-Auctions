@@ -126,6 +126,9 @@ function displaySingleAuctionItem(auctionItem) {
   const currentBidAmount = document.getElementById("currentBidAmount");
   const timeLeft = document.getElementById("timeLeft");
 
+  const bidHistoryList = document.getElementById("bidHistoryList");
+  bidHistoryList.innerHTML = ""; 
+
   if (auctionItem) {
     auctionItemImage.src = auctionItem.media[0];
     auctionItemImage.alt = auctionItem.title;
@@ -136,7 +139,106 @@ function displaySingleAuctionItem(auctionItem) {
     currentBidAmount.textContent = formatPrice(
       getHighestBidAmount(auctionItem.bids),
     );
-    currentBidAmount.classList.add("text-lg", "font-bold","pt-8", "pb-8");
+    currentBidAmount.classList.add("text-lg", "font-bold", "pt-8", "pb-8");
+
+    for (let i = 0; i < auctionItem.bids.length; i++) {
+      const bidEntry = document.createElement("li");
+      bidEntry.classList.add("mb-10", "ms-6");
+
+      const biddingIcon = document.createElement("span");
+      biddingIcon.classList.add(
+        "absolute",
+        "-start-3",
+        "flex",
+        "h-6",
+        "w-6",
+        "items-center",
+        "justify-center",
+        "rounded-full",
+        "bg-blue-100",
+        "ring-8",
+        "ring-white",
+        "dark:bg-blue-900",
+        "dark:ring-gray-900",
+      );
+
+      const biddingIconSvg = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg",
+      );
+      biddingIconSvg.classList.add(
+        "h-2.5",
+        "w-2.5",
+        "text-blue-800",
+        "dark:text-blue-300",
+      );
+      biddingIconSvg.setAttribute("aria-hidden", "true");
+      biddingIconSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      biddingIconSvg.setAttribute("fill", "currentColor");
+      biddingIconSvg.setAttribute("viewBox", "0 0 20 20");
+
+      const biddingIconPath = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path",
+      );
+      biddingIconPath.setAttribute(
+        "d",
+        "M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z",
+      );
+
+      biddingIconSvg.appendChild(biddingIconPath);
+      biddingIcon.appendChild(biddingIconSvg);
+
+      bidEntry.appendChild(biddingIcon);
+
+      const bidderName = document.createElement("h3");
+      bidderName.classList.add(
+        "mb-1",
+        "flex",
+        "items-center",
+        "ps-3",
+        "text-2xl",
+        "font-semibold",
+        "text-gray-900",
+        "dark:text-white",
+      );
+      bidderName.textContent = auctionItem.bids[i].bidderName;
+
+      const biddingDate = document.createElement("time");
+      biddingDate.classList.add(
+        "mb-2",
+        "block",
+        "ps-3",
+        "text-sm",
+        "font-normal",
+        "leading-none",
+        "text-black",
+        "dark:text-gray-500",
+      );
+      biddingDate.textContent = new Date(
+        auctionItem.bids[i].created,
+      ).toLocaleString();
+
+      const biddingAmount = document.createElement("p");
+      biddingAmount.classList.add(
+        "mb-4",
+        "ps-3",
+        "text-lg",
+        "font-normal",
+        "text-primary-text",
+        "dark:text-gray-400",
+        "font-extrabold"
+      );
+      biddingAmount.textContent = `Bid amount: ${formatPrice(
+        auctionItem.bids[i].amount,
+      )}`;
+
+      bidEntry.appendChild(bidderName);
+      bidEntry.appendChild(biddingDate);
+      bidEntry.appendChild(biddingAmount);
+
+      bidHistoryList.appendChild(bidEntry);
+    }
 
     // Calculate time remaining
     const endsAt = new Date(auctionItem.endsAt).getTime();
@@ -144,8 +246,12 @@ function displaySingleAuctionItem(auctionItem) {
     let timeRemaining = endsAt - currentTime;
 
     const timeRemainingDisplay = document.createElement("span");
-    timeLeft.innerHTML = ""; // Clear existing content
-    timeRemainingDisplay.classList.add("text-orange-500", "font-bold", "text-xl");
+    timeLeft.innerHTML = ""; 
+    timeRemainingDisplay.classList.add(
+      "text-orange-500",
+      "font-bold",
+      "text-xl",
+    );
 
     timeLeft.appendChild(timeRemainingDisplay);
 
@@ -198,7 +304,6 @@ function changeLogInBtn() {
 changeLogInBtn();
 
 function formatPrice(bidsCount) {
-  // Add your logic to format the price based on the number of bids or any other criteria
   return `$ ${bidsCount}`;
 }
 
