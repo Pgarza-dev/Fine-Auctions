@@ -52,7 +52,6 @@ export function profileButton() {
   const profileBtn = document.querySelector("#profileLink");
 
   if (profileBtn) {
-    // Check if the element exists before interacting with it
     profileBtn.href = `/user_page/index.html?username=${username}`;
 
     if (username) {
@@ -129,7 +128,7 @@ export function getHighestBidAmount(bids) {
     const highestBid = bids.slice().sort((a, b) => b.amount - a.amount)[0];
     return highestBid.amount;
   } else {
-    return 0; // or any default value for when there are no bids
+    return 0; 
   }
 }
 
@@ -146,7 +145,7 @@ export async function displayListings(listings) {
 
   const currentTime = new Date().getTime();
 
-  // Check if the provided data is sorted
+ 
   const isSorted = listings.some((listing, index) => {
     if (index > 0) {
       const previousEndsAt = new Date(listings[index - 1].endsAt).getTime();
@@ -157,7 +156,7 @@ export async function displayListings(listings) {
   });
 
   const processedListings = isSorted
-    ? listings // Use the sorted data as is
+    ? listings 
     : listings
         .map((listing) => {
           if (listing.media && listing.media.length > 0) {
