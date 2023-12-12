@@ -192,8 +192,8 @@
             </button>
           </div>
 
-          <form class="flex items-center">
-            <label for="simple-search" class="sr-only">Search</label>
+          <form id="search_form" class="flex items-center">
+            <label for="search_input" class="sr-only">Search</label>
             <div class="relative w-full">
               <div
                 class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
@@ -216,13 +216,14 @@
               </div>
               <input
                 type="text"
-                id="simple-search"
-                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                placeholder="Search branch name..."
+                id="search_input"
+                class="block w-96 placeholder:font-bold rounded-lg caret-primary-text font- border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                placeholder="Choose a button first and then search"
                 required
               />
             </div>
-            <button
+            <!-- <button
+              id="search_btn"
               type="submit"
               class="bg-primaborder-primary-button dark:hover:bg-primaborder-primary-button dark:focus:ring-primabg-primary-button ms-2 rounded-lg border border-primary-button p-2.5 text-sm font-medium text-white hover:bg-primary-button focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600"
             >
@@ -242,7 +243,7 @@
                 />
               </svg>
               <span class="sr-only">Search</span>
-            </button>
+            </button> -->
           </form>
         </div>
         <div

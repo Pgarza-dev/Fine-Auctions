@@ -28,7 +28,6 @@ async function setupAllListingsButton() {
   const spinner = document.getElementById("spinnerAllListings");
 
   allListingsButton.addEventListener("click", async () => {
-    
     spinner.classList.remove("hidden");
     allListingsButton.textContent = "Loading...";
 
@@ -136,6 +135,43 @@ async function oldestListingsButton() {
 
 oldestListingsButton();
 
+async function handleSearchInput(event) {
+  const searchInput = document
+    .querySelector("#search_input")
+    .value.toLowerCase();
+  const auctionCards = document.querySelectorAll(".auction_card");
+
+  auctionCards.forEach((card) => {
+    const title = card.querySelector("h5").textContent.toLowerCase();
+    const description = card.querySelector("p").textContent.toLowerCase();
+    const price = card.querySelector(".price").textContent.toLowerCase();
+    const timeRemaining = card
+      .querySelector(".time-remaining")
+      .textContent.toLowerCase();
+    const readMore = card.querySelector("a").textContent.toLowerCase();
+
+    if (
+      title.includes(searchInput) ||
+      description.includes(searchInput) ||
+      price.includes(searchInput) ||
+      timeRemaining.includes(searchInput) ||
+      readMore.includes(searchInput)
+    ) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBar = document.querySelector("#search_input");
+  searchBar.addEventListener("input", handleSearchInput);
+
+  // Initial fetch and display
+  fetchDataAndDisplayListings();
+});
+
 export function getHighestBidAmount(bids) {
   if (bids.length > 0) {
     const highestBid = bids.slice().sort((a, b) => b.amount - a.amount)[0];
@@ -206,6 +242,7 @@ export async function displayListings(listings) {
         "h-full",
         "hover:scale-105",
         "hover:border-primary-button",
+        "auction_card",
       );
 
       const link = document.createElement("a");
@@ -261,6 +298,7 @@ export async function displayListings(listings) {
         "text-gray-700",
         "dark:gray-400",
         "text-lg",
+        "price",
       );
       price.textContent = formatPrice(getHighestBidAmount(listing.bids));
       textContainer.appendChild(price);
@@ -271,6 +309,7 @@ export async function displayListings(listings) {
         "font-normal",
         "text-orange-500",
         "dark:text-gray-400",
+        "time-remaining",
       );
       timeRemainingElement.textContent = "Ends in: ";
       textContainer.appendChild(timeRemainingElement);
