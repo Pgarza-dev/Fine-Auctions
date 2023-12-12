@@ -80,7 +80,6 @@ async function editUserAvatar(avatarUrl) {
   }
 }
 
-
 avatarForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -88,7 +87,6 @@ avatarForm.addEventListener("submit", async (event) => {
 
   if (avatarUrl) {
     const response = await editUserAvatar(avatarUrl);
-
 
     if (response.error) {
       console.error("Error updating avatar:", response.error);
@@ -177,7 +175,7 @@ async function displayUserProfile() {
 
     const creditText = document.createElement("span");
     creditText.textContent = "Credits: ";
-    creditText.classList.add("italic");
+    creditText.classList.add("animate-pulse");
     infoContainer.appendChild(creditText);
 
     const totalCredits = document.createElement("span");
@@ -201,7 +199,11 @@ async function userPageCredits() {
   if (credits) {
     const totalCredits = document.createElement("span");
     totalCredits.textContent = `Credits: ${credits.credits}`;
-    totalCredits.classList.add("text-primary-text", "font-bold", "text-2xl");
+    totalCredits.classList.add(
+      "text-primary-background",
+      "font-bold",
+      "text-2xl",
+    );
     creditsContainer.appendChild(totalCredits);
   } else {
     const errorMessageElement = document.createElement("p");
@@ -301,17 +303,16 @@ async function displayBidHistory() {
         const currentTime = new Date().getTime();
         let timeRemaining = endsAt - currentTime;
 
-        // Create a span element to dynamically update the time
         const timeRemainingDisplay = document.createElement("span");
 
-        // Set up the interval for dynamic updating
+    
         const intervalId = setInterval(() => {
           timeRemaining -= 1000;
           formatHistoryTimeRemaining(timeRemaining, (formattedTime) => {
             timeRemainingDisplay.textContent = formattedTime;
           });
 
-          // Stop the interval when the auction ends
+          
           if (timeRemaining < 0) {
             clearInterval(intervalId);
           }

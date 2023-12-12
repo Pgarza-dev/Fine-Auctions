@@ -118,6 +118,7 @@ bidForm.addEventListener("submit", async (event) => {
 profileButton();
 
 function displaySingleAuctionItem(auctionItem) {
+  
   const auctionItemImage = document.getElementById("auctionItemImage");
   const auctionItemTitle = document.getElementById("auctionItemTitle");
   const auctionItemDescription = document.getElementById(
@@ -227,7 +228,7 @@ function displaySingleAuctionItem(auctionItem) {
         "font-normal",
         "text-primary-text",
         "dark:text-gray-400",
-        "font-extrabold"
+        "font-extrabold",
       );
       biddingAmount.textContent = `Bid amount: ${formatPrice(
         auctionItem.bids[i].amount,
@@ -248,7 +249,7 @@ function displaySingleAuctionItem(auctionItem) {
     const timeRemainingDisplay = document.createElement("span");
     timeLeft.innerHTML = ""; 
     timeRemainingDisplay.classList.add(
-      "text-orange-500",
+      "text-primary-text",
       "font-bold",
       "text-xl",
     );
