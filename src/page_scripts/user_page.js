@@ -80,28 +80,23 @@ async function editUserAvatar(avatarUrl) {
   }
 }
 
-// Assuming you want to handle the avatar edit form submission
+
 avatarForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  // Assuming you have an input field with id "avatar_url_input"
   const avatarUrl = avatarUrlInput.value.trim();
 
   if (avatarUrl) {
     const response = await editUserAvatar(avatarUrl);
 
-    // You can add additional logic based on the response if needed
 
     if (response.error) {
-      // Handle error, if any
       console.error("Error updating avatar:", response.error);
     } else {
-      // Assuming you want to redirect or perform some action on successful avatar update
       window.location.href = "/user_page/index.html?username=" + response.name;
     }
   } else {
     console.error("Avatar URL is required.");
-    // Handle the case where the avatar URL is not provided
   }
 });
 
@@ -115,7 +110,6 @@ async function handleEditedAvatar() {
 
   userAvatarContainer.innerHTML = "";
 
-  // Assuming you have a function to fetch the updated user profile after avatar update
   const updatedProfile = await getUserProfile();
 
   if (updatedProfile && updatedProfile.avatar) {

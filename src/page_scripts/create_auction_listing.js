@@ -46,7 +46,8 @@ export async function createNewAuctionListing() {
       console.error("Error fetching listings:", data.error);
     } else {
       console.log("Listings:", data);
-      // Clear form fields
+      console.log(new Error().stack);
+
       document.getElementById("auctionItemTitle").value = "";
       document.getElementById("auctionItemDescription").value = "";
       document.getElementById("auctionItemTags").value = "";
@@ -54,7 +55,6 @@ export async function createNewAuctionListing() {
       document.getElementById("end_date").value = "";
       document.getElementById("auctionItemImagePreview").src = "";
 
-      // Update button text
       sellItemButton.textContent = "Auction Posted!";
     }
   } catch (error) {
@@ -65,18 +65,10 @@ export async function createNewAuctionListing() {
     };
   }
 }
+console.log("createNewAuctionListing", createNewAuctionListing);
+console.log(new Error().stack);
 
-// function createFormDataObject(form) {
-//   const formData = new FormData(form);
 
-//   const formDataObject = {};
-
-//   for (const [key, value] of formData.entries()) {
-//     formDataObject[key] = value;
-//   }
-
-//   return formDataObject;
-// }
 
 async function checkSellForm(formDataObject) {
   const { title, description, tags, media, endsAt } = formDataObject;
@@ -122,20 +114,28 @@ async function handleSellItem(formDataObject) {
   }
 }
 
+
 const sellForm = document.querySelector("#sell-form");
 
+let isFormSubmitting = false;
+
 sellForm.addEventListener("submit", async (event) => {
-  sellItemButton.disabled = true;
   event.preventDefault();
+
+  if (isFormSubmitting) {
+    return;
+  }
+
+  isFormSubmitting = true;
 
   clearErrors();
 
   const form = createFormDataObject(sellForm);
 
-  const sellValidationResult = checkSellForm(form);
+  const sellValidationResult = await checkSellForm(form);
 
   if (!sellValidationResult.isValid) {
-    handleSellItem(form);
+    await handleSellItem(form);
   } else {
     displayErrors(sellValidationResult.errors);
   }
@@ -150,6 +150,7 @@ sellForm.addEventListener("submit", async (event) => {
   } else {
     auctionImagePreview.src = "";
   }
+
+  isFormSubmitting = false;
   sellItemButton.disabled = false;
 });
-
