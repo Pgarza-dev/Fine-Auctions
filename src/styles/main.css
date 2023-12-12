@@ -107,3 +107,7 @@ a.rolling-arrow,
   transition: opacity 0.3s;
   animation: scrollAnimation 2s infinite;
 }
+
+.hidden {
+  display: none;
+}

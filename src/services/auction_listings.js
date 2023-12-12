@@ -25,17 +25,25 @@ export async function getListings() {
 
 async function setupAllListingsButton() {
   const allListingsButton = document.querySelector("#all_listings_btn");
+  const spinner = document.getElementById("spinnerAllListings");
 
   allListingsButton.addEventListener("click", async () => {
+    
+    spinner.classList.remove("hidden");
+    allListingsButton.textContent = "Loading...";
+
     await getListings();
+
+    spinner.classList.add("hidden");
+    allListingsButton.textContent = "All Listings";
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   setupAllListingsButton();
 
-  const allListingsButton = document.querySelector("#all_listings_btn");
-  allListingsButton.click();
+  // const allListingsButton = document.querySelector("#all_listings_btn");
+  // allListingsButton.click();
 });
 
 /**
@@ -70,6 +78,8 @@ profileButton();
 async function ascendingButton() {
   const sortByAscendingButton = document.querySelector("#newest_btn");
   sortByAscendingButton.addEventListener("click", async () => {
+    // const spinner = document.getElementById("spinnerNewest");
+    sortByAscendingButton.textContent = "Loading...";
     const sortField = "created";
     const sortOrder = "asc";
     const limit = 100;
@@ -87,6 +97,7 @@ async function ascendingButton() {
       console.log("Sorted Listings (Ascending):", data);
 
       displayListings(data);
+      sortByAscendingButton.textContent = "Oldest";
     } catch (error) {
       console.error("Error fetching sorted listings:", error.message);
     }
@@ -98,6 +109,7 @@ ascendingButton();
 async function oldestListingsButton() {
   const sortByDescendingButton = document.querySelector("#oldest_btn");
   sortByDescendingButton.addEventListener("click", async () => {
+    sortByDescendingButton.textContent = "Loading...";
     const sortField = "created";
     const sortOrder = "desc";
     const limit = 100;
@@ -115,6 +127,7 @@ async function oldestListingsButton() {
       console.log("Sorted Listings (Descending):", data);
 
       displayListings(data);
+      sortByDescendingButton.textContent = "Newest";
     } catch (error) {
       console.error("Error fetching sorted listings:", error.message);
     }
@@ -128,7 +141,7 @@ export function getHighestBidAmount(bids) {
     const highestBid = bids.slice().sort((a, b) => b.amount - a.amount)[0];
     return highestBid.amount;
   } else {
-    return 0; 
+    return 0;
   }
 }
 
@@ -145,7 +158,6 @@ export async function displayListings(listings) {
 
   const currentTime = new Date().getTime();
 
- 
   const isSorted = listings.some((listing, index) => {
     if (index > 0) {
       const previousEndsAt = new Date(listings[index - 1].endsAt).getTime();
@@ -156,7 +168,7 @@ export async function displayListings(listings) {
   });
 
   const processedListings = isSorted
-    ? listings 
+    ? listings
     : listings
         .map((listing) => {
           if (listing.media && listing.media.length > 0) {
