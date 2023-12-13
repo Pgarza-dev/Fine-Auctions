@@ -24,7 +24,7 @@ export default defineConfig({
         auction: path.resolve(__dirname, "src/auction_item/index.html"),
         norsk_auction_item: path.resolve(
           __dirname,
-          "src/norwegian/auction_item/norsk_auction.html",
+          "src/norwegian/auction_item/index.html",
         ),
         norsk_landing_page: path.resolve(
           __dirname,
