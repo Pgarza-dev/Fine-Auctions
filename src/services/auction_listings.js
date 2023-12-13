@@ -282,6 +282,12 @@ export async function displayListings(listings) {
       link.href = "auction_item/index.html?id=" + listing.id;
       listingContainer.appendChild(link);
 
+      const norskActive = document.querySelector(".norsk-active");
+
+      if (norskActive) {
+        link.href = "../auction_item/index.html?id=" + listing.id;
+      }
+
       const img = document.createElement("img");
       img.classList.add("rounded-t-lg", "w-full", "h-56", "object-cover");
       img.src = listing.media[0];

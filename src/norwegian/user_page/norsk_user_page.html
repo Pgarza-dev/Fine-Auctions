@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../main.js"></script>
-    <script type="module" src="../utils/userProfilePageTabs.js"></script>
-    <script type="module" src="../page_scripts/user_page.js"></script>
+    <script type="module" src="../../main.js"></script>
+    <script type="module" src="../../utils/userProfilePageTabs.js"></script>
+    <script type="module" src="../../page_scripts/user_page.js"></script>
     <script
       type="module"
-      src="../page_scripts/create_auction_listing.js"
+      src="../../page_scripts/create_auction_listing.js"
     ></script>
 
-    <title>User Profile Page</title>
+    <title>Norsk User Profile Page</title>
     <script
       src="https://kit.fontawesome.com/a6b44b4960.js"
       crossorigin="anonymous"
@@ -38,7 +38,7 @@
             <a
               lang="no"
               class="ps-2 underline-offset-4 transition-all hover:underline"
-              href="../norwegian/user_page/norsk_user_page.html"
+              href="#"
               >Norsk</a
             >
           </div>
@@ -48,7 +48,7 @@
           >
             <span id="profile_username" class="pe-4">User name</span>
             <span class="italic"
-              >Credits: <span id="total_credits"> User 1000</span>
+              >Kreditter: <span id="total_credits"> User 1000</span>
             </span>
           </div>
           <div>
@@ -57,7 +57,7 @@
               data-slot="signOutBtn"
               class="me-2 rounded-lg border-2 border-primary-button px-8 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
               href="../login/index.html"
-              >Sign out</a
+              >Logg av</a
             >
           </div>
         </div>
@@ -67,7 +67,7 @@
           class="m-auto flex max-w-2xl flex-col items-center pt-4 text-center"
         >
           <div class="mix-blend flex w-full items-center">
-            <a href="../index.html">
+            <a href="../landing_page/norsk_landing_page.html">
               <img
                 class="w-40"
                 src="/images/logo.png"
@@ -75,8 +75,8 @@
               />
             </a>
             <p class="slogan-text" id="animatedText">
-              Welcome to your profile page! Here you can see your bids, sell
-              items and change your profile avatar.
+              Velkommen til din profilside! Her kan du se budene dine, selge
+              elementer og endre profilavataren din.
             </p>
           </div>
         </div>
@@ -85,9 +85,9 @@
             <a
               id="auctionLink"
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
-              href="../index.html"
+              href="../landing_page/norsk_landing_page.html"
             >
-              <span class="word">Auctions</span>
+              <span class="word">Auksjoner</span>
             </a>
 
             <a
@@ -95,7 +95,7 @@
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href="../user_page/index.html"
             >
-              <span class="word">Profile</span>
+              <span class="word">Profil</span>
             </a>
 
             <a
@@ -103,7 +103,7 @@
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href="../about/index.html"
             >
-              <span class="word">About us</span>
+              <span class="word">Om oss</span>
             </a>
           </div>
         </div>
@@ -144,7 +144,7 @@
                 aria-controls="bid-example"
                 aria-selected="false"
               >
-                Bids
+                Bud
               </button>
             </li>
             <li class="me-2" role="presentation">
@@ -156,7 +156,7 @@
                 aria-controls="dashboard-example"
                 aria-selected="false"
               >
-                New Listing
+                Ny oppføring
               </button>
             </li>
             <li class="me-2" role="presentation">
@@ -168,12 +168,12 @@
                 aria-controls="settings-example"
                 aria-selected="false"
               >
-                Settings
+                Innstillinger
               </button>
             </li>
           </ul>
           <span id="creditsContainer"
-            >Credits: <span id="totalCredits">0</span></span
+            >Kreditter: <span id="totalCredits">0</span></span
           >
         </div>
         <div id="tabContentExample" class="m-auto max-w-4xl">
@@ -218,14 +218,15 @@
                     id="auctionItemTitle"
                     name="auctionItemTitle"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
-                    placeholder="Title of auction item"
+                    placeholder="Tittel på auksjonsobjekt
+"
                     required
                   />
                   <label
                     for="auctionItemTitle"
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
-                    >Title of auction item</label
-                  >
+                    >Tittel på auksjonsobjekt
+                  </label>
                   <div id="titleError"></div>
                 </div>
 
@@ -235,13 +236,13 @@
                     id="auctionItemDescription"
                     name="auctionItemDescription"
                     class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
-                    placeholder="Description of auction item"
+                    placeholder="Beskrivelse av auksjonsobjekt"
                   />
                   <label
                     for="auctionItemDescription"
                     required
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
-                    >Description of auction item</label
+                    >Beskrivelse av auksjonsobjekt</label
                   >
                   <div id="description-error"></div>
                 </div>
@@ -274,7 +275,7 @@
                     for="auctionItemImageUrl"
                     required
                     class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
-                    >Image url</label
+                    >URL-adresse for bilde</label
                   >
                   <div id="description-error"></div>
                 </div>
@@ -291,7 +292,7 @@
                     for="end_date"
                     required
                     class="peer absolute -top-5 left-0 text-sm text-white transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-white peer-focus:opacity-100"
-                    >End date</label
+                    >Sluttdato</label
                   >
                   <div id="date-error"></div>
                 </div>
@@ -302,7 +303,7 @@
                     type="submit"
                     id="sell_auction_item_btn"
                   >
-                    SELL ITEM
+                    SELG VARE
                   </button>
                 </div>
               </form>
@@ -334,7 +335,7 @@
                   for="avatar_url_input"
                   required
                   class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
-                  >Image url</label
+                  >URL-adresse for bilde</label
                 >
                 <div id="description-error"></div>
               </div>
@@ -345,7 +346,7 @@
                   type="submit"
                   id="updateUserAvatarBtn"
                 >
-                  ADD AVATAR
+                  LEGG TIL AVATAR
                 </button>
               </div>
             </form>
@@ -368,7 +369,7 @@
             <h4 class="pb-4 font-semibold">Contact information</h4>
           </div>
           <ul>
-            <li>Auction House</li>
+            <li>Fine Auctions</li>
             <li>Karl Johans Gate,</li>
             <li>Oslo Norway</li>
             <li>Phone +47 12 34 56 78</li>

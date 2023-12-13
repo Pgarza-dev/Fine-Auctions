@@ -22,6 +22,7 @@ export default defineConfig({
         user: path.resolve(__dirname, "src/user_page/index.html"),
         subscribe: path.resolve(__dirname, "src/subscribe/index.html"),
         auction: path.resolve(__dirname, "src/auction_item/index.html"),
+        norwegian: path.resolve(__dirname, "src/norwegian/index.html"),
       },
     },
   },

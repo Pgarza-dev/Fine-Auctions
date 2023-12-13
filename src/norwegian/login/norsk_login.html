@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Norsk Log in</title>
+    <script type="module" src="../../main.js"></script>
+    <script type="module" src="../../utils/tabs.js"></script>
+    <script type="module" src="../../page_scripts/login.js"></script>
+    <script type="module" src="../../page_scripts/signup.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/a6b44b4960.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <section class="bg-primary-background p-2">
+        <div class="m-auto flex max-w-7xl items-center justify-between p-2">
+          <div class="text-white">
+            <a
+              class="pe-2 underline-offset-4 transition-all hover:underline"
+              href="../../index.html"
+              >English</a
+            >
+            <a
+              lang="no"
+              class="norsk-active ps-2 underline-offset-4 transition-all hover:underline"
+              href="#"
+              >Norsk</a
+            >
+          </div>
+          <div>
+            <a
+              id="loginBtn"
+              class="me-2 rounded-lg border-2 border-primary-button px-8 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
+              href=""
+              >Logg på</a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="flex flex-wrap">
+        <div
+          class="m-auto flex max-w-2xl flex-col items-center pt-4 text-center"
+        >
+          <div class="mix-blend flex w-full items-center">
+            <a href="../../norwegian/landing_page/norsk_landing_page.html">
+              <img
+                class="w-40"
+                src="/images/logo.png"
+                alt="Fine Auctions logo"
+              />
+            </a>
+            <p class="slogan-text ps-5 font-medium" id="animatedText">
+              La oss gjøre det! Du er bare et par klikk unna neste
+              ekstraordinære finne. Registrer deg eller logg inn for å starte
+              budgivning!
+            </p>
+          </div>
+        </div>
+        <div class="m-auto flex max-w-2xl justify-evenly text-2xl">
+          <div>
+            <a
+              id="auctionLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              href="../landing_page/norsk_landing_page.html"
+              >Auksjoner</a
+            >
+
+            <a
+              id="profileLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              href="#"
+              >Profil</a
+            >
+
+            <a
+              id="aboutLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              href=""
+              >Om oss</a
+            >
+          </div>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section>
+        <div
+          class="m-auto mb-4 flex max-w-4xl items-center border-b border-gray-200 dark:border-gray-700"
+        >
+          <ul
+            class="-mb-px flex flex-wrap text-center text-sm font-medium text-gray-500 dark:text-gray-400"
+            id="tabs-example"
+            role="tablist"
+          >
+            <li class="me-2" role="presentation">
+              <button
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 text-lg font-semibold hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                id="dashboard-tab-example"
+                type="button"
+                role="tab"
+                aria-controls="dashboard-example"
+                aria-selected="false"
+              >
+                Registrering
+              </button>
+            </li>
+            <li class="me-2" role="presentation">
+              <button
+                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 text-lg font-semibold hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                id="settings-tab-example"
+                type="button"
+                role="tab"
+                aria-controls="settings-example"
+                aria-selected="false"
+              >
+                Logg på
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div id="tabContentExample" class="m-auto max-w-4xl">
+          <div
+            class="hidden rounded-lg dark:bg-gray-800"
+            id="dashboard-example"
+            role="tabpanel"
+            aria-labelledby="dashboard-tab-example"
+          >
+            <section class="gap-6 sm:gap-8 sm:p-8">
+              <div class="pb-10">
+                <div class="border-b-4 border-black pb-10 font-semibold">
+                  <h2 class="text-2xl">Opprett ny konto</h2>
+                </div>
+                <div class="pt-10">
+                  <p>
+                    Opprett en konto i dag og begynn å by på din neste
+                    ekstraordinært finne!
+                  </p>
+                </div>
+              </div>
+
+              <div id="api-error" class="mt-2 text-red-500"></div>
+              <form
+                action="../user_page/index.html"
+                method="POST"
+                id="register-form"
+                class="flex w-full flex-col items-start gap-12"
+              >
+                <div class="relative w-full">
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="username"
+                    required
+                  />
+                  <label
+                    for="username"
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Brukernavn</label
+                  >
+                  <div id="name-error"></div>
+                </div>
+
+                <div class="relative w-full">
+                  <input
+                    type="email"
+                    id="registerEmail"
+                    name="registerEmail"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="@noroff.no / @stud.noroff.no"
+                    required
+                  />
+                  <label
+                    for="registerEmail"
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Epost</label
+                  >
+                  <div id="email-error"></div>
+                </div>
+
+                <div class="relative w-full">
+                  <input
+                    type="password"
+                    id="registerPassword"
+                    name="registerPassword"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="Enter your password"
+                    minlength="8"
+                  />
+                  <label
+                    for="registerPassword"
+                    required
+                    class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                    >Skriv inn passordet ditt</label
+                  >
+                  <div id="password-error"></div>
+                </div>
+                <div class="relative w-full">
+                  <input
+                    type="password"
+                    id="repeatPassword"
+                    name="repeatPassword"
+                    class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                    placeholder="Repeat password"
+                    minlength="8"
+                  />
+                  <label
+                    for="repeatPassword"
+                    class="peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-black peer-focus:opacity-100"
+                    >Gjenta passord</label
+                  >
+                  <div id="repeatPassword-error"></div>
+                </div>
+
+                <div class="w-full border-b-4 border-black pb-10">
+                  <button
+                    id="register-btn"
+                    class="hover:text-primary-900 flex h-10 max-w-lg items-center justify-center bg-primary-button px-24 py-8 text-center text-white transition-all duration-500 ease-in-out hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
+                    type="submit"
+                  >
+                    Registrering
+                  </button>
+                </div>
+                <div id="registration-success-message"></div>
+              </form>
+            </section>
+          </div>
+          <div
+            class="hidden rounded-lg p-4 dark:bg-gray-800"
+            id="settings-example"
+            role="tabpanel"
+            aria-labelledby="settings-tab-example"
+          >
+            <section class="flex flex-col gap-6 sm:gap-8 sm:p-8">
+              <div>
+                <div class="text-black">
+                  <div class="border-b-4 border-black pb-10 font-semibold">
+                    <h2 class="text-2xl">Log in</h2>
+                  </div>
+                  <div class="pb-10 pt-10">
+                    <p id="registration-success-message">
+                      Logg inn og begynn å by på ditt neste ekstraordinære funn!
+                    </p>
+                  </div>
+                </div>
+
+                <form
+                  action="../user_page/index.html"
+                  method="POST"
+                  id="login-form"
+                  class="flex flex-col items-start gap-12"
+                >
+                  <div class="relative w-full">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                      placeholder="@noroff.no / @stud.noroff.no"
+                      required
+                    />
+                    <label
+                      for="email"
+                      class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                      >Epost</label
+                    >
+                    <div id="email-error"></div>
+                  </div>
+
+                  <div class="relative w-full">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="bg-primary-900 peer h-10 w-full max-w-lg border px-3 py-2 text-black focus:outline-none"
+                      placeholder="Enter your password"
+                      minlength="8"
+                    />
+                    <label
+                      for="password"
+                      required
+                      class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                      >Skriv inn passordet ditt</label
+                    >
+                    <div id="password-error"></div>
+                  </div>
+
+                  <div class="w-full border-b-4 border-black pb-10">
+                    <button
+                      class="hover:text-primary-900 flex h-10 max-w-lg items-center justify-center rounded-lg bg-primary-button px-24 py-8 text-center text-white transition-all duration-500 ease-in-out hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-primary-button dark:hover:bg-red-700 dark:focus:ring-red-900"
+                      type="submit"
+                      id="login-btn"
+                    >
+                      <svg
+                        id="spinner"
+                        aria-hidden="true"
+                        role="status"
+                        class="me-3 hidden h-8 w-8 animate-spin text-white"
+                        viewBox="0 0 100 101"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                          fill="#E5E7EB"
+                        />
+                        <path
+                          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      Logg på
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="border border-t-2 border-gray-200 bg-primary-background text-white"
+    >
+      <div class="flex justify-around p-12">
+        <div>
+          <div>
+            <h4 class="e pb-4 font-semibold">Contact information</h4>
+          </div>
+          <ul>
+            <li>Fine Auctions</li>
+            <li>Karl Johans Gate,</li>
+            <li>Oslo Norway</li>
+            <li>Phone +47 12 34 56 78</li>
+            <li>Email: auctionhouse@post.no</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="e pb-4 font-semibold">Opening hours</h4>
+          <ul>
+            <li>Monday - Friday: 10:00 - 18:00</li>
+            <li>Saturday: 10:00 - 16:00</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+        <div class="flex flex-col">
+          <h4 class="e pb-4 font-semibold">Sign up for our newsletter</h4>
+          <span>Get the latest news, updates and invitations on email. </span>
+          <div class="pt-10">
+            <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
+            <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
+            <a class="pe-4" href=""><i class="fa-solid fa-paper-plane"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

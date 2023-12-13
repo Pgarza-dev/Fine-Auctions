@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../../main.js"></script>
+    <script
+      type="module"
+      src="../../auction_item/single_auction_item.js"
+    ></script>
+    <script type="module" src="../../utils/toolTips.js"></script>
+    <title>Norsk Auction item</title>
+    <script
+      src="https://kit.fontawesome.com/a6b44b4960.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <section class="fixed z-50 w-full bg-primary-background p-2">
+        <div class="m-auto flex max-w-7xl items-center justify-between p-2">
+          <div class="text-white">
+            <a
+              class="pe-2 underline-offset-4 transition-all hover:underline"
+              href="../../index.html"
+              >English</a
+            >
+            <a
+              lang="no"
+              class="active ps-2 underline-offset-4 transition-all hover:underline"
+              href="#"
+              >Norsk</a
+            >
+          </div>
+          <div
+            id="user_credits_container"
+            class="hidden border-spacing-4 border pb-1 pe-4 ps-4 pt-1 text-white"
+          >
+            <span id="profile" class="pe-4">Username</span>
+            <span class="italic"
+              >Kreditter: <span id="credits">1000</span>
+            </span>
+          </div>
+          <div>
+            <a
+              id="loginBtn"
+              class="me-2 rounded-lg border-2 border-primary-button px-8 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
+              href="/src/login/index.html"
+              >Logg på</a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="flex flex-wrap pt-12">
+        <div
+          class="m-auto hidden max-w-4xl flex-col items-center pt-4 text-start md:block"
+        >
+          <div class="mix-blend flex w-full items-center">
+            <a href="../landing_page/norsk_landing_page.html">
+              <img
+                class="w-40"
+                src="/images/logo.png"
+                alt="Fine Auctions logo"
+              />
+            </a>
+            <div class="flex flex-col">
+              <p class="slogan-text ps-5 font-medium" id="animatedText">
+                Oppdag skatter ved fingertuppene! Bli med på vår
+                auksjonsplattform hvor hvert bud er en mulighet og hvert element
+                forteller en historie. Start budgivningen nå!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="m-auto flex max-w-2xl justify-evenly">
+          <div class="">
+            <a
+              id="auctionLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              href="../landing_page/norsk_landing_page.html"
+            >
+              <span class="word">Auksjoner</span>
+            </a>
+
+            <a
+              id="profileLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              href="../user_page/norsk_user_page.html"
+            >
+              <span class="word">Profil</span></a
+            >
+
+            <a
+              id="aboutLink"
+              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              href="../about/index.html"
+            >
+              <span class="word">Om oss</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="pt-20">
+        <div
+          id="auction_item_container"
+          class="m-auto flex max-w-6xl flex-col items-center justify-center gap-4 lg:flex-row lg:gap-40"
+        >
+          <div class="mb-4 lg:mb-0">
+            <a href="" id="auctionItemLink">
+              <img
+                class="auction-card object-cover"
+                src="/images/beautiful-vintage-collage-composition.jpg"
+                alt=""
+                id="auctionItemImage"
+              />
+            </a>
+          </div>
+
+          <div class="max-w-sm bg-gray-50 bg-opacity-50 p-4 dark:bg-gray-800">
+            <h1 class="pb-4 font-semibold" id="auctionItemTitle">
+              Auction item title
+            </h1>
+            <div class="flex">
+              <i class="fa-solid fa-quote-left pe-2 pt-4 text-primary-text"></i>
+              <p class="pt-4 italic" id="auctionItemDescription">
+                Description of auction item
+              </p>
+              <i
+                class="fa-solid fa-quote-right ps-2 pt-4 text-primary-text"
+              ></i>
+            </div>
+            <div class="text-2xl font-semibold">
+              <span
+                >Current bid: <span id="currentBidAmount">26,697</span></span
+              >
+            </div>
+            <div>
+              <span class="pb-4 pt-4"
+                >Time left: <span id="timeLeft">Displayed time</span></span
+              >
+            </div>
+            <div
+              class="border-t-4 border-black pb-4 lg:pb-10"
+              id="registrationInfo"
+            >
+              <p class="pt-6 text-lg">
+                Registrering for å legge inn bud, kjøpere og selgere må
+                Registrer deg før budgivning. Hvis du ennå ikke har registrert
+                deg hos oss men vennligst følg
+                <a
+                  class="font-semibold underline-offset-2 hover:underline"
+                  href="../login/login.html"
+                  >Registrer lenke</a
+                >.
+              </p>
+            </div>
+            <form action="/" method="POST" id="bid_form">
+              <div class="relative">
+                <input
+                  type="number"
+                  id="bidNumber"
+                  name="bidNumber"
+                  class="bg-primary-900 peer h-10 w-full max-w-lg border px-6 py-8 text-black focus:outline-none"
+                  placeholder="Your bid nok"
+                />
+                <label
+                  for="bidNumber"
+                  required
+                  class="peer-focus:text-b peer absolute -top-5 left-0 text-sm text-black transition-all duration-500 placeholder-shown:-top-2 peer-placeholder-shown:text-base peer-placeholder-shown:opacity-0 peer-focus:-top-5 peer-focus:text-sm peer-focus:opacity-100"
+                  >Skriv inn budet ditt</label
+                >
+              </div>
+              <div class="border-b-4 border-black pb-4 pt-4">
+                <button
+                  data-tooltip-target="tooltip-default"
+                  class="hover:text-primary-900 flex h-10 w-full max-w-lg items-center justify-center border bg-black px-8 py-2 text-white transition-all duration-500 ease-in-out hover:bg-white hover:text-black focus:outline-none"
+                  type="submit"
+                  id="sendBidBtn"
+                >
+                  SEND BID
+                </button>
+                <div
+                  id="tooltip-default"
+                  role="tooltip"
+                  class="tooltip invisible absolute z-10 inline-block rounded-lg bg-primary-button px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                >
+                  Du må være innlogget for å legge inn bud
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="flex justify-center pt-12">
+        <div>
+          <h2 class="bid_history_text pe-20 text-2xl">Bud Historie</h2>
+          <ol
+            id="bidHistoryList"
+            class="relative flex flex-col-reverse border-s-2 border-black bg-gray-50 bg-opacity-50 p-12 dark:border-gray-700"
+          >
+            <li class="mb-10 ms-6">
+              <span
+                class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900"
+              >
+                <svg
+                  class="h-2.5 w-2.5 text-blue-800 dark:text-blue-300"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                  />
+                </svg>
+              </span>
+              <h3
+                id="latestBiddersName"
+                class="mb-1 flex items-center ps-3 text-lg font-semibold text-gray-900 dark:text-white"
+              >
+                Username
+                <span
+                  class="me-2 ms-3 rounded bg-blue-100 px-2.5 py-0.5 ps-3 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+                  >Latest</span
+                >
+              </h3>
+              <time
+                id="latestBiddingDate"
+                class="mb-2 block ps-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
+                >Released on January 13th, 2022</time
+              >
+              <p
+                id="latestBiddingAmount"
+                class="mb-4 ps-3 text-base font-normal text-gray-500 dark:text-gray-400"
+              >
+                Bidder information / bid amount.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <div class="relative flex h-96 items-center justify-center">
+          <img
+            class="h-full w-full"
+            src="/images/Rectangle 13.png"
+            alt="background triangle shape"
+          />
+          <div
+            class="absolute m-auto flex max-w-7xl flex-col items-center pt-40 text-white"
+          >
+            <p class="pb-8 text-center text-xl text-white">
+              Receive auction news, updates and invitations via email
+            </p>
+            <p class="pb-8 text-center text-base text-white">
+              Bli den første som får vite om nye auksjoner, kommende
+              arrangementer og mer – meld deg på vårt nyhetsbrev
+            </p>
+            <a
+              class="me-2 rounded-lg border border-primary-button px-5 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-1 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
+              href=""
+              >SUBSCRIBE NOW</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="border border-t-2 border-gray-200 bg-primary-background text-white"
+    >
+      <div class="flex justify-around p-12">
+        <div>
+          <div>
+            <h4 class="pb-4 font-semibold">Contact information</h4>
+          </div>
+          <ul>
+            <li>Fine Auctions</li>
+            <li>Karl Johans Gate,</li>
+            <li>Oslo Norway</li>
+            <li>Phone +47 12 34 56 78</li>
+            <li>Email: fineauctions@post.no</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="pb-4 font-semibold">Opening hours</h4>
+          <ul>
+            Mandag - fredag: 10:00
+            <li>- 18:00</li>
+            Lørdag: 10:
+            <li>00 - 16:00</li>
+            <li>Søndag: Stengt</li>
+          </ul>
+        </div>
+        <div class="flex flex-col">
+          <h4 class="pb-4 font-semibold">Meld deg på vårt nyhetsbrev</h4>
+          <span
+            >Få de siste nyhetene, oppdateringene og invitasjonene på e-post.
+          </span>
+          <div class="pt-10">
+            <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
+            <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
+            <a class="pe-4" href=""><i class="fa-solid fa-paper-plane"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

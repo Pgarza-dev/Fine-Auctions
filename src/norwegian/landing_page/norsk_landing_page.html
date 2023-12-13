@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./main.js"></script>
-    <script type="module" src="./services/auction_listings.js"></script>
-    <title>Fine Auctions</title>
+    <script type="module" src="../../main.js"></script>
+    <script type="module" src="../../services/auction_listings.js"></script>
+    <title>Norsk Fine Auctions</title>
     <script
       src="https://kit.fontawesome.com/a6b44b4960.js"
       crossorigin="anonymous"
@@ -26,14 +26,14 @@
               id="englishLink"
               lang="en"
               class="pe-2 underline-offset-4 transition-all hover:underline"
-              href="#"
+              href="../../index.html"
               >English</a
             >
             <a
               id="norwegianLink"
               lang="no"
-              class="ps-2 underline-offset-4 transition-all hover:underline"
-              href="norwegian/landing_page/norsk_landing_page.html"
+              class="ps-2 underline-offset-4 transition-all hover:underline norsk-active"
+              href="#"
               >Norsk</a
             >
           </div>
@@ -41,8 +41,8 @@
             <a
               id="loginBtn"
               class="me-2 rounded-lg border-2 border-primary-button px-8 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
-              href="login/index.html"
-              >Log in</a
+              href="../login/norsk_login.html"
+              >Logg på</a
             >
           </div>
         </div>
@@ -60,9 +60,9 @@
               />
             </a>
             <p class="slogan-text ps-5 font-medium" id="animatedText">
-              Elevate your bids, amplify your treasures. Join our auction
-              platform where every item tells a story, and every bid is an
-              opportunity.
+              Løft budene dine, forsterk skattene dine. Bli med på vår auksjon
+              plattform der hvert element forteller en historie, og hvert bud er
+              en sjanse.
             </p>
           </div>
         </div>
@@ -71,20 +71,20 @@
             <a
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href="#auctionsSection"
-              >Auctions</a
+              >Auksjoner</a
             >
 
             <a
               id="profileLink"
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
-              href="./login/index.html"
-              >Profile</a
+              href="../../norwegian/login/norsk_login.html"
+              >Profil</a
             >
 
             <a
               class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
               href="./about/index.html"
-              >About us</a
+              >Om oss</a
             >
           </div>
         </div>
@@ -97,7 +97,7 @@
           <div class="relative w-full overflow-hidden">
             <img
               class="scaled-image w-full object-cover object-center"
-              src="public/images/dark-floral-seamless-pattern-luxury-wallpaper-vintage-texture-generative-ai.jpg"
+              src="/images/dark-floral-seamless-pattern-luxury-wallpaper-vintage-texture-generative-ai.jpg"
               alt="painting of vintage coast landscape with boats and gondolas"
             />
           </div>
@@ -106,7 +106,7 @@
 
       <section>
         <div class="flex justify-center p-10 text-center text-8xl">
-          <h1 id="auctionsSection">Auctions</h1>
+          <h1 id="auctionsSection">Auksjoner</h1>
         </div>
         <div
           class="flex justify-center bg-primary-background p-4 ring ring-black ring-offset-4"
@@ -135,7 +135,7 @@
                   fill="currentColor"
                 />
               </svg>
-              All listings
+              Alle oppføringer
             </button>
           </div>
 
@@ -163,7 +163,7 @@
                   fill="currentColor"
                 />
               </svg>
-              Newest
+              Nyeste
             </button>
           </div>
 
@@ -191,12 +191,12 @@
                   fill="currentColor"
                 />
               </svg>
-              Ending soon
+              Slutter snart
             </button>
           </div>
 
           <form id="search_form" class="flex items-center">
-            <label for="search_input" class="sr-only">Search</label>
+            <label for="search_input" class="sr-only">Søke</label>
             <div class="relative w-full">
               <div
                 class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
@@ -225,7 +225,6 @@
                 required
               />
             </div>
-            
           </form>
         </div>
         <div
@@ -379,16 +378,16 @@
             class="absolute m-auto flex max-w-7xl flex-col items-center pt-40 text-white"
           >
             <p class="pb-8 text-center text-4xl text-white">
-              Receive auction news, updates and invitations via email
+              Motta auksjonsnyheter, oppdateringer og invitasjoner via e-post
             </p>
             <p class="pb-8 text-center text-xl text-white">
-              Be the first to know about new auctions, upcoming events and more
-              – sign up for our newsletter
+              Bli den første som får vite om nye auksjoner, kommende
+              arrangementer og mer – meld deg på vårt nyhetsbrev
             </p>
             <a
               class="me-2 rounded-lg border border-primary-button px-5 py-2.5 text-center text-sm font-medium text-white focus-within:bg-primary-button focus-within:text-white hover:bg-primary-button hover:text-white focus:outline-none focus:ring-1 focus:ring-primary-button dark:border-red-500 dark:text-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
               href=""
-              >SUBSCRIBE NOW</a
+              >ABONNER NÅ</a
             >
           </div>
         </div>
@@ -398,31 +397,33 @@
       <div class="flex justify-around p-12">
         <div>
           <div>
-            <h3 class="pb-4 font-semibold text-zinc-700">
-              Contact information
-            </h3>
+            <h3 class="pb-4 font-semibold text-zinc-700">Kontaktinformasjon</h3>
           </div>
           <ul>
-            <li>Auction House</li>
-            <li>Karl Johans Gate,</li>
-            <li>Oslo Norway</li>
-            <li>Phone +47 12 34 56 78</li>
-            <li>Email: auctionhouse@post.no</li>
+            <li>Auksjonshus</li>
+            <li>Karl Johans gate,</li>
+            <li>Oslo, Norge</li>
+            <li>Telefon +47 12 34 56 78</li>
+            <li>E-post: auctionhouse@post.no</li>
           </ul>
         </div>
         <div>
           <h3 class="pb-4 font-semibold text-zinc-700">Opening hours</h3>
           <ul>
-            <li>Monday - Friday: 10:00 - 18:00</li>
-            <li>Saturday: 10:00 - 16:00</li>
-            <li>Sunday: Closed</li>
+            Mandag - fredag: 10:00
+            <li>- 18:00</li>
+            Lørdag: 10:00
+            <li>- 16:00</li>
+            <li>Søndag: Stengt</li>
           </ul>
         </div>
         <div class="flex flex-col">
           <h3 class="pb-4 font-semibold text-zinc-700">
             Sign up for our newsletter
           </h3>
-          <span>Get the latest news, updates and invitations on email. </span>
+          <span
+            >Få de siste nyhetene, oppdateringene og invitasjonene på e-post.
+          </span>
           <div class="pt-10">
             <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
             <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
