@@ -22,9 +22,9 @@ export default defineConfig({
         user: path.resolve(__dirname, "src/user_page/index.html"),
         subscribe: path.resolve(__dirname, "src/subscribe/index.html"),
         auction: path.resolve(__dirname, "src/auction_item/index.html"),
-        norsk_auction: path.resolve(
+        norsk_auction_item: path.resolve(
           __dirname,
-          "src/norwegian/auction_item/index.html",
+          "src/norwegian/auction_item/norsk_auction.html",
         ),
         norsk_landing_page: path.resolve(
           __dirname,
@@ -37,6 +37,10 @@ export default defineConfig({
         norsk_user_page: path.resolve(
           __dirname,
           "src/norwegian/user_page/norsk_user_page.html",
+        ),
+        norsk_om_oss: path.resolve(
+          __dirname,
+          "src/norwegian/om_oss/norsk_om_oss.html",
         ),
       },
     },
