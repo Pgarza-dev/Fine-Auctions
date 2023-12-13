@@ -40,7 +40,7 @@ export default defineConfig({
         ),
         norsk_om_oss: path.resolve(
           __dirname,
-          "src/norwegian/om_oss/norsk_om_oss.html",
+          "src/norwegian/om_oss/om_oss.html",
         ),
       },
     },
