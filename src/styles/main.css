@@ -6,12 +6,15 @@
   html {
     font-family:
       "EB Garamond",
+      "Roboto Slab",
+      "Lora",
       serif,
-      SF Pro,
-      ui-sans-serif,
+      sans-serif,
       system-ui,
-      Arial,
-      sans-serif;
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Helvetica Neue";
     scroll-behavior: smooth;
     /* background-image: url("https://images.unsplash.com/photo-1566041510632-30055e21a9cf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
     /* background-image: url("https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
@@ -22,6 +25,13 @@
     background-position: top;
     background-attachment: fixed;
   }
+}
+.lora {
+  font-family: "Lora";
+}
+
+.roboto-slab {
+  font-family: "Roboto Slab";
 }
 
 .slogan-text {
