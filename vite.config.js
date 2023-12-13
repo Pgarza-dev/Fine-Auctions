@@ -23,6 +23,22 @@ export default defineConfig({
         subscribe: path.resolve(__dirname, "src/subscribe/index.html"),
         auction: path.resolve(__dirname, "src/auction_item/index.html"),
         norwegian: path.resolve(__dirname, "src/norwegian/index.html"),
+        norsk_auction: path.resolve(
+          __dirname,
+          "src/norwegian/auction_item/index.html",
+        ),
+        norsk_landing_page: path.resolve(
+          __dirname,
+          "src/norwegian/landing_page/norsk_landing_page.html",
+        ),
+        norsk_login: path.resolve(
+          __dirname,
+          "src/norwegian/login/norsk_login.html",
+        ),
+        norsk_user_page: path.resolve(
+          __dirname,
+          "src/norwegian/user_page/norsk_user_page.html",
+        ),
       },
     },
   },
