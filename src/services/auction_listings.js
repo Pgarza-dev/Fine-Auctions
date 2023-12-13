@@ -5,18 +5,36 @@ import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 import { getActiveUser } from "../utils/handleLocalStorageUser.js";
 
 export async function getListings() {
-  const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?_seller=true&_bids=true&_active=true`;
+  const sortField = "created";
+  const sortOrder = "asc";
+  const limitPerPage = 100;
+  const targetListingCount = 500;
+
+  let offset = 0;
+  let fetchedListings = [];
 
   try {
-    const data = await fetcher({
-      url,
-      method: "GET",
-      needsAuth: false,
-    });
+    while (fetchedListings.length < targetListingCount) {
+      const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limitPerPage}&offset=${offset}&_seller=true&_bids=true&_active=true`;
 
-    console.log("Listings:", data);
-    displayListings(data);
-    return data;
+      const data = await fetcher({
+        url,
+        method: "GET",
+        needsAuth: false,
+      });
+
+      // If no more listings are available, break out of the loop
+      if (!data || data.length === 0) {
+        break;
+      }
+
+      fetchedListings = [...fetchedListings, ...data];
+      offset += limitPerPage;
+    }
+
+    console.log("Listings:", fetchedListings);
+    displayListings(fetchedListings);
+    return fetchedListings;
   } catch (error) {
     console.error("Error fetching listings:", error.message);
     return null;
@@ -79,24 +97,39 @@ async function ascendingButton() {
   sortByAscendingButton.addEventListener("click", async () => {
     // const spinner = document.getElementById("spinnerNewest");
     sortByAscendingButton.textContent = "Loading...";
-    const sortField = "created";
+    const sortField = "endsAt";
     const sortOrder = "asc";
     const limit = 100;
-    const offset = 0;
-
-    const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}?_seller=true&_bids=true&_active=true`;
+    const targetListingsCount = 500;
+    let offset = 0;
+    let fetchedListings = [];
 
     try {
-      const data = await fetcher({
-        url,
-        method: "GET",
-        needsAuth: false,
-      });
+      while (fetchedListings.length < targetListingsCount) {
+        const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}?sort=${sortField}&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}?_seller=true&_bids=true&_active=true`;
 
-      console.log("Sorted Listings (Ascending):", data);
+        const data = await fetcher({
+          url,
+          method: "GET",
+          needsAuth: false,
+        });
 
-      displayListings(data);
-      sortByAscendingButton.textContent = "Oldest";
+        if (data && data.length > 0) {
+          // Append the fetched listings to the result array
+          fetchedListings = [...fetchedListings, ...data];
+          offset += limit;
+        } else {
+          // Break the loop if there are no more listings to fetch
+          break;
+        }
+      }
+
+      console.log("Sorted Listings (Ascending):", fetchedListings);
+
+      // Display the first 500 listings
+      displayListings(fetchedListings.slice(0, targetListingsCount));
+
+      sortByAscendingButton.textContent = "Ending soon";
     } catch (error) {
       console.error("Error fetching sorted listings:", error.message);
     }
