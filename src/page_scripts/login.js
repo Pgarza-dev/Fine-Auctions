@@ -13,6 +13,8 @@ removeActiveUser();
 
 async function handleLogin(formDataObject) {
   const spinner = document.getElementById("spinner");
+  const norskActive = document.querySelector(".norsk-active");
+  ("norsk-active");
   const userData = {
     name: formDataObject.name,
     email: formDataObject.email,
@@ -20,7 +22,7 @@ async function handleLogin(formDataObject) {
   };
   const response = await loginUser(userData);
 
-  if (response.error) {
+  if (response.error || norskActive) {
     handleFormApiError([response.error]);
     Swal.fire({
       icon: "error",
