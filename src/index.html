@@ -2,7 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Website for selling and buying products via auction."
+    />
+    <meta name="author" content="Pablo Garza" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Fine Auctions" />
+    <meta
+      property="og:description"
+      content="Website for selling and buying products via auction."
+    />
+
     <script type="module" src="./main.js"></script>
     <script type="module" src="./services/auction_listings.js"></script>
     <title>Fine Auctions</title>
@@ -252,12 +263,18 @@
           </div>
         </div>
       </section>
+
       <a
         href="#auctionsSection"
         class="rolling-arrow fixed bottom-0 right-0 z-50 p-10 text-5xl text-black opacity-50 hover:opacity-100"
       >
-        <i class="fa-solid fa-arrow-up-long"></i>
+        <i
+          class="fa-solid fa-arrow-up-long flex flex-col items-center"
+          aria-label="up arrow to return to the top of the page"
+          ><p class="justify-center text-sm">up</p></i
+        >
       </a>
+
       <section class="pb-16 pt-10 sm:pb-0 sm:pt-6">
         <div class="relative flex h-96 items-center justify-center">
           <img
