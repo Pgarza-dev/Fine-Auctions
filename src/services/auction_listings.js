@@ -167,7 +167,7 @@ async function handleSearchInput(event) {
   const auctionCards = document.querySelectorAll(".auction_card");
 
   auctionCards.forEach((card) => {
-    const title = card.querySelector("h3").textContent.toLowerCase();
+    const title = card.querySelector("h2").textContent.toLowerCase();
     const description = card.querySelector("p").textContent.toLowerCase();
     const price = card.querySelector(".price").textContent.toLowerCase();
     const timeRemaining = card
@@ -292,7 +292,7 @@ export async function displayListings(listings) {
       titleLink.href = "auction_item/index.html?id=" + listing.id;
       textContainer.appendChild(titleLink);
 
-      const title = document.createElement("h3");
+      const title = document.createElement("h2");
       title.classList.add(
         "mb-2",
         "text-4xl",
