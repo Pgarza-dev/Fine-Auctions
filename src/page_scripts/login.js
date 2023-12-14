@@ -13,8 +13,7 @@ removeActiveUser();
 
 async function handleLogin(formDataObject) {
   const spinner = document.getElementById("spinner");
-  const norskActive = document.querySelector(".norsk-active");
-  ("norsk-active");
+
   const userData = {
     name: formDataObject.name,
     email: formDataObject.email,
@@ -22,14 +21,14 @@ async function handleLogin(formDataObject) {
   };
   const response = await loginUser(userData);
 
-  if (response.error || norskActive) {
+  if (response.error) {
     handleFormApiError([response.error]);
     Swal.fire({
       icon: "error",
       title: "Login failed",
       text: "Wrong password or email. Please try again",
-      background: "#yourBackgroundColor", // Set your desired background color
-      confirmButtonColor: "#D12600", // Set your desired button color
+      background: "#yourBackgroundColor",
+      confirmButtonColor: "#D12600",
     });
     spinner.classList.add("hidden");
   } else {
@@ -62,6 +61,7 @@ loginForm.addEventListener("submit", (event) => {
 function checkIfRegistered() {
   const urlParams = new URLSearchParams(window.location.search);
   const registered = urlParams.get("registered");
+  const norskActive = document.querySelector(".norsk-active");
 
   if (registered === "true") {
     alert("Registration successful! Please log in to access your profile.");
@@ -74,13 +74,13 @@ function checkIfRegistered() {
       registrationSuccessMessage.textContent =
         "Registration successful! Please log in to access your profile.";
     }
-  } else if (registered === "false") {
+  } else if (registered === "false" && norskActive) {
     Swal.fire({
       icon: "error",
       title: "Registration failed",
       text: "Check your password or email. Please try again",
-      background: "#yourBackgroundColor", // Set your desired background color
-      confirmButtonColor: "#D12600", // Set your desired button color
+      background: "#yourBackgroundColor",
+      confirmButtonColor: "#D12600",
     });
     spinner.classList.add("hidden");
   }
