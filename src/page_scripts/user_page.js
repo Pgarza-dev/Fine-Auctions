@@ -155,6 +155,7 @@ async function displayUserProfile() {
   const profileInformationContainer = document.querySelector(
     "#profile_information_container",
   );
+  profileInformationContainer.classList.add("hidden", "md:inline-block");
 
   if (!profileInformationContainer) {
     console.error("Profile Information container not found.");
@@ -203,6 +204,7 @@ async function userPageCredits() {
       "text-primary-background",
       "font-bold",
       "text-2xl",
+      "sm:text-normal",
     );
     creditsContainer.appendChild(totalCredits);
   } else {
@@ -305,14 +307,12 @@ async function displayBidHistory() {
 
         const timeRemainingDisplay = document.createElement("span");
 
-    
         const intervalId = setInterval(() => {
           timeRemaining -= 1000;
           formatHistoryTimeRemaining(timeRemaining, (formattedTime) => {
             timeRemainingDisplay.textContent = formattedTime;
           });
 
-          
           if (timeRemaining < 0) {
             clearInterval(intervalId);
           }
@@ -330,24 +330,42 @@ async function displayBidHistory() {
         timeLeftContainer.appendChild(timeRemainingDisplay);
 
         return `
-        <div class="flex flex-col items-center bg-white  bg-opacity-50 border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-s-lg" src="${
-              bid.listing.media[0]
-            }" alt="">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
-                  bid.listing.title
-                }</h5>
-                <p class="mb-2 text-sm font-normal text-gray-700 dark:text-gray-400">${
-                  bid.listing.description
-                }</p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">$${
-                  bid.amount
-                }</p>
-                <p class="mb-3 font-normal text-primary-text dark:text-gray-400">
-                ${formatHistoryTimeRemaining(timeRemaining)}
-              </p>            </div>
+
+        <section>
+        <div class="flex flex-col items-center bg-white bg-opacity-50 border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          <div
+            class="relative w-full overflow-hidden rounded-lg"
+          >
+            <img
+              class="my-bids-images object-cover object-center"
+              src="${bid.listing.media[0]}" alt="">
+            
+          </div>
+          <div class="flex flex-col flex-wrap justify-between p-4 leading-normal sm:w-40 md:w-full whitespace-normal">
+    <h5 class="mb-2  sm:text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
+      bid.listing.title
+    }</h5>
+    <p class="mb-2 text-lg sm:text-sm md:text-lg font-normal text-gray-700 dark:text-gray-400">${
+      bid.listing.description
+    }</p>
+    <p class="mb-3 text-lg sm:text-sm md:text-lg font-normal text-gray-700 dark:text-gray-400">$${
+      bid.amount
+    }</p>
+    <p class="mb-3 text-lg sm:text-sm md:text-lg font-normal text-primary-text dark:text-gray-400">${formatHistoryTimeRemaining(
+      timeRemaining,
+    )}</p>
+  </div>
         </div>
+      </section>
+
+
+
+
+
+
+
+      
+
         `;
       })
 

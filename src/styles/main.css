@@ -78,6 +78,11 @@
   width: 100%;
   height: 40rem;
 }
+.my-bids-images {
+  animation: scaleAnimation 50s infinite;
+  width: 100%;
+  height: 20rem;
+}
 
 @keyframes scaleAnimation {
   0% {

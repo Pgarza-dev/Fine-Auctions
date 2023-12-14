@@ -44,12 +44,12 @@
           </div>
           <div
             id="profile_information_container"
-            class="border-spacing-4 border pb-1 pe-4 ps-4 pt-1 text-white"
+            class="border-spacing-4 border pb-1 pe-4 ps-4 pt-1 text-sm text-white md:text-base lg:text-lg"
           >
             <span id="profile_username" class="pe-4">User name</span>
             <span class="italic"
-              >Credits: <span id="total_credits"> User 1000</span>
-            </span>
+              >Credits: <span id="total_credits"> User 1000</span></span
+            >
           </div>
           <div>
             <a
@@ -69,12 +69,15 @@
           <div class="mix-blend flex w-full items-center">
             <a href="../index.html">
               <img
-                class="w-40"
+                class="w-20 sm:w-40"
                 src="/images/logo.png"
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="slogan-text lora" id="animatedText">
+            <p
+              class="slogan-text lora hidden ps-5 text-lg font-medium sm:text-3xl md:block"
+              id="animatedText"
+            >
               Welcome to your profile page! Here you can see your bids, sell
               items and change your profile avatar.
             </p>
@@ -84,23 +87,21 @@
           <div>
             <a
               id="auctionLink"
-              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              class="pe-4 text-lg font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline sm:text-3xl"
               href="../index.html"
             >
               <span class="word">Auctions</span>
             </a>
-
             <a
               id="profileLink"
-              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              class="pe-4 text-lg font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline sm:text-3xl"
               href="../user_page/index.html"
             >
               <span class="word">Profile</span>
             </a>
-
             <a
               id="aboutLink"
-              class="pe-4 text-3xl font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline"
+              class="pe-4 text-lg font-bold text-zinc-600 underline-offset-8 transition-all hover:text-black hover:underline sm:text-3xl"
               href="../about/index.html"
             >
               <span class="word">About us</span>
@@ -362,12 +363,14 @@
     <footer
       class="border border-t-2 border-gray-200 bg-primary-background text-white"
     >
-      <div class="flex justify-around p-12">
-        <div>
+      <div class="flex flex-col justify-around p-4 md:flex-row md:p-12">
+        <div class="mb-8 md:mb-0">
           <div>
-            <h4 class="pb-4 font-semibold">Contact information</h4>
+            <h4 class="e pb-2 text-lg font-semibold md:pb-4 md:text-xl">
+              Contact information
+            </h4>
           </div>
-          <ul>
+          <ul class="text-sm md:text-base lg:text-lg">
             <li>Auction House</li>
             <li>Karl Johans Gate,</li>
             <li>Oslo Norway</li>
@@ -377,7 +380,7 @@
         </div>
         <div>
           <h4 class="pb-4 font-semibold">Opening hours</h4>
-          <ul>
+          <ul class="text-sm md:text-base lg:text-lg">
             <li>Monday - Friday: 10:00 - 18:00</li>
             <li>Saturday: 10:00 - 16:00</li>
             <li>Sunday: Closed</li>
@@ -386,10 +389,10 @@
         <div class="flex flex-col">
           <h4 class="pb-4 font-semibold">Sign up for our newsletter</h4>
           <span>Get the latest news, updates and invitations on email. </span>
-          <div class="pt-10">
-            <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
-            <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
-            <a class="pe-4" href=""><i class="fa-solid fa-paper-plane"></i></a>
+          <div class="pt-6 md:pt-10">
+            <a class="pe-4" href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a class="pe-4" href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a class="pe-4" href="#"><i class="fa-solid fa-paper-plane"></i></a>
           </div>
         </div>
       </div>
