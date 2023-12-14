@@ -18,7 +18,6 @@ export default defineConfig({
         main: path.resolve(__dirname, "src/index.html"),
         about: path.resolve(__dirname, "src/about/index.html"),
         login: path.resolve(__dirname, "src/login/index.html"),
-        profile: path.resolve(__dirname, "src/profile/index.html"),
         user: path.resolve(__dirname, "src/user_page/index.html"),
         subscribe: path.resolve(__dirname, "src/subscribe/index.html"),
         auction: path.resolve(__dirname, "src/auction_item/index.html"),
