@@ -12,6 +12,7 @@ import { makeApiCall } from "../services/makeApiCall.js";
 removeActiveUser();
 
 async function handleLogin(formDataObject) {
+  const spinner = document.getElementById("spinner");
   const userData = {
     name: formDataObject.name,
     email: formDataObject.email,
@@ -21,6 +22,14 @@ async function handleLogin(formDataObject) {
 
   if (response.error) {
     handleFormApiError([response.error]);
+    Swal.fire({
+      icon: "error",
+      title: "Login failed",
+      text: "Wrong password or email. Please try again",
+      background: "#yourBackgroundColor", // Set your desired background color
+      confirmButtonColor: "#D12600", // Set your desired button color
+    });
+    spinner.classList.add("hidden");
   } else {
     window.location.href = "/user_page/index.html?username=" + response.name;
   }
@@ -44,6 +53,7 @@ loginForm.addEventListener("submit", (event) => {
     handleLogin(form);
   } else {
     displayErrors(loginValidationResult.errors);
+    spinner.classList.add("hidden");
   }
 });
 
@@ -62,6 +72,15 @@ function checkIfRegistered() {
       registrationSuccessMessage.textContent =
         "Registration successful! Please log in to access your profile.";
     }
+  } else if (registered === "false") {
+    Swal.fire({
+      icon: "error",
+      title: "Registration failed",
+      text: "Check your password or email. Please try again",
+      background: "#yourBackgroundColor", // Set your desired background color
+      confirmButtonColor: "#D12600", // Set your desired button color
+    });
+    spinner.classList.add("hidden");
   }
 }
 

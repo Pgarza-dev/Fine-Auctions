@@ -96,13 +96,13 @@ registerForm.addEventListener("submit", async (event) => {
 
   const registerValidationResult = checkSignupForm(form);
 
-  displayErrors(registerValidationResult.errors);
-  checkSignupForm(form);
+  // Clear existing errors
   clearErrors();
+
+  // Display errors
+  displayErrors(registerValidationResult.errors);
 
   if (registerValidationResult.isValid) {
     await handleRegister(form);
-  } else {
-    displayErrors(registerValidationResult.errors);
   }
 });

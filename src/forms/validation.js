@@ -52,22 +52,38 @@ export function checkSignupForm(form) {
     errors: {},
   };
 
-  if (!checkValidUsername(username, USERNAME_MIN_LENGTH)) {
+  // Check for empty username
+  if (!username.trim()) {
+    validationResult.isValid = false;
+    validationResult.errors.username = "Username is required.";
+  } else if (!checkValidUsername(username, USERNAME_MIN_LENGTH)) {
     validationResult.isValid = false;
     validationResult.errors.username = "Invalid username.";
   }
 
-  if (!checkWhitelistedEmail(registerEmail, EMAIL_DOMAIN_WHITELIST)) {
+  // Check for empty email
+  if (!registerEmail.trim()) {
+    validationResult.isValid = false;
+    validationResult.errors.registerEmail = "Email is required.";
+  } else if (!checkWhitelistedEmail(registerEmail, EMAIL_DOMAIN_WHITELIST)) {
     validationResult.isValid = false;
     validationResult.errors.registerEmail = `Email can only end in ${EMAIL_DOMAIN_WHITELIST[0]} or ${EMAIL_DOMAIN_WHITELIST[1]}.`;
   }
 
-  if (!checkValidPassword(registerPassword, PASSWORD_MIN_LENGTH)) {
+  // Check for empty password
+  if (!registerPassword.trim()) {
+    validationResult.isValid = false;
+    validationResult.errors.registerPassword = "Password is required.";
+  } else if (!checkValidPassword(registerPassword, PASSWORD_MIN_LENGTH)) {
     validationResult.isValid = false;
     validationResult.errors.registerPassword = "Invalid password.";
   }
 
-  if (!checkPasswordsMatch(registerPassword, repeatPassword)) {
+  // Check for empty repeatPassword
+  if (!repeatPassword.trim()) {
+    validationResult.isValid = false;
+    validationResult.errors.repeatPassword = "Repeat password is required.";
+  } else if (!checkPasswordsMatch(registerPassword, repeatPassword)) {
     validationResult.isValid = false;
     validationResult.errors.repeatPassword = "Passwords do not match.";
   }
@@ -89,12 +105,20 @@ export function checkLoginForm(form) {
     errors: {},
   };
 
-  if (!checkWhitelistedEmail(email, EMAIL_DOMAIN_WHITELIST)) {
+  // Check for empty email
+  if (!email.trim()) {
+    loginValidationResults.isValid = false;
+    loginValidationResults.errors.email = "Email is required.";
+  } else if (!checkWhitelistedEmail(email, EMAIL_DOMAIN_WHITELIST)) {
     loginValidationResults.isValid = false;
     loginValidationResults.errors.email = "Invalid email.";
   }
 
-  if (!checkValidPassword(password, PASSWORD_MIN_LENGTH)) {
+  // Check for empty password
+  if (!password.trim()) {
+    loginValidationResults.isValid = false;
+    loginValidationResults.errors.password = "Password is required.";
+  } else if (!checkValidPassword(password, PASSWORD_MIN_LENGTH)) {
     loginValidationResults.isValid = false;
     loginValidationResults.errors.password = "Invalid password.";
   }
