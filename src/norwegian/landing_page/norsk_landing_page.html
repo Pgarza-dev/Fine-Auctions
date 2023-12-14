@@ -54,12 +54,15 @@
           <div class="mix-blend flex w-full items-center">
             <a href="#">
               <img
-                class="w-40"
+                class="w-20 sm:w-40"
                 src="/images/logo.png"
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="slogan-text ps-5 font-medium" id="animatedText">
+            <p
+              class="slogan-text lora hidden ps-5 text-3xl font-medium md:block"
+              id="animatedText"
+            >
               Løft budene dine, forsterk skattene dine. Bli med på vår auksjon
               plattform der hvert element forteller en historie, og hvert bud er
               en sjanse.
@@ -93,10 +96,12 @@
 
     <main>
       <section>
-        <div class="m-auto flex justify-center">
-          <div class="relative w-full overflow-hidden">
+        <div class="mx-auto flex justify-center">
+          <div
+            class="relative hidden overflow-hidden sm:block md:w-full lg:w-full"
+          >
             <img
-              class="scaled-image w-full object-cover object-center"
+              class="scaled-image object-cover object-center"
               src="/images/dark-floral-seamless-pattern-luxury-wallpaper-vintage-texture-generative-ai.jpg"
               alt="painting of vintage coast landscape with boats and gondolas"
             />
@@ -105,11 +110,13 @@
       </section>
 
       <section>
-        <div class="flex justify-center p-10 text-center text-8xl">
-          <h1 id="auctionsSection">Auksjoner</h1>
+        <div class="flex justify-center p-10 text-center">
+          <h1 class="text-8xl font-thin text-gray-800" id="auctionsSection">
+            Auksjoner
+          </h1>
         </div>
         <div
-          class="flex justify-center bg-primary-background p-4 ring ring-black ring-offset-4"
+          class="flex flex-wrap justify-center gap-4 bg-primary-background p-4 ring ring-black ring-offset-4"
         >
           <div class="relative">
             <button
@@ -135,7 +142,7 @@
                   fill="currentColor"
                 />
               </svg>
-              Alle oppføringer
+              All listings
             </button>
           </div>
 
@@ -163,7 +170,7 @@
                   fill="currentColor"
                 />
               </svg>
-              Nyeste
+              Newest
             </button>
           </div>
 
@@ -191,12 +198,12 @@
                   fill="currentColor"
                 />
               </svg>
-              Slutter snart
+              Ending soon
             </button>
           </div>
 
           <form id="search_form" class="flex items-center">
-            <label for="search_input" class="sr-only">Søke</label>
+            <label for="search_input" class="sr-only">Search</label>
             <div class="relative w-full">
               <div
                 class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
@@ -367,11 +374,11 @@
       >
         <i class="fa-solid fa-arrow-up-long"></i>
       </a>
-      <section class="pb-40 pt-20">
+      <section class="pt-20">
         <div class="relative flex h-96 items-center justify-center">
           <img
             class="h-full w-full"
-            src="images/Rectangle-13.png"
+            src="../../images/Rectangle-13.png"
             alt="background triangle shape"
           />
           <div
@@ -393,37 +400,37 @@
         </div>
       </section>
     </main>
-    <footer class="border border-t-2 border-gray-200">
-      <div class="flex justify-around p-12">
+    <footer
+      class="border border-t-2 border-gray-200 bg-primary-background text-xl text-white"
+    >
+      <div
+        class="flex flex-wrap justify-around gap-16 p-12 sm:flex-col sm:justify-center md:flex-row"
+      >
         <div>
           <div>
-            <h3 class="pb-4 font-semibold text-zinc-700">Kontaktinformasjon</h3>
+            <h3 class="pb-4 font-semibold text-white">Contact information</h3>
           </div>
           <ul>
-            <li>Auksjonshus</li>
-            <li>Karl Johans gate,</li>
-            <li>Oslo, Norge</li>
-            <li>Telefon +47 12 34 56 78</li>
-            <li>E-post: auctionhouse@post.no</li>
+            <li>Auction House</li>
+            <li>Karl Johans Gate,</li>
+            <li>Oslo Norway</li>
+            <li>Phone +47 12 34 56 78</li>
+            <li>Email: auctionhouse@post.no</li>
           </ul>
         </div>
         <div>
-          <h3 class="pb-4 font-semibold text-zinc-700">Opening hours</h3>
+          <h3 class="pb-4 font-semibold text-white">Opening hours</h3>
           <ul>
-            Mandag - fredag: 10:00
-            <li>- 18:00</li>
-            Lørdag: 10:00
-            <li>- 16:00</li>
-            <li>Søndag: Stengt</li>
+            <li>Monday - Friday: 10:00 - 18:00</li>
+            <li>Saturday: 10:00 - 16:00</li>
+            <li>Sunday: Closed</li>
           </ul>
         </div>
         <div class="flex flex-col">
-          <h3 class="pb-4 font-semibold text-zinc-700">
+          <h3 class="pb-4 font-semibold text-white">
             Sign up for our newsletter
           </h3>
-          <span
-            >Få de siste nyhetene, oppdateringene og invitasjonene på e-post.
-          </span>
+          <span>Get the latest news, updates and invitations on email. </span>
           <div class="pt-10">
             <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
             <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
