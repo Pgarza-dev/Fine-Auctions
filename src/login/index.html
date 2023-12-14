@@ -57,12 +57,15 @@
           <div class="mix-blend flex w-full items-center">
             <a href="../index.html">
               <img
-                class="w-40"
+                class="w-20 sm:w-40"
                 src="/images/logo.png"
                 alt="Fine Auctions logo"
               />
             </a>
-            <p class="slogan-text lora ps-5 font-medium" id="animatedText">
+            <p
+              class="slogan-text lora hidden ps-5 text-3xl font-medium md:block"
+              id="animatedText"
+            >
               Let's do it! You're just a few clicks away from your next
               extraordinary find. Register or log in to start bidding!
             </p>
@@ -132,12 +135,12 @@
         </div>
         <div id="tabContentExample" class="m-auto max-w-4xl">
           <div
-            class="hidden rounded-lg dark:bg-gray-800"
+            class="hidden rounded-lg p-4 dark:bg-gray-800"
             id="dashboard-example"
             role="tabpanel"
             aria-labelledby="dashboard-tab-example"
           >
-            <section class="gap-6 sm:gap-8 sm:p-8">
+            <section class="flex flex-col gap-6 sm:gap-8 sm:p-8">
               <div class="pb-10">
                 <div class="border-b-4 border-black pb-10 font-semibold">
                   <h2 class="text-2xl">Create new account</h2>
@@ -335,12 +338,14 @@
     <footer
       class="border border-t-2 border-gray-200 bg-primary-background text-white"
     >
-      <div class="flex justify-around p-12">
-        <div>
+      <div class="flex flex-col justify-around p-4 md:flex-row md:p-12">
+        <div class="mb-8 md:mb-0">
           <div>
-            <h4 class="e pb-4 font-semibold">Contact information</h4>
+            <h4 class="e pb-2 text-lg font-semibold md:pb-4 md:text-xl">
+              Contact information
+            </h4>
           </div>
-          <ul>
+          <ul class="text-sm">
             <li>Auction House</li>
             <li>Karl Johans Gate,</li>
             <li>Oslo Norway</li>
@@ -348,18 +353,24 @@
             <li>Email: auctionhouse@post.no</li>
           </ul>
         </div>
-        <div>
-          <h4 class="e pb-4 font-semibold">Opening hours</h4>
-          <ul>
+        <div class="mb-8 md:mb-0">
+          <h4 class="e pb-2 text-lg font-semibold md:pb-4 md:text-xl">
+            Opening hours
+          </h4>
+          <ul class="text-sm">
             <li>Monday - Friday: 10:00 - 18:00</li>
             <li>Saturday: 10:00 - 16:00</li>
             <li>Sunday: Closed</li>
           </ul>
         </div>
-        <div class="flex flex-col">
-          <h4 class="e pb-4 font-semibold">Sign up for our newsletter</h4>
-          <span>Get the latest news, updates and invitations on email. </span>
-          <div class="pt-10">
+        <div class="flex flex-col items-center">
+          <h4 class="e pb-2 text-lg font-semibold md:pb-4 md:text-xl">
+            Sign up for our newsletter
+          </h4>
+          <span class="text-sm"
+            >Get the latest news, updates, and invitations on email.
+          </span>
+          <div class="pt-4 md:pt-10">
             <a class="pe-4" href=""><i class="fa-brands fa-instagram"></i></a>
             <a class="pe-4" href=""><i class="fa-brands fa-facebook"></i></a>
             <a class="pe-4" href=""><i class="fa-solid fa-paper-plane"></i></a>
