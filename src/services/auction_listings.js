@@ -23,7 +23,6 @@ export async function getListings() {
         needsAuth: false,
       });
 
-      // If no more listings are available, break out of the loop
       if (!data || data.length === 0) {
         break;
       }
@@ -58,9 +57,6 @@ async function setupAllListingsButton() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupAllListingsButton();
-
-  // const allListingsButton = document.querySelector("#all_listings_btn");
-  // allListingsButton.click();
 });
 
 /**
@@ -95,7 +91,6 @@ profileButton();
 async function ascendingButton() {
   const sortByAscendingButton = document.querySelector("#newest_btn");
   sortByAscendingButton.addEventListener("click", async () => {
-    // const spinner = document.getElementById("spinnerNewest");
     sortByAscendingButton.textContent = "Loading...";
     const sortField = "endsAt";
     const sortOrder = "asc";
@@ -115,18 +110,15 @@ async function ascendingButton() {
         });
 
         if (data && data.length > 0) {
-          // Append the fetched listings to the result array
           fetchedListings = [...fetchedListings, ...data];
           offset += limit;
         } else {
-          // Break the loop if there are no more listings to fetch
           break;
         }
       }
 
       console.log("Sorted Listings (Ascending):", fetchedListings);
 
-      // Display the first 500 listings
       displayListings(fetchedListings.slice(0, targetListingsCount));
 
       sortByAscendingButton.textContent = "Ending soon";
@@ -201,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.querySelector("#search_input");
   searchBar.addEventListener("input", handleSearchInput);
 
-  // Initial fetch and display
   fetchDataAndDisplayListings();
 });
 
@@ -216,7 +207,6 @@ export function getHighestBidAmount(bids) {
 
 export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
-  // auctionListings.classList.add("animate-pulse");
 
   if (!auctionListings) {
     console.error("Element with ID 'auctions_listings' not found in the DOM.");

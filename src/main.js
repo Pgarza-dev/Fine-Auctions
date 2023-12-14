@@ -78,24 +78,3 @@ function animateLinks(linkIds) {
     });
   });
 }
-
-// const englishLink = document.getElementById("englishLink");
-// const norwegianLink = document.getElementById("norwegianLink");
-
-// englishLink.addEventListener("click", () => switchLanguage("en"));
-// norwegianLink.addEventListener("click", () => switchLanguage("no"));
-
-// function switchLanguage(language) {
-//   // Save the selected language to localStorage
-//   localStorage.setItem("language", language);
-
-//   // Reload the page to apply the language changes
-//   location.reload();
-// }
-
-// // Check if there's a saved language preference
-// const savedLanguage = localStorage.getItem("language");
-// if (savedLanguage) {
-//   // Apply the saved language preference
-//   document.documentElement.lang = savedLanguage;
-// }

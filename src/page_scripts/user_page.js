@@ -69,8 +69,6 @@ async function editUserAvatar(avatarUrl) {
 
     console.log("User Profile:", data);
 
-    // Assuming you want to trigger a re-render or perform additional actions after the avatar is updated
-    // Call the function to handle the edited avatar
     await handleEditedAvatar();
 
     return data;
@@ -356,17 +354,7 @@ async function displayBidHistory() {
     )}</p>
   </div>
         </div>
-      </section>
-
-
-
-
-
-
-
-      
-
-        `;
+      </section> `;
       })
 
       .join("");

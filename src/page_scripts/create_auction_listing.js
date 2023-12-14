@@ -3,7 +3,6 @@ import { fetcher } from "../services/fetcher.js";
 import { API_BASE_URL, AUCTION_LISTING_ENDPOINT } from "../utils/constants.js";
 import { clearErrors, displayErrors } from "../forms/handleErrors.js";
 import { createFormDataObject } from "../forms/utils.js";
-import { doc } from "prettier";
 
 const imageInput = document.getElementById("auctionItemImageUrl");
 const imagePreview = document.getElementById("auctionItemImagePreview");

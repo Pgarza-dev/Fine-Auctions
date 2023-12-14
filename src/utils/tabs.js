@@ -1,17 +1,9 @@
-// Import the Tabs class from 'flowbite'
 import { Tabs } from "flowbite";
 
-// Function to initialize the tabs
 function initializeTabs() {
   const tabsElement = document.getElementById("tabs-example");
 
-  // create an array of objects with the id, trigger element (e.g., button), and the content element
   const tabElements = [
-    // {
-    //   id: "profile",
-    //   triggerEl: document.querySelector("#profile-tab-example"),
-    //   targetEl: document.querySelector("#profile-example"),
-    // },
     {
       id: "dashboard",
       triggerEl: document.querySelector("#dashboard-tab-example"),
@@ -24,7 +16,6 @@ function initializeTabs() {
     },
   ];
 
-  // options with default values
   const options = {
     defaultTabId: "settings",
     activeClasses:
@@ -36,15 +27,12 @@ function initializeTabs() {
     },
   };
 
-  // instance options with default values
   const instanceOptions = {
     id: "tabs-example",
     override: true,
   };
 
-  // Create a new Tabs object
   const tabs = new Tabs(tabsElement, tabElements, options, instanceOptions);
 }
 
-// Call the function to initialize the tabs when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initializeTabs);

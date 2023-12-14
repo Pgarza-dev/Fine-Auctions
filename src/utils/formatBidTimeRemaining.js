@@ -23,15 +23,11 @@ export function formatTimeRemaining(timeRemaining, elementToUpdate) {
     }
   }
 
-  // Initial display
   updateDisplay();
 
-  // Update the displayed time every second
   const intervalId = setInterval(() => {
     timeRemaining -= 1000;
     updateDisplay();
-
-    // Stop the interval when the auction ends
     if (timeRemaining < 0) {
       clearInterval(intervalId);
     }

@@ -1,50 +1,12 @@
 import { checkSignupForm } from "../forms/validation.js";
 import { clearErrors, displayErrors } from "../forms/handleErrors.js";
-import { registerUser } from "../services/auth.js";
 import { createFormDataObject } from "../forms/utils.js";
 import { handleFormApiError } from "../forms/handleErrors.js";
 import { removeActiveUser } from "../utils/handleLocalStorageUser.js";
 import { API_BASE_URL, REGISTER_ENDPOINT } from "../utils/constants.js";
-// import { getActiveUser } from "../utils/handleLocalStorageUser.js";
 
 removeActiveUser();
 
-// async function handleSignUp(formDataObject) {
-//   const userData = {
-//     name: formDataObject.username,
-//     email: formDataObject.email,
-//     password: formDataObject.password,
-//   };
-//   const response = await registerUser(userData);
-
-//   if (response.errors) {
-//     handleFormApiError(response.errors);
-//   } else {
-//     window.location.href = `/login/index.html?registered=true`;
-//   }
-// }
-
-// const signupForm = document.querySelector("#register-form");
-
-// signupForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-
-//   clearErrors();
-
-//   const form = createFormDataObject(signupForm);
-//   console.log(form);
-
-//   const validationResult = checkSignupForm(form);
-//   console.log(validationResult);
-
-//   if (validationResult.isValid) {
-//     handleSignUp(form);
-//   } else {
-//     displayErrors(validationResult.errors);
-//   }
-// });
-
-// TEMPORARY CODE FOR TESTING
 async function handleRegister(formDataObject) {
   try {
     const response = await fetch(API_BASE_URL + REGISTER_ENDPOINT, {
@@ -79,7 +41,6 @@ async function handleRegister(formDataObject) {
     }
   } catch (error) {
     console.error("Error during registration:", error);
-    // Handle error as needed, e.g., display a general error message
     handleFormApiError(
       { message: "Failed to register. Please try again later." },
       "api-error",
@@ -96,10 +57,8 @@ registerForm.addEventListener("submit", async (event) => {
 
   const registerValidationResult = checkSignupForm(form);
 
-  // Clear existing errors
   clearErrors();
 
-  // Display errors
   displayErrors(registerValidationResult.errors);
 
   if (registerValidationResult.isValid) {
