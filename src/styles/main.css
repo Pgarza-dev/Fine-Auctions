@@ -26,49 +26,41 @@
 .lora {
   font-family: "Lora";
 }
-
 .roboto-slab {
   font-family: "Roboto Slab";
 }
-
 .slogan-text {
   font-size: 1.5rem;
 }
-
-.text-2xl {
+/* .text-2xl {
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-}
-
+} */
 .space {
   display: inline-block;
   width: 0.3em;
 }
-
 .word {
   display: inline-block;
   opacity: 0;
   animation: appear 1s forwards;
 }
-
 @keyframes appear {
   to {
     opacity: 1;
   }
 }
-
 .auction-card {
   width: 24rem;
   height: 100%;
 }
-
-.background-img {
+/* .background-img {
   background-image: url("../../public/images/Rectangle 18.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
-}
+} */
 
 .scaled-image {
   animation: scaleAnimation 50s infinite;
@@ -118,8 +110,4 @@ a.rolling-arrow,
 .bid_history_text {
   transition: opacity 0.3s;
   animation: scrollAnimation 2s infinite;
-}
-
-.hidden {
-  display: none;
 }

@@ -34,7 +34,19 @@ function animateText(elementId) {
     return;
   }
 
-  const words = textElement.innerText.split(" ");
+  const textContent = textElement.innerText;
+
+  if (!textContent.includes(" ")) {
+    // If there are no spaces, simply create a single word element
+    const wordElement = document.createElement("span");
+    wordElement.textContent = textContent;
+    wordElement.className = "word";
+    textElement.innerHTML = "";
+    textElement.appendChild(wordElement);
+    return;
+  }
+
+  const words = textContent.split(" ");
   textElement.innerHTML = "";
 
   words.forEach((word, index) => {
@@ -59,6 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
 function animateLinks(linkIds) {
   linkIds.forEach((linkId, linkIndex) => {
     const link = document.getElementById(linkId);
+
+    if (!link) {
+      console.error(`Element with ID '${linkId}' not found.`);
+      return;
+    }
+
     const words = link.innerText.split(" ");
 
     link.innerHTML = "";
