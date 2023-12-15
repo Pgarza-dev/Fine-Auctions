@@ -364,6 +364,7 @@ export async function displayListings(listings) {
       }, 1000);
 
       const readMoreLink = document.createElement("a");
+      readMoreLink.textContent = "View Auction";
       readMoreLink.href = "auction_item/index.html?id=" + listing.id;
       readMoreLink.classList.add(
         "inline-flex",
@@ -385,8 +386,8 @@ export async function displayListings(listings) {
       );
       textContainer.appendChild(readMoreLink);
 
-      const readMoreText = document.createTextNode("Read more");
-      readMoreLink.appendChild(readMoreText);
+      // const readMoreText = document.createTextNode("Read more");
+      // readMoreLink.appendChild(readMoreText);
 
       const arrowSvg = document.createElementNS(
         "http://www.w3.org/2000/svg",
