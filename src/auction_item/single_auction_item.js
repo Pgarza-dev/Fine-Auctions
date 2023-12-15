@@ -1,9 +1,3 @@
-// Function to log
-function log() {
-  console.log("single_auction_item.js");
-}
-log();
-
 import { API_BASE_URL } from "../utils/constants.js";
 import { fetcher } from "../services/fetcher.js";
 import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
@@ -36,7 +30,6 @@ async function getSingleAuctionItem(auctionItemId) {
       needsAuth: false,
     });
 
-    console.log("Auction Item:", data);
     return data;
   } catch (error) {
     console.error("Error fetching auction item:", error.message);
@@ -105,7 +98,7 @@ bidForm.addEventListener("submit", async (event) => {
     bidButton.textContent = "Bid Placed!";
     bidButton.classList.add("bg-primary-button");
 
-    // Provide user feedback
+    
     console.log("Bid placed successfully:", bid);
 
     bidNumberInput.value = "";
@@ -118,7 +111,6 @@ bidForm.addEventListener("submit", async (event) => {
 profileButton();
 
 function displaySingleAuctionItem(auctionItem) {
-  
   const auctionItemImage = document.getElementById("auctionItemImage");
   const auctionItemTitle = document.getElementById("auctionItemTitle");
   const auctionItemDescription = document.getElementById(
@@ -128,7 +120,7 @@ function displaySingleAuctionItem(auctionItem) {
   const timeLeft = document.getElementById("timeLeft");
 
   const bidHistoryList = document.getElementById("bidHistoryList");
-  bidHistoryList.innerHTML = ""; 
+  bidHistoryList.innerHTML = "";
 
   if (auctionItem) {
     auctionItemImage.src = auctionItem.media[0];
@@ -247,7 +239,7 @@ function displaySingleAuctionItem(auctionItem) {
     let timeRemaining = endsAt - currentTime;
 
     const timeRemainingDisplay = document.createElement("span");
-    timeLeft.innerHTML = ""; 
+    timeLeft.innerHTML = "";
     timeRemainingDisplay.classList.add(
       "text-primary-text",
       "font-bold",

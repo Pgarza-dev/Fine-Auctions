@@ -7,7 +7,6 @@ export function checkIfUserIsLoggedIn() {
   const accessToken = localStorage.getItem("accessToken");
   const logInButton = document.getElementById("loginBtn");
   if (accessToken) {
-    console.log("User is logged in");
     logInButton.textContent = "Log Out";
     logInButton.addEventListener("click", () => {
       localStorage.removeItem("accessToken");
@@ -15,7 +14,6 @@ export function checkIfUserIsLoggedIn() {
       logInButton.textContent = "Log In";
     });
   } else {
-    console.log("User is not logged in");
     logInButton.textContent = "Log In";
   }
 }
@@ -37,7 +35,6 @@ function animateText(elementId) {
   const textContent = textElement.innerText;
 
   if (!textContent.includes(" ")) {
-    // If there are no spaces, simply create a single word element
     const wordElement = document.createElement("span");
     wordElement.textContent = textContent;
     wordElement.className = "word";
@@ -85,7 +82,7 @@ function animateLinks(linkIds) {
       const wordElement = document.createElement("span");
       wordElement.textContent = word;
       wordElement.className = "word";
-      wordElement.style.animationDelay = `${index * 0.2 + linkIndex * 0.5}s`; // Adjust the delay based on link and word index
+      wordElement.style.animationDelay = `${index * 0.2 + linkIndex * 0.5}s`;
       link.appendChild(wordElement);
 
       if (index < words.length - 1) {
