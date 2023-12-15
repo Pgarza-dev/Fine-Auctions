@@ -1,12 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  purge: {
-    content: [
-      "./src/**/*.{html,js,mjs}",
-      "./*.html",
-      "./node_modules/flowbite/**/*.js",
-    ],
-  },
+export default {
+  content: [
+    "./src/**/*.{html,js,mjs}",
+    "./*.html",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     extend: {
       backgroundSize: {
