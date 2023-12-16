@@ -6,6 +6,17 @@
 
 This project is a university assignment for Noroff, aimed at creating a new JavaScript front-end client for an existing Auction plateform. The client application is built using vanilla JavaScript, Vite, and Tailwind CSS, and utilizes Flowbite web components for modular design. The application is designed to be attractive and responsive, with a focus on user-friendly and error-free interaction.
 
+## Norwegian translation
+
+The application is available in both English and Norwegian. The English version is the default, but the "Norsk" button in the navigation bar will switch the application to Norwegian. The Norwegian translation is provided by [Google Translate](https://translate.google.com/).
+
+## Tech Stack
+
+- [Vite](https://vitejs.dev/): A fast build tool for modern web apps.
+- [TailwindCSS](https://tailwindcss.com/): A utility-first CSS framework for rapidly building custom user interfaces.
+- [Flowbite](https://flowbite.com/docs/getting-started/introduction/): A set of utility classes and components for Tailwind CSS that helps to speed up the development process.
+- [Netlify](https://www.netlify.com/): An intuitive Git-based workflow and powerful serverless platform to build, deploy, and collaborate on web apps.
+
 ## Created by
 
 - [Pgarza-dev](https://github.com/Pgarza-dev)

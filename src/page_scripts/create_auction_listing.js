@@ -13,20 +13,27 @@ imageInput.addEventListener("input", () => {
 });
 
 export async function createNewAuctionListing() {
-  const media = document.getElementById("auctionItemImageUrl");
+  const mediaInput = document.getElementById("auctionItemImageUrl");
+  const additionalImageInputs = document.querySelectorAll(
+    "#imageContainer input[type=url]",
+  );
   const title = document.getElementById("auctionItemTitle").value.trim();
   const description = document
     .getElementById("auctionItemDescription")
     .value.trim();
   const tags = document.getElementById("auctionItemTags").value.trim();
   const endsAt = document.getElementById("end_date");
-  const username = getActiveUser();
+
+  const media = [
+    mediaInput.value,
+    ...Array.from(additionalImageInputs).map((input) => input.value),
+  ];
 
   const object = {
     title: title,
     description: description,
     tags: [tags],
-    media: [media.value],
+    media: media,
     endsAt: endsAt.value,
   };
 
@@ -66,8 +73,6 @@ export async function createNewAuctionListing() {
 }
 console.log("createNewAuctionListing", createNewAuctionListing);
 console.log(new Error().stack);
-
-
 
 async function checkSellForm(formDataObject) {
   const { title, description, tags, media, endsAt } = formDataObject;
@@ -113,7 +118,6 @@ async function handleSellItem(formDataObject) {
   }
 }
 
-
 const sellForm = document.querySelector("#sell-form");
 
 let isFormSubmitting = false;
@@ -153,3 +157,44 @@ sellForm.addEventListener("submit", async (event) => {
   isFormSubmitting = false;
   sellItemButton.disabled = false;
 });
+
+function addAnotherImage() {
+  const addAnotherImageBtn = document.getElementById("add_another_image_btn");
+
+  const clickHandler = () => {
+    const anotherImageContainer = document.createElement("div");
+    anotherImageContainer.classList.add("relative", "w-full");
+
+    const anotherInput = document.createElement("input");
+    anotherInput.setAttribute("type", "url");
+    anotherInput.classList.add(
+      "bg-primary-900",
+      "peer",
+      "h-10",
+      "w-full",
+      "max-w-lg",
+      "border",
+      "px-3",
+      "py-2",
+      "text-black",
+      "focus:outline-none",
+    );
+    anotherInput.setAttribute("placeholder", "https://example.com/image.png");
+
+    // Append the new input to the container
+    anotherImageContainer.appendChild(anotherInput);
+
+    const imageContainer = document.getElementById("imageContainer");
+    imageContainer.appendChild(anotherImageContainer);
+
+    sellItemButton.disabled = false;
+  };
+
+  // Remove existing click event listener
+  addAnotherImageBtn.removeEventListener("click", clickHandler);
+
+  // Attach the click event listener
+  addAnotherImageBtn.addEventListener("click", clickHandler);
+}
+
+addAnotherImage();

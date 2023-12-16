@@ -31,7 +31,6 @@ export async function getListings() {
       offset += limitPerPage;
     }
 
-    console.log("Listings:", fetchedListings);
     displayListings(fetchedListings);
     return fetchedListings;
   } catch (error) {
