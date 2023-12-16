@@ -4,6 +4,11 @@ import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 import { getActiveUser } from "../utils/handleLocalStorageUser.js";
 
+/**
+ * Retrieves a list of auction listings.
+ * 
+ * @returns {Promise<Array>} The fetched auction listings.
+ */
 export async function getListings() {
   const sortField = "created";
   const sortOrder = "asc";
@@ -39,6 +44,11 @@ export async function getListings() {
   }
 }
 
+/**
+ * Sets up the functionality for the "All Listings" button.
+ * When the button is clicked, it displays a spinner, changes the button text to "Loading...",
+ * retrieves the listings, hides the spinner, and restores the button text to "All Listings".
+ */
 async function setupAllListingsButton() {
   const allListingsButton = document.querySelector("#all_listings_btn");
   const spinner = document.getElementById("spinnerAllListings");
@@ -129,6 +139,10 @@ async function ascendingButton() {
 
 ascendingButton();
 
+/**
+ * Adds a click event listener to the "oldest_btn" button, which sorts and displays the auction listings in descending order of creation date.
+ * @returns {Promise<void>} A promise that resolves when the sorting and displaying of listings is complete.
+ */
 async function oldestListingsButton() {
   const sortByDescendingButton = document.querySelector("#oldest_btn");
   sortByDescendingButton.addEventListener("click", async () => {
@@ -159,6 +173,11 @@ async function oldestListingsButton() {
 
 oldestListingsButton();
 
+/**
+ * Handles the search input event and filters the auction cards based on the search input.
+ * @param {Event} event - The search input event.
+ * @returns {void}
+ */
 async function handleSearchInput(event) {
   const searchInput = document
     .querySelector("#search_input")
@@ -204,6 +223,12 @@ export function getHighestBidAmount(bids) {
   }
 }
 
+/**
+ * Displays the auction listings on the webpage.
+ * 
+ * @param {Array} listings - The array of auction listings to display.
+ * @returns {void}
+ */
 export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
 
