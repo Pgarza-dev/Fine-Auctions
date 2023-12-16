@@ -4,6 +4,12 @@ import { AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { formatTimeRemaining } from "../utils/formatBidTimeRemaining.js";
 import { profileButton } from "../services/auction_listings.js";
 
+/**
+ * Calculates the highest bid amount from an array of bids.
+ * 
+ * @param {Array} bids - The array of bids.
+ * @returns {number} - The highest bid amount. Returns 0 if there are no bids.
+ */
 export function getHighestBidAmount(bids) {
   if (bids.length > 0) {
     const highestBid = bids.slice().sort((a, b) => b.amount - a.amount)[0];
@@ -20,6 +26,11 @@ function getItemQueryParams() {
 
 const auctionItemId = getItemQueryParams();
 
+/**
+ * Retrieves a single auction item from the server.
+ * @param {string} auctionItemId - The ID of the auction item to retrieve.
+ * @returns {Promise<Object|null>} - A promise that resolves to the auction item data, or null if an error occurs.
+ */
 async function getSingleAuctionItem(auctionItemId) {
   const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}/${auctionItemId}?_seller=true&_bids=true&_active=true`;
 
@@ -37,6 +48,12 @@ async function getSingleAuctionItem(auctionItemId) {
   }
 }
 
+/**
+ * Posts a bid entry for an auction item.
+ * @param {string} auctionItemId - The ID of the auction item.
+ * @param {number} bidAmount - The amount of the bid.
+ * @returns {Promise<object|null>} - A promise that resolves to the response object if the bid entry was successful, or null if there was an error.
+ */
 async function postBidEntry(auctionItemId, bidAmount) {
   const url = `${API_BASE_URL}${AUCTION_LISTING_ENDPOINT}/${auctionItemId}/bids`;
 
@@ -53,8 +70,6 @@ async function postBidEntry(auctionItemId, bidAmount) {
         return null;
       },
     });
-
-    console.log("Bid Entry:", response);
     return response;
   } catch (error) {
     console.error("Error bid was not made on item:", error.message);
@@ -79,7 +94,10 @@ bidForm.addEventListener("submit", async (event) => {
     const bidAmount = parseInt(bidNumberInput.value, 10);
     if (isNaN(bidAmount) || bidAmount <= 0) {
       throw new Error(
-        "Invalid bid amount. Please enter a valid number greater than 0.",
+        "Invalid bid amount. Please enter a valid number greater than 0 current bid.",
+        alert(
+          "Invalid bid amount. Please enter a valid number greater than current bid.",
+        ),
       );
     }
 
@@ -98,8 +116,6 @@ bidForm.addEventListener("submit", async (event) => {
     bidButton.textContent = "Bid Placed!";
     bidButton.classList.add("bg-primary-button");
 
-    console.log("Bid placed successfully:", bid);
-
     bidNumberInput.value = "";
   } catch (error) {
     console.error("Error placing bid:", error.message);
@@ -109,6 +125,11 @@ bidForm.addEventListener("submit", async (event) => {
 
 profileButton();
 
+/**
+ * Displays a single auction item on the page.
+ *
+ * @param {object} auctionItem - The auction item to display.
+ */
 function displaySingleAuctionItem(auctionItem) {
   const additionalImages = document.getElementById(
     "additional_images_container",
@@ -299,12 +320,16 @@ function displaySingleAuctionItem(auctionItem) {
   }
 }
 
+/**
+ * Checks if the user is logged in by retrieving the access token from local storage.
+ * If the user is logged in, it hides the tooltip element with the id "tooltip-default".
+ * If the user is not logged in, it shows the tooltip element.
+ */
 export function checkIfUserIsLoggedIn() {
   const accessToken = localStorage.getItem("accessToken");
   const toolTip = document.getElementById("tooltip-default");
   if (accessToken) {
     toolTip.classList.add("hidden");
-    console.log("User is logged in");
   } else {
     toolTip.classList.remove("hidden");
   }
@@ -312,6 +337,9 @@ export function checkIfUserIsLoggedIn() {
 
 checkIfUserIsLoggedIn();
 
+/**
+ * Changes the text and behavior of the login button based on the presence of an access token in the local storage.
+ */
 function changeLogInBtn() {
   const loginBtn = document.getElementById("loginBtn");
   const accessToken = localStorage.getItem("accessToken");
@@ -333,6 +361,10 @@ function formatPrice(bidsCount) {
   return `$ ${bidsCount}`;
 }
 
+/**
+ * Fetches a single auction item and displays it.
+ * @returns {Promise<void>} A promise that resolves when the auction item is fetched and displayed.
+ */
 async function fetchDataAndDisplaySingleAuctionItem() {
   const auctionItem = await getSingleAuctionItem(auctionItemId);
   displaySingleAuctionItem(auctionItem);
