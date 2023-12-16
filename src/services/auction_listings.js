@@ -6,7 +6,7 @@ import { getActiveUser } from "../utils/handleLocalStorageUser.js";
 
 /**
  * Retrieves a list of auction listings.
- * 
+ *
  * @returns {Promise<Array>} The fetched auction listings.
  */
 export async function getListings() {
@@ -89,7 +89,6 @@ export function profileButton() {
         window.location.href = `/user_page/index.html?username=${username}`;
       });
     } else {
-      console.log("profileBtn not found");
       profileBtn.href = "/login/index.html";
     }
   }
@@ -225,7 +224,7 @@ export function getHighestBidAmount(bids) {
 
 /**
  * Displays the auction listings on the webpage.
- * 
+ *
  * @param {Array} listings - The array of auction listings to display.
  * @returns {void}
  */

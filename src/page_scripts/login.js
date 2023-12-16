@@ -9,7 +9,7 @@ removeActiveUser();
 
 /**
  * Handles the login process.
- * 
+ *
  * @param {Object} formDataObject - The form data object containing the user's name, email, and password.
  * @returns {Promise<void>} - A promise that resolves when the login process is complete.
  */
@@ -39,7 +39,6 @@ async function handleLogin(formDataObject) {
 }
 
 const loginForm = document.querySelector("#login-form");
-console.log(loginForm);
 
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();

@@ -7,7 +7,6 @@ const LOCAL_STORAGE_KEY = "username";
 export function getActiveUser() {
   const username = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (!username) {
-    console.warn("No active user found in local storage.");
     return null;
   }
   return username;
@@ -65,7 +64,6 @@ export function clearActiveUserAvatar() {
 export function getAccessToken() {
   const accessToken = localStorage.getItem("accessToken");
   if (!accessToken) {
-    console.warn("No access token found in localStorage.");
     return null;
   }
   return accessToken;
