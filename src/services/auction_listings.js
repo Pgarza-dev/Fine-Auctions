@@ -52,6 +52,9 @@ export async function getListings() {
 async function setupAllListingsButton() {
   const allListingsButton = document.querySelector("#all_listings_btn");
   const spinner = document.getElementById("spinnerAllListings");
+  if (!allListingsButton || !spinner) {
+    return;
+  }
 
   allListingsButton.addEventListener("click", async () => {
     spinner.classList.remove("hidden");
@@ -98,6 +101,9 @@ profileButton();
 
 async function ascendingButton() {
   const sortByAscendingButton = document.querySelector("#newest_btn");
+  if (!sortByAscendingButton) {
+    return;
+  }
   sortByAscendingButton.addEventListener("click", async () => {
     sortByAscendingButton.textContent = "Loading...";
     const sortField = "endsAt";
@@ -144,6 +150,9 @@ ascendingButton();
  */
 async function oldestListingsButton() {
   const sortByDescendingButton = document.querySelector("#oldest_btn");
+  if (!sortByDescendingButton) {
+    return;
+  }
   sortByDescendingButton.addEventListener("click", async () => {
     sortByDescendingButton.textContent = "Loading...";
     const sortField = "created";
@@ -208,7 +217,9 @@ async function handleSearchInput(event) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.querySelector("#search_input");
-  searchBar.addEventListener("input", handleSearchInput);
+  if (searchBar) {
+    searchBar.addEventListener("input", handleSearchInput);
+  }
 
   fetchDataAndDisplayListings();
 });
@@ -232,7 +243,7 @@ export async function displayListings(listings) {
   const auctionListings = document.querySelector("#auctions_listings");
 
   if (!auctionListings) {
-    console.error("Element with ID 'auctions_listings' not found in the DOM.");
+    // console.error("Element with ID 'auctions_listings' not found in the DOM.");
     return;
   }
 

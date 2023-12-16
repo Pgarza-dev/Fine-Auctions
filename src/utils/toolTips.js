@@ -6,7 +6,7 @@ import { Tooltip } from "flowbite";
  * options: optional
  */
 
-const tooltip = new Tooltip($targetEl, $triggerEl, options, instanceOptions);
+// const tooltip = new Tooltip($targetEl, $triggerEl, options, instanceOptions);
 
 const $targetEl = document.getElementById("tooltipContent");
 
