@@ -12,6 +12,11 @@ imageInput.addEventListener("input", () => {
   imagePreview.src = imageInput.value;
 });
 
+/**
+ * Creates a new auction listing.
+ * @async
+ * @returns {Promise<Object>} The result of the auction listing creation.
+ */
 export async function createNewAuctionListing() {
   const mediaInput = document.getElementById("auctionItemImageUrl");
   const additionalImageInputs = document.querySelectorAll(
@@ -74,6 +79,18 @@ export async function createNewAuctionListing() {
 console.log("createNewAuctionListing", createNewAuctionListing);
 console.log(new Error().stack);
 
+/**
+ * Validates the sell form data.
+ * @param {Object} formDataObject - The form data object.
+ * @param {string} formDataObject.title - The title of the auction listing.
+ * @param {string} formDataObject.description - The description of the auction listing.
+ * @param {string[]} formDataObject.tags - The tags of the auction listing.
+ * @param {string} formDataObject.media - The media URL of the auction listing.
+ * @param {string} formDataObject.endsAt - The end date of the auction listing.
+ * @returns {Promise<Object>} - The validation result object.
+ * @property {boolean} isValid - Indicates if the form data is valid or not.
+ * @property {Object} errors - The validation errors, if any.
+ */
 async function checkSellForm(formDataObject) {
   const { title, description, tags, media, endsAt } = formDataObject;
 
@@ -110,6 +127,11 @@ async function checkSellForm(formDataObject) {
   return validationResult;
 }
 
+/**
+ * Handles the process of selling an item by creating a new auction listing.
+ * @param {Object} formDataObject - The form data object containing the item details.
+ * @returns {Promise<void>} - A promise that resolves when the auction listing is created.
+ */
 async function handleSellItem(formDataObject) {
   const response = await createNewAuctionListing(formDataObject);
 
@@ -158,6 +180,9 @@ sellForm.addEventListener("submit", async (event) => {
   sellItemButton.disabled = false;
 });
 
+/**
+ * Adds another image input field when the "Add Another Image" button is clicked.
+ */
 function addAnotherImage() {
   const addAnotherImageBtn = document.getElementById("add_another_image_btn");
 

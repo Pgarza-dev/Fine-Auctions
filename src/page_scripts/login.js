@@ -1,5 +1,3 @@
-console.log("login.js");
-
 import { removeActiveUser } from "../utils/handleLocalStorageUser.js";
 import { handleFormApiError } from "../forms/handleErrors.js";
 import { createFormDataObject } from "../forms/utils.js";
@@ -9,6 +7,12 @@ import { clearErrors, displayErrors } from "../forms/handleErrors.js";
 
 removeActiveUser();
 
+/**
+ * Handles the login process.
+ * 
+ * @param {Object} formDataObject - The form data object containing the user's name, email, and password.
+ * @returns {Promise<void>} - A promise that resolves when the login process is complete.
+ */
 async function handleLogin(formDataObject) {
   const spinner = document.getElementById("spinner");
 
@@ -56,6 +60,9 @@ loginForm.addEventListener("submit", (event) => {
   }
 });
 
+/**
+ * Checks if the user is registered and performs actions based on the registration status.
+ */
 function checkIfRegistered() {
   const urlParams = new URLSearchParams(window.location.search);
   const registered = urlParams.get("registered");

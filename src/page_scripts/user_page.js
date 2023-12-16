@@ -1,9 +1,3 @@
-function userPage() {
-  console.log("user_page.js");
-}
-
-userPage();
-
 import { API_BASE_URL, USER_PROFILE_ENDPOINT } from "../utils/constants.js";
 import { fetcher } from "../services/fetcher.js";
 import {
@@ -22,6 +16,9 @@ const avatarForm = document.querySelector("#edit_avatar_form");
 const sellForm = document.querySelector("#sell_form");
 const username = getActiveUser();
 
+/**
+ * Handles the logout functionality.
+ */
 function handleLogout() {
   const logoutButton = document.querySelector("#loginBtn");
   if (logoutButton) {
@@ -35,6 +32,10 @@ function handleLogout() {
 
 handleLogout();
 
+/**
+ * Retrieves the user profile from the server.
+ * @returns {Promise<Object|null>} The user profile data or null if an error occurred.
+ */
 async function getUserProfile() {
   const username = getActiveUser();
   const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}`;
@@ -52,6 +53,11 @@ async function getUserProfile() {
   }
 }
 
+/**
+ * Edits the user's avatar by sending a PUT request to the server.
+ * @param {string} avatarUrl - The URL of the new avatar image.
+ * @returns {Promise<Object|null>} - A promise that resolves to the updated user profile data if successful, or null if there was an error.
+ */
 async function editUserAvatar(avatarUrl) {
   const username = getActiveUser();
   const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}/media`;
@@ -96,6 +102,10 @@ avatarForm.addEventListener("submit", async (event) => {
   }
 });
 
+/**
+ * Handles the display of the edited avatar on the user page.
+ * @returns {Promise<void>} A promise that resolves when the avatar is displayed.
+ */
 async function handleEditedAvatar() {
   const userAvatarContainer = document.querySelector("#avatar_container");
 
@@ -149,6 +159,10 @@ async function handleEditedAvatar() {
   }
 }
 
+/**
+ * Displays the user profile information on the page.
+ * @returns {Promise<void>} A promise that resolves when the user profile is displayed.
+ */
 async function displayUserProfile() {
   const profileInformationContainer = document.querySelector(
     "#profile_information_container",
@@ -189,6 +203,10 @@ async function displayUserProfile() {
   }
 }
 
+/**
+ * Fetches the user's credits and displays them on the user page.
+ * @returns {Promise<void>} A promise that resolves when the credits are fetched and displayed.
+ */
 async function userPageCredits() {
   const creditsContainer = document.querySelector("#creditsContainer");
   creditsContainer.innerHTML = "";
@@ -212,6 +230,11 @@ async function userPageCredits() {
   }
 }
 
+/**
+ * Retrieves the user's avatar and displays it on the page.
+ * If the avatar is not found, an error message is displayed.
+ * @returns {Promise<void>} A promise that resolves when the avatar is retrieved and displayed.
+ */
 async function getUserAvatar() {
   const userAvatarContainer = document.querySelector("#avatar_container");
 
@@ -266,6 +289,10 @@ async function getUserAvatar() {
   }
 }
 
+/**
+ * Retrieves the bid history for the active user.
+ * @returns {Promise<any>} The bid history data.
+ */
 async function getBidHistory() {
   const username = getActiveUser();
   const url = `${API_BASE_URL}${USER_PROFILE_ENDPOINT}/${username}/bids?_listings=true`;
@@ -283,6 +310,10 @@ async function getBidHistory() {
   }
 }
 
+/**
+ * Displays the bid history on the user page.
+ * @returns {Promise<void>} A promise that resolves when the bid history is displayed.
+ */
 async function displayBidHistory() {
   const bidHistoryContainer = document.querySelector("#bid_history_container");
   bidHistoryContainer.classList.add("flex", "flex-col", "space-y-2");
@@ -365,6 +396,10 @@ async function displayBidHistory() {
   }
 }
 
+/**
+ * Fetches user data and displays the user profile.
+ * @returns {Promise<void>} A promise that resolves when the user profile is displayed.
+ */
 async function fetchDataAndDisplayUserProfile() {
   await displayUserProfile();
   await userPageCredits();

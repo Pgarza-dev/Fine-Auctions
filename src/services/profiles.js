@@ -1,6 +1,5 @@
 import { API_BASE_URL, AUCTION_LISTING_ENDPOINT } from "../utils/constants";
 import { USER_PROFILE_ENDPOINT } from "../utils/constants";
-import { fetcher } from "./fetcher";
 import { makeApiCall } from "./makeApiCall";
 
 /**
@@ -20,7 +19,7 @@ export async function getSingleProfile(username) {
 
 /**
  * Updates the profile picture of a user.
- * 
+ *
  * @param {string} username - The username of the user.
  * @param {string} avatarUrl - The URL of the new profile picture.
  * @returns {Promise} - A promise that resolves when the profile picture is updated.

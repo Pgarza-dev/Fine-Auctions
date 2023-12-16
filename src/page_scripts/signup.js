@@ -7,6 +7,13 @@ import { API_BASE_URL, REGISTER_ENDPOINT } from "../utils/constants.js";
 
 removeActiveUser();
 
+/**
+ * Handles the registration process.
+ *
+ * @param {Object} formDataObject - The form data object containing the user's registration information.
+ * @returns {Promise<void>} - A promise that resolves when the registration process is complete.
+ * @throws {Error} - If there is an error during the registration process.
+ */
 async function handleRegister(formDataObject) {
   try {
     const response = await fetch(API_BASE_URL + REGISTER_ENDPOINT, {
@@ -22,8 +29,6 @@ async function handleRegister(formDataObject) {
     });
 
     const responseData = await response.json();
-
-    console.log("Register response", responseData);
 
     if (!response.ok) {
       handleFormApiError(responseData, "api-error");
