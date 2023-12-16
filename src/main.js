@@ -3,6 +3,9 @@ import "./styles/main.css";
 
 handleAuth();
 
+/**
+ * Checks if the user is logged in and updates the login button accordingly.
+ */
 export function checkIfUserIsLoggedIn() {
   const accessToken = localStorage.getItem("accessToken");
   const logInButton = document.getElementById("loginBtn");
@@ -24,6 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
   animateText("animatedText");
 });
 
+/**
+ * Animates the text content of an element by splitting it into individual words and applying animation delays.
+ * @param {string} elementId - The ID of the element to animate.
+ * @returns {void}
+ */
 function animateText(elementId) {
   const textElement = document.getElementById(elementId);
 
@@ -65,6 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
   animateLinks(["auctionLink", "profileLink", "aboutLink"]);
 });
 
+/**
+ * Animates the links with the given IDs by splitting the text into words and applying animation delays.
+ * @param {string[]} linkIds - An array of IDs of the links to be animated.
+ */
 function animateLinks(linkIds) {
   linkIds.forEach((linkId, linkIndex) => {
     const link = document.getElementById(linkId);

@@ -1,6 +1,9 @@
 
 import { Tabs } from "flowbite";
 
+/**
+ * Initializes the Flowbite tabs functionality.
+ */
 function initializeTabs() {
   const tabsElement = document.getElementById("tabs-example");
 

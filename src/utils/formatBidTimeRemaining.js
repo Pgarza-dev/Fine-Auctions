@@ -1,3 +1,8 @@
+/**
+ * Formats the time remaining for a bid and updates the specified element with the formatted time.
+ * @param {number} timeRemaining - The time remaining for the bid in milliseconds.
+ * @param {HTMLElement} elementToUpdate - The HTML element to update with the formatted time.
+ */
 export function formatTimeRemaining(timeRemaining, elementToUpdate) {
   function updateDisplay() {
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
@@ -34,6 +39,11 @@ export function formatTimeRemaining(timeRemaining, elementToUpdate) {
   }, 1000);
 }
 
+/**
+ * Formats the time remaining for a bid in a human-readable format.
+ * @param {number} timeRemaining - The time remaining for the bid in milliseconds.
+ * @returns {string} - The formatted time remaining.
+ */
 export function formatHistoryTimeRemaining(timeRemaining) {
   const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
   const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
