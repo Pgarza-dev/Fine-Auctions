@@ -98,7 +98,6 @@ bidForm.addEventListener("submit", async (event) => {
     bidButton.textContent = "Bid Placed!";
     bidButton.classList.add("bg-primary-button");
 
-    
     console.log("Bid placed successfully:", bid);
 
     bidNumberInput.value = "";
@@ -111,6 +110,9 @@ bidForm.addEventListener("submit", async (event) => {
 profileButton();
 
 function displaySingleAuctionItem(auctionItem) {
+  const additionalImages = document.getElementById(
+    "additional_images_container",
+  );
   const auctionItemImage = document.getElementById("auctionItemImage");
   const auctionItemTitle = document.getElementById("auctionItemTitle");
   const auctionItemDescription = document.getElementById(
@@ -133,6 +135,36 @@ function displaySingleAuctionItem(auctionItem) {
       getHighestBidAmount(auctionItem.bids),
     );
     currentBidAmount.classList.add("text-lg", "font-bold", "pt-8", "pb-8");
+
+    for (let i = 1; i < auctionItem.media.length; i++) {
+      const additionalImage = document.createElement("img");
+      additionalImage.classList.add(
+        "w-32",
+        "h-20",
+        "sm:w-1/2",
+        "md:w-1/3",
+        "lg:w-1/4",
+        "h-auto",
+        "object-cover",
+        "rounded-md",
+        "border-2",
+        "border-gray-200",
+        "dark:border-gray-700",
+        "cursor-pointer",
+      );
+      additionalImage.src = auctionItem.media[i];
+      additionalImage.alt = auctionItem.title;
+      additionalImages.appendChild(additionalImage);
+    }
+
+    additionalImages.addEventListener("click", (event) => {
+      if (event.target.tagName === "IMG") {
+        auctionItemImage.src = event.target.src;
+        auctionItemImage.alt = event.target.alt;
+      } else {
+        return additionalImages;
+      }
+    });
 
     for (let i = 0; i < auctionItem.bids.length; i++) {
       const bidEntry = document.createElement("li");
