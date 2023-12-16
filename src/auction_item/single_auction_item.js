@@ -6,7 +6,7 @@ import { profileButton } from "../services/auction_listings.js";
 
 /**
  * Calculates the highest bid amount from an array of bids.
- * 
+ *
  * @param {Array} bids - The array of bids.
  * @returns {number} - The highest bid amount. Returns 0 if there are no bids.
  */
@@ -114,7 +114,7 @@ bidForm.addEventListener("submit", async (event) => {
 
     currentBidAmount.textContent = formatPrice(bidAmount);
     bidButton.textContent = "Bid Placed!";
-    bidButton.classList.add("bg-primary-button");
+    bidButton.classList.add("bg-primary-button", "cursor-not-allowed");
 
     bidNumberInput.value = "";
   } catch (error) {

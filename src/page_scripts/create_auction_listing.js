@@ -75,9 +75,7 @@ export async function createNewAuctionListing() {
       ...data,
     };
   }
-}
-console.log("createNewAuctionListing", createNewAuctionListing);
-console.log(new Error().stack);
+};
 
 /**
  * Validates the sell form data.
