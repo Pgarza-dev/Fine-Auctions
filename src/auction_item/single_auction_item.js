@@ -151,6 +151,7 @@ function displaySingleAuctionItem(auctionItem) {
         "border-gray-200",
         "dark:border-gray-700",
         "cursor-pointer",
+        "overflow-hidden",
       );
       additionalImage.src = auctionItem.media[i];
       additionalImage.alt = auctionItem.title;
