@@ -181,7 +181,6 @@ function addAnotherImage() {
     );
     anotherInput.setAttribute("placeholder", "https://example.com/image.png");
 
-    // Append the new input to the container
     anotherImageContainer.appendChild(anotherInput);
 
     const imageContainer = document.getElementById("imageContainer");
@@ -190,10 +189,8 @@ function addAnotherImage() {
     sellItemButton.disabled = false;
   };
 
-  // Remove existing click event listener
   addAnotherImageBtn.removeEventListener("click", clickHandler);
 
-  // Attach the click event listener
   addAnotherImageBtn.addEventListener("click", clickHandler);
 }
 
