@@ -4,22 +4,51 @@ import {
   EMAIL_DOMAIN_WHITELIST,
 } from "../utils/constants.js";
 
+/**
+ * Checks if a string is valid by matching it against a regular expression.
+ * @param {string} string - The string to be checked.
+ * @returns {boolean} - True if the string is valid, false otherwise.
+ */
 function checkValidString(string) {
   return /^[a-zA-Z0-9_]+$/.test(string);
 }
 
+/**
+ * Checks if a username is valid based on the minimum length requirement.
+ * @param {string} username - The username to be checked.
+ * @param {number} usernameMinLength - The minimum length requirement for the username.
+ * @returns {boolean} - True if the username is valid, false otherwise.
+ */
 function checkValidUsername(username, usernameMinLength) {
   return checkValidString(username) && username.length >= usernameMinLength;
 }
 
+/**
+ * Checks if an email is whitelisted based on a given email domain whitelist.
+ * @param {string} email - The email to be checked.
+ * @param {string[]} emailDomainWhiteList - The whitelist of email domains.
+ * @returns {boolean} - Returns true if the email is whitelisted, otherwise false.
+ */
 function checkWhitelistedEmail(email, emailDomainWhiteList) {
   return emailDomainWhiteList.some((domain) => email.endsWith(domain));
 }
 
+/**
+ * Checks if a password is valid based on its length.
+ * @param {string} password - The password to be checked.
+ * @param {number} minPasswordLength - The minimum required length for the password.
+ * @returns {boolean} - True if the password is valid, false otherwise.
+ */
 function checkValidPassword(password, minPasswordLength) {
   return password.length >= minPasswordLength;
 }
 
+/**
+ * Checks if two passwords match.
+ * @param {string} password - The password to compare.
+ * @param {string} repeatPassword - The repeated password to compare.
+ * @returns {boolean} - True if the passwords match, false otherwise.
+ */
 function checkPasswordsMatch(password, repeatPassword) {
   return password === repeatPassword;
 }
