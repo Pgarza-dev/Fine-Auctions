@@ -39,7 +39,6 @@ async function getUserProfile() {
       method: "GET",
       needsAuth: true,
     });
-    console.log("User Profile:", data);
     return data;
   } catch (error) {
     console.error("Error fetching user profile:", error.message);
@@ -296,7 +295,6 @@ async function getBidHistory() {
       method: "GET",
       needsAuth: true,
     });
-    console.log("Bid History:", data);
     return data;
   } catch (error) {
     console.error("Error fetching bid history:", error.message);
