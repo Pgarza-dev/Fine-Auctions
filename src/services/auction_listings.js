@@ -131,8 +131,6 @@ async function ascendingButton() {
         }
       }
 
-      console.log("Sorted Listings (Ascending):", fetchedListings);
-
       displayListings(fetchedListings.slice(0, targetListingsCount));
 
       sortByAscendingButton.textContent = "Ending soon";
@@ -168,8 +166,6 @@ async function oldestListingsButton() {
         method: "GET",
         needsAuth: false,
       });
-
-      console.log("Sorted Listings (Descending):", data);
 
       displayListings(data);
       sortByDescendingButton.textContent = "Newest";
