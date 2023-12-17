@@ -348,7 +348,9 @@ export async function displayListings(listings) {
         "text-gray-700",
         "dark:text-gray-400",
         "text-lg",
-        "roboto-slab",
+        "castro",
+        "max-w-sm",
+        "truncate",
       );
       description.textContent = listing.description;
       textContainer.appendChild(description);
