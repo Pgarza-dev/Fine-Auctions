@@ -296,6 +296,10 @@ export async function displayListings(listings) {
         "hover:scale-105",
         "hover:border-primary-button",
         "auction_card",
+        "transition-all",
+        "duration-300",
+        "ease-in-out",
+        "max-w-80",
       );
 
       const link = document.createElement("a");
